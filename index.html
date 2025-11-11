@@ -46,11 +46,11 @@
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #1a1a1a;
+            color: #002d72;
         }
 
         .logo span {
-            color: #d41c3c;
+            color: #f4d03f;
         }
 
         nav a {
@@ -69,7 +69,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #d41c3c;
+            background: #002d72;
             transition: width 0.3s ease;
         }
 
@@ -86,8 +86,9 @@
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
+            color: white;
             position: relative;
             overflow: hidden;
         }
@@ -99,7 +100,7 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(212, 28, 60, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(244, 208, 63, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -119,15 +120,15 @@
         }
 
         .hero h1 span {
-            color: #d41c3c;
+            color: #f4d03f;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: #555;
             margin-bottom: 2rem;
             max-width: 600px;
             line-height: 1.7;
+            opacity: 0.95;
         }
 
         .cta-buttons {
@@ -149,25 +150,25 @@
         }
 
         .btn-primary {
-            background: #d41c3c;
-            color: white;
+            background: #f4d03f;
+            color: #002d72;
         }
 
         .btn-primary:hover {
-            background: #b81630;
+            background: #ffeb3b;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 28, 60, 0.2);
+            box-shadow: 0 10px 30px rgba(244, 208, 63, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #1a1a1a;
-            border: 1.5px solid #1a1a1a;
+            color: white;
+            border: 1.5px solid white;
         }
 
         .btn-secondary:hover {
-            background: #1a1a1a;
-            color: white;
+            background: white;
+            color: #002d72;
         }
 
         /* Stats Section */
@@ -175,25 +176,26 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            padding: 4rem 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 3rem 0 0 0;
             margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: #d41c3c;
+            color: #f4d03f;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .stat-item p {
-            color: #777;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* Problem-Solution Section */
+        /* Section Styles */
         section {
             padding: 5rem 2rem;
         }
@@ -202,62 +204,148 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
+            color: #002d72;
         }
 
-        .problem-solution {
+        /* Why Section with Visual Split */
+        .why-section {
+            background: white;
+        }
+
+        .why-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
         }
 
-        .problem-box, .solution-box {
-            padding: 2.5rem;
+        .why-image {
+            width: 100%;
+            max-width: 500px;
             border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 45, 114, 0.15);
         }
 
-        .problem-box {
-            background: #fef0f1;
-            border-left: 4px solid #d41c3c;
+        .why-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .problem-box h3 {
-            color: #d41c3c;
+        .why-text h3 {
+            color: #002d72;
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
-        .solution-box {
-            background: #f0f8f5;
-            border-left: 4px solid #2d8b6f;
-        }
-
-        .solution-box h3 {
-            color: #2d8b6f;
+        .benefit-item {
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 45, 114, 0.1);
         }
 
-        .feature-list {
-            list-style: none;
+        .benefit-item:last-child {
+            border-bottom: none;
         }
 
-        .feature-list li {
-            margin-bottom: 1rem;
+        .benefit-label {
+            display: block;
+            background: #002d72;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            width: fit-content;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .benefit-text {
+            color: #555;
+            margin-left: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
+            color: white;
+        }
+
+        .team-section h2 {
+            color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #f4d03f;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .feature-list li::before {
-            content: '✓';
-            margin-right: 1rem;
-            color: #d41c3c;
-            font-weight: bold;
-            font-size: 1.2rem;
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .solution-box .feature-list li::before {
-            color: #2d8b6f;
+        .team-member h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .team-member .title {
+            color: #f4d03f;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .team-member .phone {
+            color: #f4d03f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .team-member p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 1rem;
         }
 
         /* Programs Section */
@@ -272,19 +360,19 @@
             background: white;
             padding: 2rem;
             border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 2px solid #002d72;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .program-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-            border-color: #d41c3c;
+            box-shadow: 0 12px 35px rgba(0, 45, 114, 0.15);
+            border-color: #f4d03f;
         }
 
         .program-card h3 {
-            color: #d41c3c;
+            color: #002d72;
             margin-bottom: 1rem;
             font-size: 1.1rem;
             text-transform: uppercase;
@@ -299,11 +387,12 @@
         }
 
         .program-list li {
-            background: #f0f0f0;
+            background: #f4d03f;
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: #555;
+            color: #002d72;
+            font-weight: 600;
         }
 
         /* Results Section */
@@ -318,23 +407,25 @@
             background: white;
             padding: 2.5rem;
             border-radius: 8px;
-            border-top: 3px solid #d41c3c;
+            border-top: 4px solid #f4d03f;
             position: relative;
+            text-align: center;
         }
 
         .result-card h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #999;
+            color: #002d72;
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .result-number {
-            font-size: 2.5rem;
-            color: #d41c3c;
+            font-size: 3rem;
+            color: #002d72;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .result-card p {
@@ -342,84 +433,57 @@
             font-size: 0.95rem;
         }
 
-        /* Team Section */
-        .team-grid {
+        /* Clients Section */
+        .clients-section {
+            background: #f5f5f5;
+        }
+
+        .clients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
+            align-items: center;
+            justify-items: center;
         }
 
-        .team-member {
-            text-align: center;
-        }
-
-        .team-avatar {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #d41c3c 0%, #f28a9f 100%);
+        .client-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 1px solid rgba(0, 45, 114, 0.1);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        .team-member h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member .title {
-            color: #d41c3c;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .team-member p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Clients Section */
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            align-items: center;
-        }
-
-        .client-item {
-            padding: 1.5rem;
-            background: white;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 6px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            font-weight: 600;
+            overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .client-item:hover {
-            border-color: #d41c3c;
-            color: #d41c3c;
+        .client-logo:hover {
+            border-color: #002d72;
+            box-shadow: 0 5px 20px rgba(0, 45, 114, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .client-logo img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
 
         /* Pricing Model */
-        .pricing-model {
+        .pricing-section {
             background: white;
+        }
+
+        .pricing-model {
+            background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
             padding: 3rem;
             border-radius: 8px;
             margin-top: 3rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 2px solid #002d72;
         }
 
         .pricing-grid {
@@ -430,9 +494,11 @@
         }
 
         .pricing-option h3 {
-            color: #d41c3c;
+            color: #002d72;
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .pricing-option p {
@@ -446,7 +512,7 @@
             gap: 1.5rem;
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            border-top: 2px solid #002d72;
         }
 
         .metric {
@@ -456,20 +522,21 @@
         .metric-value {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #d41c3c;
+            color: #002d72;
             margin-bottom: 0.5rem;
         }
 
         .metric-label {
             font-size: 0.85rem;
-            color: #999;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
@@ -479,10 +546,11 @@
 
         .cta-section h2 {
             color: white;
+            margin-bottom: 1rem;
         }
 
         .cta-section p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.1rem;
             margin-bottom: 2rem;
         }
@@ -501,15 +569,21 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        .contact-item strong {
+            color: white;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
         .contact-item a {
-            color: #d41c3c;
+            color: #f4d03f;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
         }
 
         .contact-item a:hover {
-            color: #fff;
+            color: #ffeb3b;
         }
 
         /* Footer */
@@ -526,7 +600,7 @@
                 font-size: 2.2rem;
             }
 
-            .problem-solution {
+            .why-content {
                 grid-template-columns: 1fr;
             }
 
@@ -535,6 +609,10 @@
             }
 
             .key-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -596,45 +674,65 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
+    <!-- Why Section with Image -->
+    <section class="why-section" id="about">
         <div class="container">
-            <h2>¿Por qué somos diferentes?</h2>
+            <h2>¿Por qué las actividades extracurriculares importan?</h2>
             
-            <div class="problem-solution">
-                <div class="problem-box">
-                    <h3>El desafío que enfrentan</h3>
-                    <ul class="feature-list">
-                        <li>Falta de variedad en programas extracurriculares</li>
-                        <li>Dificultad para encontrar personal calificado</li>
-                        <li>Carga administrativa de gestión y nómina</li>
-                        <li>Presión por mantener padres y estudiantes satisfechos</li>
-                    </ul>
+            <div class="why-content">
+                <div class="why-image">
+                    <img src="PPS .jpeg" alt="Estudiantes en actividades extracurriculares">
                 </div>
-                <div class="solution-box">
-                    <h3>Nuestra solución integral</h3>
-                    <ul class="feature-list">
-                        <li>Gestión 100% tercerizada</li>
-                        <li>Personal certificado y verificado</li>
-                        <li>Cero inversión para el colegio</li>
-                        <li>Ingresos adicionales garantizados</li>
-                    </ul>
+                
+                <div class="why-text">
+                    <h3>El impacto que genera</h3>
+                    
+                    <div class="benefit-item">
+                        <span class="benefit-label">Sentido de Pertenencia</span>
+                        <p class="benefit-text">Fortalecen la identidad y el orgullo institucional en los estudiantes.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-label">Satisfacción de Padres</span>
+                        <p class="benefit-text">Valor agregado que diferencia a tu colegio de la competencia.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-label">Desarrollo Integral</span>
+                        <p class="benefit-text">Habilidades sociales, trabajo en equipo y liderazgo que transforman vidas.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-label">Competitividad Institucional</span>
+                        <p class="benefit-text">Posicionamiento destacado en ligas y eventos deportivos regionales.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <h2 style="text-align: left; font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">Nuestro equipo</h2>
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Nuestro equipo</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="team-avatar">RP</div>
+                    <div class="team-avatar">
+                        <img src="Roberto pf.png" alt="Roberto Porteous">
+                    </div>
                     <h3>Roberto Porteous</h3>
-                    <div class="title">Fundador & Director</div>
-                    <p>Licenciado en Derecho con Magister en Derecho Deportivo. 10+ años creando programas deportivos ganadores. Director Deportivo en instituciones líderes de Panamá.</p>
+                    <span class="title">Fundador & Director</span>
+                    <div class="phone">+507 6494-9957</div>
+                    <p>Licenciado en Derecho con Magister en Derecho Deportivo. 10+ años creando programas deportivos ganadores. Director Deportivo en instituciones líderes.</p>
                 </div>
                 <div class="team-member">
-                    <div class="team-avatar">AE</div>
+                    <div class="team-avatar">
+                        <img src="ALEJANDRA POF.png" alt="Alejandra Escobar">
+                    </div>
                     <h3>Alejandra Escobar</h3>
-                    <div class="title">Cofundadora & Directora Operativa</div>
-                    <p>Licenciada en Logística con Magister en Administración Deportiva. 10+ años de experiencia en gestión deportiva. Fundadora de Cardinals Teens.</p>
+                    <span class="title">Cofundadora & Directora Operativa</span>
+                    <div class="phone">+507 6780-8944</div>
+                    <p>Licenciada en Logística con Magister en Administración Deportiva. 10+ años en gestión deportiva. Fundadora de Cardinals Teens.</p>
                 </div>
             </div>
         </div>
@@ -681,7 +779,7 @@
                     <ul class="program-list">
                         <li>Porrismo</li>
                         <li>Guardería</li>
-                        <li>Programas Personalizados</li>
+                        <li>Personalizados</li>
                     </ul>
                 </div>
             </div>
@@ -694,44 +792,56 @@
             <h2>Resultados que hablan por sí solos</h2>
             <div class="results-container">
                 <div class="result-card">
-                    <h3>Colegio María Inmaculada</h3>
+                    <h3>María Inmaculada</h3>
                     <div class="result-number">+100%</div>
-                    <p>Crecimiento de estudiantes en programas: de 80 a 160 en 2024-2025</p>
+                    <p>Crecimiento de 80 a 160 estudiantes (2024-2025)</p>
                 </div>
                 <div class="result-card">
-                    <h3>Colegio Las Esclavas</h3>
+                    <h3>Las Esclavas</h3>
                     <div class="result-number">+125%</div>
-                    <p>Aumento de participación en actividades en apenas 3 años</p>
+                    <p>De 40 a 90 estudiantes en 3 años</p>
                 </div>
                 <div class="result-card">
-                    <h3>Logros Deportivos</h3>
+                    <h3>Campeonatos</h3>
                     <div class="result-number">∞</div>
-                    <p>Múltiples campeonatos ganados desde 2015 en ligas competitivas</p>
+                    <p>Múltiples títulos ganados desde 2015</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Clients Section -->
-    <section>
+    <section class="clients-section">
         <div class="container">
             <h2>Confían en Portesco Sports</h2>
             <div class="clients-grid">
-                <div class="client-item">Colegio de Panamá</div>
-                <div class="client-item">Colegio Real</div>
-                <div class="client-item">Academia Interamericana</div>
-                <div class="client-item">Oxford School</div>
-                <div class="client-item">La Salle Panamá</div>
-                <div class="client-item">San Agustín</div>
-                <div class="client-item">Legends</div>
-                <div class="client-item">Tigers</div>
-                <div class="client-item">Deportes Club Unión</div>
+                <div class="client-logo">
+                    <img src="Mighty Eagles 2.0-09.jpg" alt="Eagles">
+                </div>
+                <div class="client-logo">
+                    <img src="AF_AIP_FightingOwls-10.jpg" alt="Fighting Owls">
+                </div>
+                <div class="client-logo">
+                    <img src="CRP Logo Go Lions.png" alt="Go Lions">
+                </div>
+                <div class="client-logo">
+                    <img src="Knights tos.png" alt="Knights">
+                </div>
+                <div class="client-logo">
+                    <img src="Logo Hummingbirds CLE.png" alt="Hummingbirds">
+                </div>
+                <div class="client-logo">
+                    <img src="Logo IC Falcons.png" alt="IC Falcons">
+                </div>
+                <div class="client-logo">
+                    <img src="Logo La Salle Spartans.png" alt="La Salle Spartans">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Model Section -->
-    <section>
+    <section class="pricing-section">
         <div class="container">
             <h2>Modelo que funciona</h2>
             <div class="pricing-model">
@@ -739,12 +849,12 @@
                     <div class="pricing-option">
                         <h3>📊 La Inversión</h3>
                         <p><strong>Costo inicial del colegio: $0</strong></p>
-                        <p style="margin-top: 1rem; color: #999;">Nosotros nos encargamos de TODO: logística, materiales, personal y coordinación.</p>
+                        <p style="margin-top: 1rem; color: #666;">Nosotros nos encargamos de TODO: logística, materiales, personal y coordinación.</p>
                     </div>
                     <div class="pricing-option">
                         <h3>💰 La Ganancia</h3>
                         <p><strong>Ingreso por estudiante: $5-10 USD mensual</strong></p>
-                        <p style="margin-top: 1rem; color: #999;">Con crecimiento promedio de 100%+, esto se traduce en ingresos significativos.</p>
+                        <p style="margin-top: 1rem; color: #666;">Con crecimiento promedio de 100%+, esto se traduce en ingresos significativos.</p>
                     </div>
                 </div>
 
@@ -787,18 +897,6 @@
                     <div class="contact-item">
                         <strong>Email</strong>
                         <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Contacto directo</p>
-                        <a href="mailto:info@portescosports.com">info@portescosports.com</a>
+                        <a href="mailto:Portescosport@gmail.com">Portescosport@gmail.com</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares.</p>
-        </div>
-    </footer>
-</body>
-</html>
