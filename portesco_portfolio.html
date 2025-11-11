@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portesco Sports - Gestión Integral de Actividades Extracurriculares</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.2rem 2rem;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1a1a1a;
+        }
+
+        .logo span {
+            color: #d41c3c;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            margin-left: 2.5rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d41c3c;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 28, 60, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: #d41c3c;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #d41c3c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b81630;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 28, 60, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 1.5px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #d41c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #777;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Problem-Solution Section */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .problem-box, .solution-box {
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .problem-box {
+            background: #fef0f1;
+            border-left: 4px solid #d41c3c;
+        }
+
+        .problem-box h3 {
+            color: #d41c3c;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .solution-box {
+            background: #f0f8f5;
+            border-left: 4px solid #2d8b6f;
+        }
+
+        .solution-box h3 {
+            color: #2d8b6f;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            margin-right: 1rem;
+            color: #d41c3c;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .solution-box .feature-list li::before {
+            color: #2d8b6f;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            border-color: #d41c3c;
+        }
+
+        .program-card h3 {
+            color: #d41c3c;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .program-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .program-list li {
+            background: #f0f0f0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .result-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-top: 3px solid #d41c3c;
+            position: relative;
+        }
+
+        .result-card h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            color: #d41c3c;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #d41c3c 0%, #f28a9f 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .team-member h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .title {
+            color: #d41c3c;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Clients Section */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .client-item {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 6px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .client-item:hover {
+            border-color: #d41c3c;
+            color: #d41c3c;
+        }
+
+        /* Pricing Model */
+        .pricing-model {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-option h3 {
+            color: #d41c3c;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-option p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d41c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            margin-top: 5rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item a {
+            color: #d41c3c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .key-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">PORT<span>E</span>SCO</div>
+            <div>
+                <a href="#about">Nosotros</a>
+                <a href="#programs">Programas</a>
+                <a href="#results">Resultados</a>
+                <a href="#contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformando la experiencia <span>extracurricular</span> en tu colegio</h1>
+                <p>Gestión integral de actividades deportivas y culturales. Sin inversión, con resultados comprobados y personal certificado.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Agenda una reunión</a>
+                    <a href="#about" class="btn btn-secondary">Conoce más</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Colegios confían en nosotros</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Años de experiencia</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Crecimiento comprobado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>¿Por qué somos diferentes?</h2>
+            
+            <div class="problem-solution">
+                <div class="problem-box">
+                    <h3>El desafío que enfrentan</h3>
+                    <ul class="feature-list">
+                        <li>Falta de variedad en programas extracurriculares</li>
+                        <li>Dificultad para encontrar personal calificado</li>
+                        <li>Carga administrativa de gestión y nómina</li>
+                        <li>Presión por mantener padres y estudiantes satisfechos</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>Nuestra solución integral</h3>
+                    <ul class="feature-list">
+                        <li>Gestión 100% tercerizada</li>
+                        <li>Personal certificado y verificado</li>
+                        <li>Cero inversión para el colegio</li>
+                        <li>Ingresos adicionales garantizados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 style="text-align: left; font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem;">Nuestro equipo</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">RP</div>
+                    <h3>Roberto Porteous</h3>
+                    <div class="title">Fundador & Director</div>
+                    <p>Licenciado en Derecho con Magister en Derecho Deportivo. 10+ años creando programas deportivos ganadores. Director Deportivo en instituciones líderes de Panamá.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">AE</div>
+                    <h3>Alejandra Escobar</h3>
+                    <div class="title">Cofundadora & Directora Operativa</div>
+                    <p>Licenciada en Logística con Magister en Administración Deportiva. 10+ años de experiencia en gestión deportiva. Fundadora de Cardinals Teens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs">
+        <div class="container">
+            <h2>16+ Actividades disponibles</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Diseñamos un portafolio personalizado según las necesidades de tu institución</p>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>⚽ Deportes</h3>
+                    <ul class="program-list">
+                        <li>Fútbol</li>
+                        <li>Baloncesto</li>
+                        <li>Voleibol</li>
+                        <li>Flag Football</li>
+                        <li>Fútbol Americano</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>🎨 Artes</h3>
+                    <ul class="program-list">
+                        <li>Guitarra</li>
+                        <li>Piano</li>
+                        <li>Teatro</li>
+                        <li>Pintura</li>
+                        <li>Manga Japonesa</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>🧠 Académico</h3>
+                    <ul class="program-list">
+                        <li>Ajedrez</li>
+                        <li>Robótica</li>
+                        <li>Reforzamientos</li>
+                        <li>Tutorías</li>
+                    </ul>
+                </div>
+                <div class="program-card">
+                    <h3>✨ Especiales</h3>
+                    <ul class="program-list">
+                        <li>Porrismo</li>
+                        <li>Guardería</li>
+                        <li>Programas Personalizados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
+        <div class="container">
+            <h2>Resultados que hablan por sí solos</h2>
+            <div class="results-container">
+                <div class="result-card">
+                    <h3>Colegio María Inmaculada</h3>
+                    <div class="result-number">+100%</div>
+                    <p>Crecimiento de estudiantes en programas: de 80 a 160 en 2024-2025</p>
+                </div>
+                <div class="result-card">
+                    <h3>Colegio Las Esclavas</h3>
+                    <div class="result-number">+125%</div>
+                    <p>Aumento de participación en actividades en apenas 3 años</p>
+                </div>
+                <div class="result-card">
+                    <h3>Logros Deportivos</h3>
+                    <div class="result-number">∞</div>
+                    <p>Múltiples campeonatos ganados desde 2015 en ligas competitivas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section>
+        <div class="container">
+            <h2>Confían en Portesco Sports</h2>
+            <div class="clients-grid">
+                <div class="client-item">Colegio de Panamá</div>
+                <div class="client-item">Colegio Real</div>
+                <div class="client-item">Academia Interamericana</div>
+                <div class="client-item">Oxford School</div>
+                <div class="client-item">La Salle Panamá</div>
+                <div class="client-item">San Agustín</div>
+                <div class="client-item">Legends</div>
+                <div class="client-item">Tigers</div>
+                <div class="client-item">Deportes Club Unión</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Model Section -->
+    <section>
+        <div class="container">
+            <h2>Modelo que funciona</h2>
+            <div class="pricing-model">
+                <div class="pricing-grid">
+                    <div class="pricing-option">
+                        <h3>📊 La Inversión</h3>
+                        <p><strong>Costo inicial del colegio: $0</strong></p>
+                        <p style="margin-top: 1rem; color: #999;">Nosotros nos encargamos de TODO: logística, materiales, personal y coordinación.</p>
+                    </div>
+                    <div class="pricing-option">
+                        <h3>💰 La Ganancia</h3>
+                        <p><strong>Ingreso por estudiante: $5-10 USD mensual</strong></p>
+                        <p style="margin-top: 1rem; color: #999;">Con crecimiento promedio de 100%+, esto se traduce en ingresos significativos.</p>
+                    </div>
+                </div>
+
+                <div class="key-metrics">
+                    <div class="metric">
+                        <div class="metric-value">$50-75</div>
+                        <div class="metric-label">Mensualidad Estudiante</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">2 Opciones</div>
+                        <div class="metric-label">De Operación</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">100% SIN RIESGO</div>
+                        <div class="metric-label">Garantizado</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Transformemos juntos la experiencia deportiva</h2>
+                <p>Agenda una reunión sin compromiso y descubre cómo crecer tu programa extracurricular</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Roberto Porteous</strong>
+                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6494-9957</p>
+                        <a href="tel:+50764949957">Llamar</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Alejandra Escobar</strong>
+                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6780-8944</p>
+                        <a href="tel:+50767808944">Llamar</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Contacto directo</p>
+                        <a href="mailto:info@portescosports.com">info@portescosports.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares.</p>
+        </div>
+    </footer>
+</body>
+</html>
