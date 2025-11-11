@@ -17,7 +17,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: #fafafa;
+            background: #0a0a0a;
             color: #1a1a1a;
             line-height: 1.6;
         }
@@ -27,10 +27,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 2px solid #ff8c00;
             padding: 1.2rem 2rem;
         }
 
@@ -46,20 +46,22 @@
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #002d72;
+            color: #ffffff;
+            text-transform: uppercase;
         }
 
         .logo span {
-            color: #f4d03f;
+            color: #ff8c00;
         }
 
         nav a {
             text-decoration: none;
-            color: #1a1a1a;
+            color: #ffffff;
             font-size: 0.95rem;
             margin-left: 2.5rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
+            font-weight: 600;
         }
 
         nav a::after {
@@ -69,8 +71,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #002d72;
+            background: #ff0000;
             transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff0000;
         }
 
         nav a:hover::after {
@@ -86,11 +92,12 @@
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
             color: white;
             position: relative;
             overflow: hidden;
+            border-bottom: 3px solid #ff8c00;
         }
 
         .hero::before {
@@ -98,11 +105,17 @@
             position: absolute;
             top: -50%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(244, 208, 63, 0.1) 0%, transparent 70%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
         }
 
         .hero-content {
@@ -115,12 +128,14 @@
             font-size: 3.5rem;
             line-height: 1.15;
             margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-weight: 900;
             letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .hero h1 span {
-            color: #f4d03f;
+            color: #ff8c00;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
         }
 
         .hero p {
@@ -147,28 +162,32 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
-            background: #f4d03f;
-            color: #002d72;
+            background: #ff8c00;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
         }
 
         .btn-primary:hover {
-            background: #ffeb3b;
+            background: #ffaa33;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(244, 208, 63, 0.3);
+            box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 1.5px solid white;
+            border: 2px solid #ff8c00;
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #002d72;
+            background: #ff8c00;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
         }
 
         /* Stats Section */
@@ -178,14 +197,15 @@
             gap: 3rem;
             padding: 3rem 0 0 0;
             margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 2px solid rgba(255, 0, 0, 0.3);
         }
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: #f4d03f;
+            color: #ff8c00;
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .stat-item p {
@@ -193,6 +213,7 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         /* Section Styles */
@@ -204,12 +225,17 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: #002d72;
+            color: #ff8c00;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         /* Why Section with Visual Split */
         .why-section {
-            background: white;
+            background: #0a0a0a;
+            border-top: 3px solid #ff8c00;
         }
 
         .why-content {
@@ -225,7 +251,8 @@
             max-width: 500px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 45, 114, 0.15);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
+            border: 2px solid #ff8c00;
         }
 
         .why-image img {
@@ -235,15 +262,17 @@
         }
 
         .why-text h3 {
-            color: #002d72;
+            color: #ff8c00;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
         }
 
         .benefit-item {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0, 45, 114, 0.1);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
         }
 
         .benefit-item:last-child {
@@ -252,19 +281,21 @@
 
         .benefit-label {
             display: block;
-            background: #002d72;
+            background: #ff8c00;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            font-weight: 600;
+            font-weight: 900;
             margin-bottom: 0.5rem;
             width: fit-content;
             font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .benefit-text {
-            color: #555;
+            color: #ffffff;
             margin-left: 0;
             font-size: 0.95rem;
             line-height: 1.6;
@@ -272,12 +303,14 @@
 
         /* Team Section */
         .team-section {
-            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
             color: white;
+            border-top: 3px solid #ff8c00;
+            border-bottom: 3px solid #ff8c00;
         }
 
         .team-section h2 {
-            color: white;
+            color: #ff8c00;
         }
 
         .team-grid {
@@ -289,16 +322,17 @@
 
         .team-member {
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 140, 0, 0.05);
             padding: 2rem;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid #ff8c00;
             transition: all 0.3s ease;
         }
 
         .team-member:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 140, 0, 0.1);
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
         }
 
         .team-avatar {
@@ -307,11 +341,12 @@
             margin: 0 auto 1.5rem;
             border-radius: 8px;
             overflow: hidden;
-            border: 3px solid #f4d03f;
+            border: 3px solid #ff8c00;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
         }
 
         .team-avatar img {
@@ -324,21 +359,25 @@
             font-size: 1.4rem;
             margin-bottom: 0.3rem;
             color: white;
+            text-transform: uppercase;
+            font-weight: 900;
         }
 
         .team-member .title {
-            color: #f4d03f;
+            color: #ff8c00;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 1rem;
             display: block;
+            font-weight: 900;
         }
 
         .team-member .phone {
-            color: #f4d03f;
-            font-weight: 600;
+            color: #ff8c00;
+            font-weight: 900;
             font-size: 0.95rem;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .team-member p {
@@ -349,6 +388,11 @@
         }
 
         /* Programs Section */
+        .programs-section {
+            background: #0a0a0a;
+            border-top: 3px solid #ff8c00;
+        }
+
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -357,26 +401,27 @@
         }
 
         .program-card {
-            background: white;
+            background: #1a1a1a;
             padding: 2rem;
             border-radius: 8px;
-            border: 2px solid #002d72;
+            border: 2px solid #ff8c00;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .program-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0, 45, 114, 0.15);
-            border-color: #f4d03f;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
+            border-color: #ffaa33;
         }
 
         .program-card h3 {
-            color: #002d72;
+            color: #ff8c00;
             margin-bottom: 1rem;
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 900;
         }
 
         .program-list {
@@ -387,15 +432,21 @@
         }
 
         .program-list li {
-            background: #f4d03f;
+            background: #ff8c00;
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: #002d72;
+            color: white;
             font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* Results Section */
+        .results-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
+            border-top: 3px solid #ff8c00;
+        }
+
         .results-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -404,38 +455,41 @@
         }
 
         .result-card {
-            background: white;
+            background: rgba(255, 140, 0, 0.05);
             padding: 2.5rem;
             border-radius: 8px;
-            border-top: 4px solid #f4d03f;
+            border: 2px solid #ff8c00;
             position: relative;
             text-align: center;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
         }
 
         .result-card h3 {
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #002d72;
+            color: #ff8c00;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 900;
         }
 
         .result-number {
             font-size: 3rem;
-            color: #002d72;
-            font-weight: 700;
+            color: #ff8c00;
+            font-weight: 900;
             margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .result-card p {
-            color: #666;
+            color: #ffffff;
             font-size: 0.95rem;
         }
 
         /* Clients Section */
         .clients-section {
-            background: #f5f5f5;
+            background: #0a0a0a;
+            border-top: 3px solid #ff8c00;
         }
 
         .clients-grid {
@@ -450,20 +504,20 @@
         .client-logo {
             width: 120px;
             height: 120px;
-            background: white;
-            border: 1px solid rgba(0, 45, 114, 0.1);
+            background: #1a1a1a;
+            border: 2px solid #ff8c00;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
         }
 
         .client-logo:hover {
-            border-color: #002d72;
-            box-shadow: 0 5px 20px rgba(0, 45, 114, 0.15);
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
             transform: translateY(-3px);
         }
 
@@ -473,79 +527,20 @@
             object-fit: contain;
         }
 
-        /* Pricing Model */
-        .pricing-section {
-            background: white;
-        }
-
-        .pricing-model {
-            background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
-            padding: 3rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-            border: 2px solid #002d72;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-option h3 {
-            color: #002d72;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .pricing-option p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .key-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px solid #002d72;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #002d72;
-            margin-bottom: 0.5rem;
-        }
-
-        .metric-label {
-            font-size: 0.85rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #002d72 0%, #003d94 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
             border-radius: 8px;
             margin-top: 5rem;
+            border: 2px solid #ff8c00;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
         }
 
         .cta-section h2 {
-            color: white;
+            color: #ff8c00;
             margin-bottom: 1rem;
         }
 
@@ -563,36 +558,42 @@
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 140, 0, 0.1);
             padding: 1.5rem;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid #ff8c00;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
         }
 
         .contact-item strong {
             color: white;
             display: block;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
         }
 
         .contact-item a {
-            color: #f4d03f;
+            color: #ff8c00;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 900;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
         .contact-item a:hover {
-            color: #ffeb3b;
+            color: #ffaa33;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
         }
 
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #000000;
             color: #999;
             padding: 2rem;
             text-align: center;
             font-size: 0.9rem;
+            border-top: 2px solid #ff8c00;
         }
 
         @media (max-width: 768px) {
@@ -601,14 +602,6 @@
             }
 
             .why-content {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .key-metrics {
                 grid-template-columns: 1fr;
             }
 
@@ -739,10 +732,10 @@
     </section>
 
     <!-- Programs Section -->
-    <section id="programs">
+    <section id="programs" class="programs-section">
         <div class="container">
             <h2>16+ Actividades disponibles</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Diseñamos un portafolio personalizado según las necesidades de tu institución</p>
+            <p style="text-align: center; color: #ffffff; margin-bottom: 2rem;">Diseñamos un portafolio personalizado según las necesidades de tu institución</p>
             
             <div class="programs-grid">
                 <div class="program-card">
@@ -787,7 +780,7 @@
     </section>
 
     <!-- Results Section -->
-    <section id="results">
+    <section id="results" class="results-section">
         <div class="container">
             <h2>Resultados que hablan por sí solos</h2>
             <div class="results-container">
@@ -840,42 +833,6 @@
         </div>
     </section>
 
-    <!-- Pricing Model Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <h2>Modelo que funciona</h2>
-            <div class="pricing-model">
-                <div class="pricing-grid">
-                    <div class="pricing-option">
-                        <h3>📊 La Inversión</h3>
-                        <p><strong>Costo inicial del colegio: $0</strong></p>
-                        <p style="margin-top: 1rem; color: #666;">Nosotros nos encargamos de TODO: logística, materiales, personal y coordinación.</p>
-                    </div>
-                    <div class="pricing-option">
-                        <h3>💰 La Ganancia</h3>
-                        <p><strong>Ingreso por estudiante: $5-10 USD mensual</strong></p>
-                        <p style="margin-top: 1rem; color: #666;">Con crecimiento promedio de 100%+, esto se traduce en ingresos significativos.</p>
-                    </div>
-                </div>
-
-                <div class="key-metrics">
-                    <div class="metric">
-                        <div class="metric-value">$50-75</div>
-                        <div class="metric-label">Mensualidad Estudiante</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">2 Opciones</div>
-                        <div class="metric-label">De Operación</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">100% SIN RIESGO</div>
-                        <div class="metric-label">Garantizado</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section id="contact">
         <div class="container">
@@ -900,3 +857,15 @@
                         <a href="mailto:Portescosport@gmail.com">Portescosport@gmail.com</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares.</p>
+        </div>
+    </footer>
+</body>
+</html>
