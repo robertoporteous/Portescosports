@@ -48,45 +48,101 @@
             letter-spacing: -0.5px;
             color: #ffffff;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         .logo span {
             color: #ff8c00;
         }
 
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
         nav a {
             text-decoration: none;
             color: #ffffff;
             font-size: 0.95rem;
-            margin-left: 2.5rem;
             transition: all 0.3s ease;
             position: relative;
             font-weight: 600;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff0000;
-            transition: width 0.3s ease;
-        }
-
         nav a:hover {
-            color: #ff0000;
+            color: #ff8c00;
         }
 
-        nav a:hover::after {
-            width: 100%;
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle.active::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 46, 0.98);
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            min-width: 250px;
+            display: none;
+            flex-direction: column;
+            margin-top: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-content.active {
+            display: flex;
+        }
+
+        .dropdown-content a {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 140, 0, 0.1);
+            color: #ff8c00;
+            padding-left: 2rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Hero Section */
@@ -197,7 +253,7 @@
             gap: 3rem;
             padding: 3rem 0 0 0;
             margin-top: 3rem;
-            border-top: 2px solid rgba(255, 0, 0, 0.3);
+            border-top: 2px solid rgba(255, 140, 0, 0.3);
         }
 
         .stat-item h3 {
@@ -216,374 +272,175 @@
             font-weight: 600;
         }
 
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #ff8c00;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-        }
-
-        /* Why Section with Visual Split */
-        .why-section {
+        /* Colegio Page Styles */
+        .colegio-page {
             background: #0a0a0a;
-            border-top: 3px solid #ff8c00;
         }
 
-        .why-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-
-        .why-image {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
-            border: 2px solid #ff8c00;
-        }
-
-        .why-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .why-text h3 {
-            color: #ff8c00;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        .benefit-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
-        }
-
-        .benefit-item:last-child {
-            border-bottom: none;
-        }
-
-        .benefit-label {
-            display: block;
-            background: #ff8c00;
+        .colegio-header {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            width: fit-content;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-        }
-
-        .benefit-text {
-            color: #ffffff;
-            margin-left: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Team Section */
-        .team-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
-            color: white;
-            border-top: 3px solid #ff8c00;
-            border-bottom: 3px solid #ff8c00;
-        }
-
-        .team-section h2 {
-            color: #ff8c00;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            border-bottom: 4px solid var(--accent-color);
+            display: flex;
+            align-items: center;
             gap: 3rem;
-            margin-top: 3rem;
         }
 
-        .team-member {
-            text-align: center;
-            background: rgba(255, 140, 0, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 2px solid #ff8c00;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            background: rgba(255, 140, 0, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
-        }
-
-        .team-avatar {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 1.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 3px solid #ff8c00;
+        .colegio-logo {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+            flex-shrink: 0;
         }
 
-        .team-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .colegio-logo img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
         }
 
-        .team-member h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.3rem;
-            color: white;
+        .colegio-header-text {
+            flex: 1;
+        }
+
+        .colegio-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
-            font-weight: 900;
         }
 
-        .team-member .title {
-            color: #ff8c00;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .colegio-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .colegio-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            color: #ffffff;
+        }
+
+        .colegio-info {
+            margin-bottom: 2rem;
+        }
+
+        .colegio-info h3 {
+            color: var(--accent-color);
             margin-bottom: 1rem;
-            display: block;
-            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
         }
 
-        .team-member .phone {
-            color: #ff8c00;
-            font-weight: 900;
-            font-size: 0.95rem;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        .colegio-info p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .team-member p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .colegio-info ul {
+            margin-left: 2rem;
             margin-top: 1rem;
         }
 
-        /* Programs Section */
-        .programs-section {
-            background: #0a0a0a;
-            border-top: 3px solid #ff8c00;
-        }
-
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .program-card {
-            background: #1a1a1a;
+        .colegio-programs {
+            background: rgba(0, 0, 0, 0.3);
             padding: 2rem;
-            border-radius: 8px;
-            border: 2px solid #ff8c00;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border-left: 4px solid var(--accent-color);
+            margin: 2rem 0;
+            border-radius: 4px;
         }
 
-        .program-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
-            border-color: #ffaa33;
+        .colegio-programs h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
         }
 
-        .program-card h3 {
-            color: #ff8c00;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 900;
+        .programs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
-        .program-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .program-list li {
-            background: #ff8c00;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .program-tag {
+            background: var(--accent-color);
             color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-align: center;
             font-weight: 600;
             text-transform: uppercase;
         }
 
-        /* Results Section */
-        .results-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
-            border-top: 3px solid #ff8c00;
+        /* FLAG Challenge Cup Page */
+        .flag-challenge-page {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
         }
 
-        .results-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .result-card {
-            background: rgba(255, 140, 0, 0.05);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 2px solid #ff8c00;
-            position: relative;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
-        }
-
-        .result-card h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #ff8c00;
-            margin-bottom: 1rem;
-            font-weight: 900;
-        }
-
-        .result-number {
-            font-size: 3rem;
-            color: #ff8c00;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-        }
-
-        .result-card p {
-            color: #ffffff;
-            font-size: 0.95rem;
-        }
-
-        /* Clients Section */
-        .clients-section {
-            background: #0a0a0a;
-            border-top: 3px solid #ff8c00;
-        }
-
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-            align-items: center;
-            justify-items: center;
-        }
-
-        .client-logo {
-            width: 120px;
-            height: 120px;
-            background: #1a1a1a;
-            border: 2px solid #ff8c00;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
-        }
-
-        .client-logo:hover {
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .client-logo img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
+        .flag-header {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #001a3d 0%, #003d7a 100%);
             color: white;
+            border-bottom: 4px solid #ffcc00;
             text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 8px;
-            margin-top: 5rem;
-            border: 2px solid #ff8c00;
-            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
         }
 
-        .cta-section h2 {
-            color: #ff8c00;
-            margin-bottom: 1rem;
+        .flag-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            color: #ffcc00;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
         }
 
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
+        .flag-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .flag-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            color: #ffffff;
+        }
+
+        .flag-info {
             margin-bottom: 2rem;
         }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: rgba(255, 140, 0, 0.1);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border: 2px solid #ff8c00;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
-        }
-
-        .contact-item strong {
-            color: white;
-            display: block;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        .contact-item a {
-            color: #ff8c00;
-            text-decoration: none;
-            font-weight: 900;
-            transition: all 0.3s;
+        .flag-info h3 {
+            color: #ffcc00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
         }
 
-        .contact-item a:hover {
-            color: #ffaa33;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        .flag-info p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
@@ -597,30 +454,25 @@
         }
 
         @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
             .hero h1 {
                 font-size: 2.2rem;
             }
 
-            .why-content {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav a {
-                margin-left: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .cta-buttons {
+            .colegio-header {
                 flex-direction: column;
+                text-align: center;
             }
 
-            .cta-buttons .btn {
-                width: 100%;
-                text-align: center;
+            .dropdown-content {
+                min-width: 200px;
             }
         }
     </style>
@@ -629,243 +481,467 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">PORT<span>E</span>SCO</div>
-            <div>
-                <a href="#about">Nosotros</a>
-                <a href="#programs">Programas</a>
-                <a href="#results">Resultados</a>
-                <a href="#contact">Contacto</a>
+            <div class="logo" onclick="showPage('home')">PORT<span>E</span>SCO</div>
+            <div class="nav-menu">
+                <a href="#" onclick="showPage('home'); return false;">Inicio</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Colegios</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="showPage('colegio-maria'); return false;">María Inmaculada</a>
+                        <a href="#" onclick="showPage('colegio-pureza'); return false;">Pureza de María</a>
+                        <a href="#" onclick="showPage('colegio-esclavas'); return false;">Las Esclavas</a>
+                        <a href="#" onclick="showPage('colegio-oxford'); return false;">Oxford International</a>
+                        <a href="#" onclick="showPage('colegio-panama'); return false;">Colegio de Panamá</a>
+                        <a href="#" onclick="showPage('colegio-real'); return false;">Colegio Real de Panamá</a>
+                    </div>
+                </div>
+                <a href="#" onclick="showPage('flag-challenge'); return false;">Flag Challenge Cup</a>
+                <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transformando la experiencia <span>extracurricular</span> en tu colegio</h1>
-                <p>Gestión integral de actividades deportivas y culturales. Sin inversión, con resultados comprobados y personal certificado.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Agenda una reunión</a>
-                    <a href="#about" class="btn btn-secondary">Conoce más</a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <h3>15+</h3>
-                        <p>Colegios confían en nosotros</p>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transformando la experiencia <span>extracurricular</span> en tu colegio</h1>
+                    <p>Gestión integral de actividades deportivas y culturales. Sin inversión, con resultados comprobados y personal certificado.</p>
+                    <div class="cta-buttons">
+                        <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;" class="btn btn-primary">Agenda una reunión</a>
+                        <a href="#" onclick="showPage('home'); document.getElementById('about').scrollIntoView(); return false;" class="btn btn-secondary">Conoce más</a>
                     </div>
-                    <div class="stat-item">
-                        <h3>10+</h3>
-                        <p>Años de experiencia</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>100%</h3>
-                        <p>Crecimiento comprobado</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>Colegios confían en nosotros</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>10+</h3>
+                            <p>Años de experiencia</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Crecimiento comprobado</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Section with Image -->
-    <section class="why-section" id="about">
-        <div class="container">
-            <h2>¿Por qué las actividades extracurriculares importan?</h2>
-            
-            <div class="why-content">
-                <div class="why-image">
-                    <img src="PPS .jpeg" alt="Estudiantes en actividades extracurriculares">
-                </div>
-                
-                <div class="why-text">
-                    <h3>El impacto que genera</h3>
+        <!-- About Section -->
+        <section id="about" style="background: #0a0a0a; border-top: 3px solid #ff8c00; padding: 5rem 2rem;">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center; color: #ff8c00; text-transform: uppercase; font-weight: 900; letter-spacing: 1px;">¿Por qué elegir Portesco Sports?</h2>
+                <p style="text-align: center; color: #ffffff; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem;">Somos la única empresa en Panamá que ofrece gestión integral 100% tercerizada de actividades extracurriculares con resultados comprobados.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%); border-top: 3px solid #ff8c00; padding: 5rem 2rem;">
+            <div class="container">
+                <div style="background: rgba(255, 140, 0, 0.05); border: 2px solid #ff8c00; padding: 3rem; border-radius: 8px; text-align: center;">
+                    <h2 style="margin-bottom: 1rem; color: #ff8c00;">Transformemos juntos</h2>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin-bottom: 2rem;">Agenda una reunión sin compromiso</p>
                     
-                    <div class="benefit-item">
-                        <span class="benefit-label">Sentido de Pertenencia</span>
-                        <p class="benefit-text">Fortalecen la identidad y el orgullo institucional en los estudiantes.</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <span class="benefit-label">Satisfacción de Padres</span>
-                        <p class="benefit-text">Valor agregado que diferencia a tu colegio de la competencia.</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <span class="benefit-label">Desarrollo Integral</span>
-                        <p class="benefit-text">Habilidades sociales, trabajo en equipo y liderazgo que transforman vidas.</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <span class="benefit-label">Competitividad Institucional</span>
-                        <p class="benefit-text">Posicionamiento destacado en ligas y eventos deportivos regionales.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Roberto Porteous</strong>
+                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6494-9957</p>
+                            <a href="tel:+50764949957" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Llamar</a>
+                        </div>
+                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Alejandra Escobar</strong>
+                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6780-8944</p>
+                            <a href="tel:+50767808944" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Llamar</a>
+                        </div>
+                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
+                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Email</strong>
+                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Contacto directo</p>
+                            <a href="mailto:Portescosport@gmail.com" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Escribir</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2>Nuestro equipo</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-avatar">
-                        <img src="Roberto pf.png" alt="Roberto Porteous">
-                    </div>
-                    <h3>Roberto Porteous</h3>
-                    <span class="title">Fundador & Director</span>
-                    <div class="phone">+507 6494-9957</div>
-                    <p>Licenciado en Derecho con Magister en Derecho Deportivo. 10+ años creando programas deportivos ganadores. Director Deportivo en instituciones líderes.</p>
-                </div>
-                <div class="team-member">
-                    <div class="team-avatar">
-                        <img src="ALEJANDRA POF.png" alt="Alejandra Escobar">
-                    </div>
-                    <h3>Alejandra Escobar</h3>
-                    <span class="title">Cofundadora & Directora Operativa</span>
-                    <div class="phone">+507 6780-8944</div>
-                    <p>Licenciada en Logística con Magister en Administración Deportiva. 10+ años en gestión deportiva. Fundadora de Cardinals Teens.</p>
+    <!-- MARÍA INMACULADA PAGE -->
+    <div id="colegio-maria" class="page colegio-page" style="--primary-color: #7b2cbf; --secondary-color: #5a189a; --accent-color: #c77dff;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%237b2cbf'/%3E%3Ctext x='50' y='55' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3EMI%3C/text%3E%3C/svg%3E" alt="María Inmaculada">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Colegio María Inmaculada</h1>
+                <p>Formación integral y excelencia académica</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Colegio María Inmaculada es una institución educativa comprometida con la formación integral de sus estudiantes, combinando excelencia académica con desarrollo de valores y competencias sociales.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Resultados con Portesco Sports</h3>
+                <p><strong style="color: #c77dff; font-size: 1.3rem;">+100% de crecimiento</strong></p>
+                <p>En la temporada 2024-2025, María Inmaculada pasó de 80 a 160 estudiantes participando en actividades extracurriculares. Un crecimiento histórico para la institución.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Fútbol</div>
+                    <div class="program-tag">Baloncesto</div>
+                    <div class="program-tag">Voleibol</div>
+                    <div class="program-tag">Guitarra</div>
+                    <div class="program-tag">Teatro</div>
+                    <div class="program-tag">Ajedrez</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Programs Section -->
-    <section id="programs" class="programs-section">
-        <div class="container">
-            <h2>16+ Actividades disponibles</h2>
-            <p style="text-align: center; color: #ffffff; margin-bottom: 2rem;">Diseñamos un portafolio personalizado según las necesidades de tu institución</p>
-            
-            <div class="programs-grid">
-                <div class="program-card">
-                    <h3>⚽ Deportes</h3>
-                    <ul class="program-list">
-                        <li>Fútbol</li>
-                        <li>Baloncesto</li>
-                        <li>Voleibol</li>
-                        <li>Flag Football</li>
-                        <li>Fútbol Americano</li>
-                    </ul>
-                </div>
-                <div class="program-card">
-                    <h3>🎨 Artes</h3>
-                    <ul class="program-list">
-                        <li>Guitarra</li>
-                        <li>Piano</li>
-                        <li>Teatro</li>
-                        <li>Pintura</li>
-                        <li>Manga Japonesa</li>
-                    </ul>
-                </div>
-                <div class="program-card">
-                    <h3>🧠 Académico</h3>
-                    <ul class="program-list">
-                        <li>Ajedrez</li>
-                        <li>Robótica</li>
-                        <li>Reforzamientos</li>
-                        <li>Tutorías</li>
-                    </ul>
-                </div>
-                <div class="program-card">
-                    <h3>✨ Especiales</h3>
-                    <ul class="program-list">
-                        <li>Porrismo</li>
-                        <li>Guardería</li>
-                        <li>Personalizados</li>
-                    </ul>
+    <!-- PUREZA DE MARÍA PAGE -->
+    <div id="colegio-pureza" class="page colegio-page" style="--primary-color: #003366; --secondary-color: #004d99; --accent-color: #ff6b35;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23003366'/%3E%3Ctext x='50' y='55' font-size='28' font-weight='bold' fill='%23ff6b35' text-anchor='middle'%3EPM%3C/text%3E%3C/svg%3E" alt="Pureza de María">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Colegio Pureza de María</h1>
+                <p>Excelencia en educación y deportes</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Academia & Preparatoria Pureza de María es una institución de larga trayectoria comprometida con la formación integral de estudiantes de excelencia.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Nuestro Trabajo Conjunto</h3>
+                <p>Portesco Sports proporciona una amplia gama de actividades extracurriculares que enriquecen la experiencia educativa y generan ingresos para la institución.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Fútbol</div>
+                    <div class="program-tag">Guitarra</div>
+                    <div class="program-tag">Pintura</div>
+                    <div class="program-tag">Ajedrez</div>
+                    <div class="program-tag">Robótica</div>
+                    <div class="program-tag">Tutorías</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Results Section -->
-    <section id="results" class="results-section">
-        <div class="container">
-            <h2>Resultados que hablan por sí solos</h2>
-            <div class="results-container">
-                <div class="result-card">
-                    <h3>María Inmaculada</h3>
-                    <div class="result-number">+100%</div>
-                    <p>Crecimiento de 80 a 160 estudiantes (2024-2025)</p>
-                </div>
-                <div class="result-card">
-                    <h3>Las Esclavas</h3>
-                    <div class="result-number">+125%</div>
-                    <p>De 40 a 90 estudiantes en 3 años</p>
-                </div>
-                <div class="result-card">
-                    <h3>Campeonatos</h3>
-                    <div class="result-number">∞</div>
-                    <p>Múltiples títulos ganados desde 2015</p>
+    <!-- LAS ESCLAVAS PAGE -->
+    <div id="colegio-esclavas" class="page colegio-page" style="--primary-color: #1a1a4d; --secondary-color: #2d2d99; --accent-color: #ffcc00;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232d2d99'/%3E%3Ctext x='50' y='55' font-size='28' font-weight='bold' fill='%23ffcc00' text-anchor='middle'%3ELE%3C/text%3E%3C/svg%3E" alt="Las Esclavas">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Colegio Las Esclavas</h1>
+                <p>Educación de calidad con tradición</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Las Esclavas es una institución con una larga tradición de excelencia educativa y formación integral de sus estudiantes.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Resultados con Portesco Sports</h3>
+                <p><strong style="color: #ffcc00; font-size: 1.3rem;">+125% de crecimiento</strong></p>
+                <p>En 3 años de asociación, Las Esclavas incrementó su participación de 40 a 90 estudiantes en programas extracurriculares.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Flag Football</div>
+                    <div class="program-tag">Voleibol</div>
+                    <div class="program-tag">Piano</div>
+                    <div class="program-tag">Pintura</div>
+                    <div class="program-tag">Robótica</div>
+                    <div class="program-tag">Porrismo</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Clients Section -->
-    <section class="clients-section">
-        <div class="container">
-            <h2>Confían en Portesco Sports</h2>
-            <div class="clients-grid">
-                <div class="client-logo">
-                    <img src="Mighty Eagles 2.0-09.jpg" alt="Eagles">
-                </div>
-                <div class="client-logo">
-                    <img src="AF_AIP_FightingOwls-10.jpg" alt="Fighting Owls">
-                </div>
-                <div class="client-logo">
-                    <img src="CRP Logo Go Lions.png" alt="Go Lions">
-                </div>
-                <div class="client-logo">
-                    <img src="Knights tos.png" alt="Knights">
-                </div>
-                <div class="client-logo">
-                    <img src="Logo Hummingbirds CLE.png" alt="Hummingbirds">
-                </div>
-                <div class="client-logo">
-                    <img src="Logo IC Falcons.png" alt="IC Falcons">
-                </div>
-                <div class="client-logo">
-                    <img src="Logo La Salle Spartans.png" alt="La Salle Spartans">
+    <!-- OXFORD INTERNATIONAL PAGE -->
+    <div id="colegio-oxford" class="page colegio-page" style="--primary-color: #0d47a1; --secondary-color: #1565c0; --accent-color: #42a5f5;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231565c0'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%2342a5f5' text-anchor='middle'%3EOIS%3C/text%3E%3C/svg%3E" alt="Oxford International">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Oxford International School</h1>
+                <p>Educación internacional de excelencia</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Oxford International School es una institución de educación internacional que prepara a estudiantes para competir a nivel global con estándares académicos de clase mundial.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Nuestro Trabajo Conjunto</h3>
+                <p>Portesco Sports gestiona un completo portafolio de actividades extracurriculares que complementan la excelencia académica con desarrollo deportivo y cultural.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Fútbol Americano</div>
+                    <div class="program-tag">Baloncesto</div>
+                    <div class="program-tag">Guitarra</div>
+                    <div class="program-tag">Teatro</div>
+                    <div class="program-tag">Ajedrez</div>
+                    <div class="program-tag">Manga</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="cta-section">
-                <h2>Transformemos juntos la experiencia deportiva</h2>
-                <p>Agenda una reunión sin compromiso y descubre cómo crecer tu programa extracurricular</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <strong>Roberto Porteous</strong>
-                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6494-9957</p>
-                        <a href="tel:+50764949957">Llamar</a>
+    <!-- COLEGIO DE PANAMÁ PAGE -->
+    <div id="colegio-panama" class="page colegio-page" style="--primary-color: #1a5f3d; --secondary-color: #2d8b6f; --accent-color: #52d273;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232d8b6f'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%2352d273' text-anchor='middle'%3ECP%3C/text%3E%3C/svg%3E" alt="Colegio Panamá">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Colegio de Panamá - Mighty Eagles</h1>
+                <p>Tradición, excelencia y liderazgo deportivo</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Colegio de Panamá es una de las instituciones educativas más prestigiosas del país, con una larga historia de excelencia académica y deportiva reconocida regionalmente.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Colaboración Estratégica</h3>
+                <p>Portesco Sports trabaja en estrecha colaboración con Colegio de Panamá para mantener su posición de liderazgo en competencias deportivas regionales e internacionales.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Fútbol</div>
+                    <div class="program-tag">Voleibol</div>
+                    <div class="program-tag">Baloncesto</div>
+                    <div class="program-tag">Flag Football</div>
+                    <div class="program-tag">Piano</div>
+                    <div class="program-tag">Teatro</div>
+                </div>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Logros Deportivos</h3>
+                <p>Bajo la dirección de Portesco Sports, Colegio de Panamá ha mantenido su estatus de campeón en múltiples disciplinas deportivas, con equipos competitivos a nivel nacional.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLEGIO REAL DE PANAMÁ PAGE -->
+    <div id="colegio-real" class="page colegio-page" style="--primary-color: #2c3e50; --secondary-color: #34495e; --accent-color: #3498db;">
+        <div class="colegio-header">
+            <div class="colegio-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23034495e'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%233498db' text-anchor='middle'%3ECR%3C/text%3E%3C/svg%3E" alt="Colegio Real">
+            </div>
+            <div class="colegio-header-text">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
+                <h1>Colegio Real de Panamá</h1>
+                <p>Educación de calidad y desarrollo integral</p>
+            </div>
+        </div>
+        <div class="colegio-content">
+            <div class="colegio-info">
+                <h3>Sobre el Colegio</h3>
+                <p>Colegio Real de Panamá es una institución educativa comprometida con la excelencia académica y la formación de ciudadanos íntegros y competentes.</p>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Alianza con Portesco Sports</h3>
+                <p>Nuestra alianza garantiza que los estudiantes de Colegio Real tengan acceso a actividades extracurriculares de calidad, con personal certificado y experiencia comprobada.</p>
+            </div>
+
+            <div class="colegio-programs">
+                <h3>Programas Disponibles</h3>
+                <div class="programs-list">
+                    <div class="program-tag">Fútbol</div>
+                    <div class="program-tag">Baloncesto</div>
+                    <div class="program-tag">Voleibol</div>
+                    <div class="program-tag">Guitarra</div>
+                    <div class="program-tag">Pintura</div>
+                    <div class="program-tag">Robótica</div>
+                </div>
+            </div>
+
+            <div class="colegio-info">
+                <h3>Beneficios para la Institución</h3>
+                <p>La asociación con Portesco Sports permite a Colegio Real:</p>
+                <ul>
+                    <li>Ofrecer una variedad amplia de actividades sin invertir</li>
+                    <li>Generar ingresos adicionales para la institución</li>
+                    <li>Contar con personal especializado y certificado</li>
+                    <li>Mejorar la satisfacción de padres y estudiantes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLAG CHALLENGE CUP PAGE -->
+    <div id="flag-challenge" class="page flag-challenge-page">
+        <div class="flag-header">
+            <div class="container">
+                <a href="#" onclick="showPage('home'); return false;" class="back-button" style="color: #ffcc00;">← Volver</a>
+                <h1>FLAG CHALLENGE CUP</h1>
+                <p>El torneo de flag football más importante de Panamá</p>
+            </div>
+        </div>
+        <div class="flag-content">
+            <div class="flag-info">
+                <h3>¿Qué es FLAG CHALLENGE CUP?</h3>
+                <p>FLAG CHALLENGE CUP es un torneo de flag football de alto nivel que reúne a los mejores equipos de colegios y escuelas de Panamá. Es una competencia emocionante que promueve el trabajo en equipo, la disciplina y la excelencia deportiva.</p>
+            </div>
+
+            <div class="flag-info">
+                <h3>Objetivo del Torneo</h3>
+                <p>Crear un espacio donde los estudiantes puedan demostrar sus habilidades deportivas, representar a sus instituciones con orgullo y competir a nivel de excelencia. FLAG CHALLENGE CUP busca posicionar el flag football como un deporte de élite en Panamá.</p>
+            </div>
+
+            <div class="flag-info" style="background: rgba(255, 204, 0, 0.1); padding: 2rem; border-left: 4px solid #ffcc00; border-radius: 4px; margin: 2rem 0;">
+                <h3>Categorías de Competencia</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
+                        <strong style="color: #ffcc00;">U13 Masculino</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 12-13 años</p>
                     </div>
-                    <div class="contact-item">
-                        <strong>Alejandra Escobar</strong>
-                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6780-8944</p>
-                        <a href="tel:+50767808944">Llamar</a>
+                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
+                        <strong style="color: #ffcc00;">U13 Femenino</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 12-13 años</p>
                     </div>
-                    <div class="contact-item">
-                        <strong>Email</strong>
-                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Contacto directo</p>
-                        <a href="mailto:Portescosport@gmail.com">Portescosport@gmail.com</a>
+                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
+                        <strong style="color: #ffcc00;">U16 Mixto</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 14-16 años</p>
+                    </div>
+                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
+                        <strong style="color: #ffcc00;">U19 Mixto</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 17-19 años</p>
                     </div>
                 </div>
             </div>
+
+            <div class="flag-info">
+                <h3>Colegios Participantes</h3>
+                <p>FLAG CHALLENGE CUP cuenta con la participación de los principales colegios de Panamá, incluyendo:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Colegio de Panamá - Mighty Eagles</li>
+                    <li>Colegio Real de Panamá</li>
+                    <li>Oxford International School</li>
+                    <li>Colegio Las Esclavas</li>
+                    <li>Academia & Preparatoria Pureza de María</li>
+                    <li>Colegio María Inmaculada</li>
+                    <li>Y muchos más colegios de élite</li>
+                </ul>
+            </div>
+
+            <div class="flag-info">
+                <h3>Beneficios de Participar</h3>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Visibilidad:</strong> Tus estudiantes competirán en un escenario de alto nivel con cobertura de medios</li>
+                    <li><strong>Desarrollo Deportivo:</strong> Enfrentarse a los mejores equipos del país fortalece habilidades</li>
+                    <li><strong>Orgullo Institucional:</strong> Representa a tu colegio en una competencia de prestigio nacional</li>
+                    <li><strong>Oportunidades:</strong> Visibilidad para talentos destacados ante colegios y equipos profesionales</li>
+                    <li><strong>Comunidad:</strong> Participa en una red de instituciones educativas de excelencia</li>
+                </ul>
+            </div>
+
+            <div class="flag-info" style="background: rgba(255, 204, 0, 0.1); padding: 2rem; border-left: 4px solid #ffcc00; border-radius: 4px; margin-top: 2rem;">
+                <h3>¿Cómo Participar?</h3>
+                <p style="margin-bottom: 1rem;">Si tu colegio desea participar en FLAG CHALLENGE CUP, contacta con Portesco Sports. Nuestro equipo te guiará en el proceso de registro y preparación de tu equipo.</p>
+                <p style="margin-bottom: 1rem;">Portesco Sports es el principal organizador de FLAG CHALLENGE CUP y cuenta con la experiencia de haber ejecutado este torneo durante varios años con éxito.</p>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;" class="btn btn-primary" style="background: #ffcc00; color: #003d7a;">Contacta para Participar</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares.</p>
+            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Toggle dropdown menu
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const toggle = event.target;
+            const content = toggle.nextElementSibling;
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-content.active').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            toggle.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content.active').forEach(item => {
+                    item.classList.remove('active');
+                    item.previousElementSibling.classList.remove('active');
+                });
+            }
+        });
+
+        // Show specific page
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close dropdown
+            document.querySelectorAll('.dropdown-content.active').forEach(item => {
+                item.classList.remove('active');
+                item.previousElementSibling.classList.remove('active');
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
