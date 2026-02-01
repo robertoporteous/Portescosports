@@ -5,6 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portesco Sports - Gestión Integral de Actividades Extracurriculares</title>
     <style>
+        /* ========== FCC CUSTOM FONTS ========== */
+        @font-face {
+            font-family: 'Akira Expanded';
+            src: url('arte flag challenge/Fonts/Akira Expanded Demo.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Exo 2';
+            src: url('arte flag challenge/Fonts/Exo2-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Exo 2';
+            src: url('arte flag challenge/Fonts/Exo2-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Anton';
+            src: url('arte flag challenge/Fonts/Anton-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --navy: #0b1a2e;
+            --navy-mid: #0f2440;
+            --navy-light: #1a2f4e;
+            --orange: #dc2626;
+            --orange-hover: #b91c1c;
+            --blue-border: #1a3a5c;
+            --fcc-gold: #ffcc00;
+            --fcc-red: #b91c1c;
+            --fcc-blue: #1e3a8a;
+            --fcc-dark: #0a0a0a;
+            --white: #ffffff;
+            --off-white: #f7f8fa;
+            --text-dark: #1a1a2e;
+            --text-body: #3a3a4a;
+            --text-light: #6b7280;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,26 +71,30 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: #0a0a0a;
-            color: #1a1a1a;
+            background: var(--white);
+            color: var(--text-body);
             line-height: 1.6;
         }
 
-        /* Navigation */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========== NAVIGATION ========== */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(11, 26, 46, 0.97);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 2px solid #ff8c00;
+            border-bottom: 3px solid var(--orange);
             padding: 1.2rem 2rem;
         }
 
         nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,10 +107,11 @@
             color: #ffffff;
             text-transform: uppercase;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .logo span {
-            color: #ff8c00;
+            color: var(--orange);
         }
 
         .nav-menu {
@@ -66,77 +125,102 @@
             color: #ffffff;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            position: relative;
             font-weight: 600;
         }
 
         nav a:hover {
-            color: #ff8c00;
+            color: var(--orange);
         }
 
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-            display: flex;
+        .ig-link {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
-        .dropdown-toggle::after {
-            content: '▼';
-            font-size: 0.7rem;
+        .ig-link svg {
+            width: 22px;
+            height: 22px;
             transition: transform 0.3s ease;
         }
 
-        .dropdown-toggle.active::after {
-            transform: rotate(180deg);
+        .ig-link:hover svg {
+            transform: scale(1.15);
         }
 
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(26, 26, 46, 0.98);
-            border: 2px solid #ff8c00;
-            border-radius: 8px;
-            min-width: 250px;
+        /* Landing page version */
+        .ig-link-landing {
+            color: var(--orange);
+        }
+
+        .ig-link-landing svg {
+            fill: var(--orange);
+        }
+
+        .ig-link-landing:hover {
+            color: var(--orange-hover);
+        }
+
+        .ig-link-landing:hover svg {
+            fill: var(--orange-hover);
+        }
+
+        /* FCC version */
+        .ig-link-fcc {
+            color: var(--fcc-gold);
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .ig-link-fcc svg {
+            fill: var(--fcc-gold);
+        }
+
+        .ig-link-fcc:hover {
+            color: #ffe066;
+        }
+
+        .ig-link-fcc:hover svg {
+            fill: #ffe066;
+        }
+
+        /* Hamburger */
+        .hamburger {
             display: none;
             flex-direction: column;
-            margin-top: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
         }
 
-        .dropdown-content.active {
-            display: flex;
-        }
-
-        .dropdown-content a {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
 
-        .dropdown-content a:last-child {
-            border-bottom: none;
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
         }
 
-        .dropdown-content a:hover {
-            background: rgba(255, 140, 0, 0.1);
-            color: #ff8c00;
-            padding-left: 2rem;
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
         }
 
-        /* Page Container */
+        /* ========== PAGE CONTAINER ========== */
         .page {
             display: none;
         }
@@ -145,33 +229,46 @@
             display: block;
         }
 
-        /* Hero Section */
+        /* ========== SECTION SHARED ========== */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ========== HERO ========== */
         .hero {
             margin-top: 80px;
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%);
+            background: url('sports photos/CIDMI vs ISYS53.jpg') center/cover no-repeat;
             color: white;
             position: relative;
             overflow: hidden;
-            border-bottom: 3px solid #ff8c00;
+            border-bottom: 4px solid var(--orange);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 26, 46, 0.88) 0%, rgba(15, 36, 64, 0.82) 50%, rgba(26, 47, 78, 0.78) 100%);
             pointer-events: none;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
         }
 
         .hero-content {
@@ -190,8 +287,7 @@
         }
 
         .hero h1 span {
-            color: #ff8c00;
-            text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+            color: var(--orange);
         }
 
         .hero p {
@@ -211,7 +307,7 @@
         .btn {
             padding: 0.85rem 2rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -223,45 +319,42 @@
         }
 
         .btn-primary {
-            background: #ff8c00;
+            background: var(--orange);
             color: white;
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
         }
 
         .btn-primary:hover {
-            background: #ffaa33;
+            background: var(--orange-hover);
             transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid #ff8c00;
+            border: 2px solid var(--orange);
         }
 
         .btn-secondary:hover {
-            background: #ff8c00;
+            background: var(--orange);
             color: white;
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
         }
 
-        /* Stats Section */
+        /* Stats in hero */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
             padding: 3rem 0 0 0;
             margin-top: 3rem;
-            border-top: 2px solid rgba(255, 140, 0, 0.3);
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
         }
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: #ff8c00;
+            color: var(--orange);
             margin-bottom: 0.5rem;
             font-weight: 900;
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
         }
 
         .stat-item p {
@@ -272,59 +365,634 @@
             font-weight: 600;
         }
 
-        /* Colegio Page Styles */
-        .colegio-page {
-            background: #0a0a0a;
+        /* ========== SECTION: NUESTRAS ACTIVIDADES ========== */
+        #actividades {
+            background: var(--white);
+            padding: 5rem 2rem;
         }
 
-        .colegio-header {
-            margin-top: 80px;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            border-bottom: 4px solid var(--accent-color);
+        #actividades .section-title {
+            margin-bottom: 3rem;
+        }
+
+        .actividades-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .actividad-item {
+            text-align: center;
+        }
+
+        .actividad-icon {
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+
+        .actividad-icon svg {
+            width: 42px;
+            height: 42px;
+            stroke: var(--orange);
+            stroke-width: 1.5;
+        }
+
+        .actividad-item h3 {
+            color: var(--navy);
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .actividad-item p {
+            color: var(--text-light);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ========== SECTION: ALIADO ESTRATEGICO ========== */
+        #aliado {
+            background: var(--off-white);
+            padding: 5rem 2rem;
+        }
+
+        #aliado .section-title {
+            margin-bottom: 3rem;
+        }
+
+        .beneficios-grid {
             display: flex;
-            align-items: center;
-            gap: 3rem;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 5rem;
         }
 
-        .colegio-logo {
-            width: 180px;
-            height: 180px;
-            background: rgba(255, 255, 255, 0.1);
+        .beneficio-item {
+            text-align: center;
+        }
+
+        .beneficio-icon {
+            margin-bottom: 0.75rem;
+            color: var(--orange);
+        }
+
+        .beneficio-icon svg {
+            width: 38px;
+            height: 38px;
+            stroke: var(--orange);
+            stroke-width: 1.5;
+        }
+
+        .beneficio-item h3 {
+            color: var(--navy);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .team-section {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid #e2e6ec;
+        }
+
+        .team-section h3 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .team-member h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ========== SECTION: COLEGIOS ========== */
+        #colegios {
+            background: var(--off-white);
+            padding: 5rem 2rem;
+        }
+
+        .colegios-collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 160px 160px;
+            gap: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .colegios-collage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .colegios-collage img:nth-child(2) {
+            object-position: center 40%;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .logo-item {
+            width: 130px;
+            height: 130px;
+            background: var(--white);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border: 2px solid var(--accent-color);
-            flex-shrink: 0;
+            border: 2px solid #e2e6ec;
+            transition: all 0.3s ease;
+            padding: 0.75rem;
         }
 
-        .colegio-logo img {
-            width: 90%;
-            height: 90%;
+        .logo-item:hover {
+            border-color: var(--orange);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-item img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
-        .colegio-header-text {
-            flex: 1;
+        /* ========== SECTION: RESULTADOS ========== */
+        #resultados {
+            background: var(--navy);
+            padding: 5rem 2rem;
         }
 
-        .colegio-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        #resultados .section-title {
+            color: var(--white);
+        }
+
+        #resultados .section-subtitle {
+            color: var(--orange);
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1.3rem;
             text-transform: uppercase;
         }
 
-        .colegio-header p {
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .result-number {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--fcc-gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .result-photo {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .result-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin: 0 auto 0.5rem;
+            display: block;
+        }
+
+        .result-card h3 {
+            color: var(--white);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .result-detail {
+            color: var(--orange);
             font-size: 1.1rem;
-            opacity: 0.95;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .result-trophy {
+            color: var(--fcc-gold);
+            margin-bottom: 1rem;
+        }
+
+        .result-trophy svg {
+            width: 80px;
+            height: 80px;
+            stroke: var(--fcc-gold);
+            stroke-width: 1.5;
+        }
+
+        /* ========== SECTION: NOTICIAS (Landing) ========== */
+        #noticias {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            border-color: var(--orange);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center 10%;
+        }
+
+        .news-card-body {
+            padding: 1.25rem;
+        }
+
+        .news-date {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-card h3 {
+            color: var(--navy);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .news-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========== SECTION: GALERÍA (Landing) ========== */
+        #galeria {
+            background: var(--navy);
+            padding: 5rem 2rem;
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-group {
+            margin-bottom: 3rem;
+        }
+
+        .gallery-group-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 800;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--orange);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-preview img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-preview img:hover {
+            border-color: var(--orange);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        /* ========== SECTION: FCC TEASER ========== */
+        #fcc-teaser {
+            background: url('sports photos/sintítulo-167-Mejorado-NR.jpg') center/cover no-repeat;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        #fcc-teaser::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.7), rgba(10, 10, 10, 0.85), rgba(30, 58, 138, 0.7));
+            pointer-events: none;
+        }
+
+        .fcc-teaser-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fcc-teaser-content img {
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .fcc-teaser-content h2 {
+            font-family: 'Akira Expanded', sans-serif;
+            font-size: 2.5rem;
+            color: var(--fcc-gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .fcc-teaser-content p {
+            font-family: 'Exo 2', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn-fcc {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--fcc-gold);
+            color: var(--fcc-dark);
+            padding: 0.85rem 2.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-fcc:hover {
+            background: #ffe066;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+        }
+
+        /* ========== SECTION: CONTACTO ========== */
+        #contacto {
+            background: var(--off-white);
+            padding: 5rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-card .role {
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--orange);
+        }
+
+        .contact-links .wa-btn {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: #25d366;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links .wa-btn:hover {
+            background: #1fb855;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-simple {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-simple-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--navy);
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .contact-simple-item svg {
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .contact-simple-item:hover {
+            border-color: var(--orange);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        /* ========== FLAG CHALLENGE CUP PAGE ========== */
+        .flag-challenge-page {
+            background: var(--fcc-dark);
+        }
+
+        .flag-hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: url('sports photos/sintítulo-287.jpg') center/cover no-repeat;
+            position: relative;
+            text-align: center;
+            color: white;
+            border-bottom: 4px solid var(--fcc-gold);
+        }
+
+        .flag-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(10, 10, 10, 0.85), rgba(30, 58, 138, 0.6));
+        }
+
+        .flag-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .flag-hero img.fcc-logo {
+            max-width: 220px;
+            margin-bottom: 1.5rem;
+        }
+
+        .flag-hero h1 {
+            font-family: 'Akira Expanded', sans-serif;
+            font-size: 3.2rem;
+            text-transform: uppercase;
+            color: var(--fcc-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .flag-hero p {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .back-button {
-            display: inline-block;
-            color: var(--accent-color);
+            display: block;
+            text-align: left;
+            color: var(--fcc-gold);
             text-decoration: none;
             font-weight: 600;
             margin-bottom: 1.5rem;
@@ -335,144 +1003,965 @@
             transform: translateX(-5px);
         }
 
-        .colegio-content {
-            max-width: 900px;
+        .fcc-body {
+            max-width: 1100px;
             margin: 0 auto;
             padding: 3rem 2rem;
-            color: #ffffff;
         }
 
-        .colegio-info {
-            margin-bottom: 2rem;
+        .fcc-intro {
+            font-family: 'Exo 2', sans-serif;
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
-        .colegio-info h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .fcc-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .fcc-cat {
+            background: #111827;
+            color: white;
+            padding: 1.25rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--fcc-red);
+        }
+
+        .fcc-cat:nth-child(2) {
+            border-left-color: var(--fcc-blue);
+        }
+
+        .fcc-cat:nth-child(3) {
+            border-left-color: var(--fcc-red);
+        }
+
+        .fcc-cat:nth-child(4) {
+            border-left-color: var(--fcc-blue);
+        }
+
+        .fcc-cat strong {
+            font-family: 'Akira Expanded', sans-serif;
+            color: var(--fcc-gold);
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .fcc-cat span {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .fcc-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .fcc-gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .fcc-gallery img:hover {
+            border-color: var(--fcc-gold);
+            box-shadow: 0 8px 30px rgba(255, 204, 0, 0.15);
+        }
+
+        .fcc-cta {
+            text-align: center;
+            background: #111827;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid var(--fcc-gold);
+        }
+
+        .fcc-cta h3 {
+            font-family: 'Akira Expanded', sans-serif;
+            color: var(--fcc-gold);
             font-size: 1.5rem;
             text-transform: uppercase;
+            margin-bottom: 0.75rem;
         }
 
-        .colegio-info p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
+        .fcc-cta p {
+            font-family: 'Exo 2', sans-serif;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* ========== FCC CATEGORY / LEAGUE PAGE ========== */
+        .fcc-category-page {
+            background: var(--fcc-dark);
+        }
+
+        .cat-hero {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--fcc-red), var(--fcc-dark), var(--fcc-blue));
+            text-align: center;
+            color: white;
+            border-bottom: 4px solid var(--fcc-gold);
+        }
+
+        .cat-hero h1 {
+            font-family: 'Akira Expanded', sans-serif;
+            color: var(--fcc-gold);
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 0.25rem;
+        }
+
+        .cat-hero p {
+            font-family: 'Exo 2', sans-serif;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .cat-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: #111827;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 76px;
+            z-index: 50;
+        }
+
+        .cat-tab {
+            padding: 1rem 2rem;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            border: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            background: none;
+        }
+
+        .cat-tab:hover {
             color: rgba(255, 255, 255, 0.9);
         }
 
-        .colegio-info ul {
-            margin-left: 2rem;
-            margin-top: 1rem;
+        .cat-tab.active {
+            color: var(--fcc-gold);
+            border-bottom-color: var(--fcc-gold);
         }
 
-        .colegio-programs {
-            background: rgba(0, 0, 0, 0.3);
+        .cat-content {
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 2rem;
-            border-left: 4px solid var(--accent-color);
-            margin: 2rem 0;
-            border-radius: 4px;
+            background: var(--fcc-dark);
         }
 
-        .colegio-programs h3 {
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
+        .cat-panel {
+            display: none;
         }
 
-        .programs-list {
+        .cat-panel.active {
+            display: block;
+        }
+
+        /* Teams grid */
+        .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        .program-tag {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+        .team-card {
+            background: #111827;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            border-color: var(--fcc-gold);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .team-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .team-card h3 {
+            color: var(--fcc-gold);
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Standings table */
+        .group-title {
+            font-family: 'Akira Expanded', sans-serif;
+            font-size: 1.3rem;
+            color: var(--fcc-gold);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--fcc-red);
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background: #111827;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .standings-table th {
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .standings-table th:first-child {
+            text-align: left;
+        }
+
+        .standings-table td {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .standings-table td:first-child {
+            text-align: left;
             font-weight: 600;
-            text-transform: uppercase;
+            color: var(--white);
         }
 
-        /* FLAG Challenge Cup Page */
-        .flag-challenge-page {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+        .standings-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .flag-header {
-            margin-top: 80px;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #001a3d 0%, #003d7a 100%);
-            color: white;
-            border-bottom: 4px solid #ffcc00;
-            text-align: center;
+        .standings-table tbody tr:first-child td {
+            background: rgba(255, 204, 0, 0.08);
         }
 
-        .flag-header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            color: #ffcc00;
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+        .standings-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        .flag-header p {
+        /* Calendar */
+        .calendar-phase {
+            font-family: 'Akira Expanded', sans-serif;
             font-size: 1.2rem;
-            opacity: 0.9;
+            color: var(--fcc-gold);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--fcc-red);
         }
 
-        .flag-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            color: #ffffff;
-        }
-
-        .flag-info {
+        .match-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
             margin-bottom: 2rem;
         }
 
-        .flag-info h3 {
-            color: #ffcc00;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .match-card {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .match-card:hover {
+            border-color: var(--fcc-gold);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.1);
+        }
+
+        .match-team {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .match-team.home {
+            text-align: right;
+        }
+
+        .match-team.away {
+            text-align: left;
+        }
+
+        .match-center {
+            text-align: center;
+            padding: 0 1.5rem;
+            min-width: 100px;
+        }
+
+        .match-score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--fcc-gold);
+        }
+
+        .match-date {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.15rem;
+        }
+
+        .match-pending {
+            font-size: 0.9rem;
+            color: var(--fcc-gold);
+            font-weight: 600;
+        }
+
+        /* Rosters */
+        .roster-select-wrap {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .roster-select {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background: #111827;
+            color: var(--white);
+            cursor: pointer;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .roster-select:focus {
+            outline: none;
+            border-color: var(--fcc-gold);
+        }
+
+        .roster-team-name {
+            text-align: center;
+            font-family: 'Akira Expanded', sans-serif;
+            font-size: 1.4rem;
+            color: var(--fcc-gold);
+            font-weight: 800;
             text-transform: uppercase;
+            margin-bottom: 1.5rem;
         }
 
-        .flag-info p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #111827;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Footer */
+        .roster-table th {
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .roster-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .roster-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Bracket */
+        .bracket-section-title {
+            text-align: center;
+            font-family: 'Akira Expanded', sans-serif;
+            font-size: 1.3rem;
+            color: var(--fcc-gold);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .bracket-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bracket-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .bracket-match {
+            background: #111827;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            min-width: 240px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .bracket-team-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+        }
+
+        .bracket-team-row:last-child {
+            border-bottom: none;
+        }
+
+        .bracket-team-row .name {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .bracket-team-row .score {
+            color: var(--fcc-gold);
+            font-weight: 700;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .bracket-team-row.winner {
+            background: rgba(255, 204, 0, 0.1);
+        }
+
+        .bracket-connector {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* FCC cat clickable */
+        .fcc-cat {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fcc-cat:hover {
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.3), rgba(30, 58, 138, 0.3));
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.15);
+        }
+
+        /* ========== FOOTER ========== */
         footer {
-            background: #000000;
-            color: #999;
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.6);
             padding: 2rem;
             text-align: center;
             font-size: 0.9rem;
-            border-top: 2px solid #ff8c00;
+            border-top: 3px solid var(--orange);
         }
 
+        footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
             .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11, 26, 46, 0.98);
+                padding: 1.5rem 2rem;
+                border-bottom: 3px solid var(--orange);
                 gap: 1rem;
             }
 
-            nav a {
-                font-size: 0.85rem;
+            .nav-menu.active {
+                display: flex;
             }
 
             .hero h1 {
                 font-size: 2.2rem;
             }
 
-            .colegio-header {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .actividades-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beneficios-grid {
+                flex-wrap: wrap;
+                gap: 2rem 3rem;
+            }
+
+            .colegios-collage {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 120px 120px 120px;
+            }
+
+            .logos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
                 flex-direction: column;
+                align-items: center;
+            }
+
+            .flag-hero h1 {
+                font-size: 2rem;
+            }
+
+            .fcc-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fcc-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .fcc-gallery img {
+                height: 200px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-preview img {
+                height: 200px;
+            }
+
+            .cat-hero h1 {
+                font-size: 2rem;
+            }
+
+            .cat-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .cat-tab {
+                padding: 0.85rem 1.2rem;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+
+            .cat-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .teams-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .match-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .match-team.home,
+            .match-team.away {
                 text-align: center;
             }
 
-            .dropdown-content {
-                min-width: 200px;
+            .match-center {
+                padding: 0;
+                min-width: auto;
+            }
+
+            .standings-table,
+            .roster-table {
+                font-size: 0.85rem;
+            }
+
+            .standings-table th,
+            .standings-table td,
+            .roster-table th,
+            .roster-table td {
+                padding: 0.5rem 0.5rem;
+            }
+
+            .bracket-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .bracket-connector {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* ========== FCC TEAMS SECTION (Equipos Participantes) ========== */
+        .fcc-teams-section {
+            margin-bottom: 3rem;
+        }
+
+        .fcc-teams-section h2 {
+            font-family: 'Akira Expanded', sans-serif;
+            color: var(--fcc-gold);
+            text-align: center;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .fcc-teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .fcc-team-item {
+            background: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 1.25rem 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fcc-team-item:hover {
+            border-color: var(--fcc-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.15);
+        }
+
+        .fcc-team-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* ========== FCC NEWS SECTION (Últimas Noticias) ========== */
+        .fcc-news-section {
+            margin-bottom: 3rem;
+        }
+
+        .fcc-news-title {
+            font-family: 'Akira Expanded', sans-serif;
+            color: var(--fcc-gold);
+            text-align: center;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .fcc-news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .fcc-news-card {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fcc-news-card:hover {
+            border-color: var(--fcc-gold);
+            box-shadow: 0 4px 16px rgba(255, 204, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .fcc-news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .fcc-news-dual-img {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 200px;
+        }
+
+        .fcc-news-dual-img img {
+            height: 200px;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .fcc-news-card-content {
+            padding: 1.25rem;
+        }
+
+        .fcc-news-date {
+            display: inline-block;
+            background: var(--fcc-red);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .fcc-news-card h4 {
+            color: var(--white);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.4;
+        }
+
+        .fcc-news-card p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        /* ========== FCC STATS (Estadísticas) ========== */
+        .stats-subtabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stats-subtab {
+            padding: 0.6rem 1.25rem;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .stats-subtab:hover {
+            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .stats-subtab.active {
+            color: var(--fcc-dark);
+            background: var(--fcc-gold);
+            border-color: var(--fcc-gold);
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background: #111827;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-table th {
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-table th:first-child,
+        .stats-table th:nth-child(2) {
+            text-align: left;
+        }
+
+        .stats-table td {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .stats-table td:first-child,
+        .stats-table td:nth-child(2) {
+            text-align: left;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .stats-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-table tbody tr:first-child td {
+            background: rgba(255, 204, 0, 0.08);
+        }
+
+        .stats-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .stats-loading {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+        }
+
+        .stats-config-msg {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .stats-config-msg h4 {
+            color: var(--fcc-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .stats-config-msg p {
+            font-size: 0.95rem;
+        }
+
+        /* ========== RESPONSIVE: News, Teams, Stats ========== */
+        @media (max-width: 768px) {
+            .fcc-news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fcc-teams-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+
+            .fcc-team-item img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .stats-subtabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+
+            .stats-subtab {
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .stats-table {
+                font-size: 0.85rem;
+            }
+
+            .stats-table th,
+            .stats-table td {
+                padding: 0.5rem 0.5rem;
             }
         }
     </style>
@@ -481,45 +1970,46 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo" onclick="showPage('home')">PORT<span>E</span>SCO</div>
-            <div class="nav-menu">
-                <a href="#" onclick="showPage('home'); return false;">Inicio</a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Colegios</a>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="showPage('colegio-maria'); return false;">María Inmaculada</a>
-                        <a href="#" onclick="showPage('colegio-pureza'); return false;">Pureza de María</a>
-                        <a href="#" onclick="showPage('colegio-esclavas'); return false;">Las Esclavas</a>
-                        <a href="#" onclick="showPage('colegio-oxford'); return false;">Oxford International</a>
-                        <a href="#" onclick="showPage('colegio-panama'); return false;">Colegio de Panamá</a>
-                        <a href="#" onclick="showPage('colegio-real'); return false;">Colegio Real de Panamá</a>
-                    </div>
-                </div>
+            <a href="#" class="logo" onclick="showPage('home'); return false;">PORT<span>E</span>SCO</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#hero" onclick="navigateTo('hero'); return false;">Inicio</a>
+                <a href="#actividades" onclick="navigateTo('actividades'); return false;">Actividades</a>
+                <a href="#aliado" onclick="navigateTo('aliado'); return false;">Nosotros</a>
+                <a href="#colegios" onclick="navigateTo('colegios'); return false;">Colegios</a>
+                <a href="#resultados" onclick="navigateTo('resultados'); return false;">Resultados</a>
+                <a href="#noticias" onclick="navigateTo('noticias'); return false;">Noticias</a>
+                <a href="#galeria" onclick="navigateTo('galeria'); return false;">Galería</a>
                 <a href="#" onclick="showPage('flag-challenge'); return false;">Flag Challenge Cup</a>
-                <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;">Contacto</a>
+                <a href="#contacto" onclick="navigateTo('contacto'); return false;">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <!-- HOME PAGE -->
+    <!-- ==================== LANDING PAGE ==================== -->
     <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero">
+
+        <!-- 1. HERO -->
+        <section id="hero" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Transformando la experiencia <span>extracurricular</span> en tu colegio</h1>
+                    <h1>Transformamos la experiencia <span>extracurricular</span> de tu colegio</h1>
                     <p>Gestión integral de actividades deportivas y culturales. Sin inversión, con resultados comprobados y personal certificado.</p>
                     <div class="cta-buttons">
-                        <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;" class="btn btn-primary">Agenda una reunión</a>
-                        <a href="#" onclick="showPage('home'); document.getElementById('about').scrollIntoView(); return false;" class="btn btn-secondary">Conoce más</a>
+                        <a href="#contacto" onclick="navigateTo('contacto'); return false;" class="btn btn-primary">Agenda una reunión</a>
+                        <a href="#actividades" onclick="navigateTo('actividades'); return false;" class="btn btn-secondary">Conoce más</a>
                     </div>
                     <div class="stats">
                         <div class="stat-item">
                             <h3>15+</h3>
-                            <p>Colegios confían en nosotros</p>
+                            <p>Colegios confian en nosotros</p>
                         </div>
                         <div class="stat-item">
-                            <h3>10+</h3>
+                            <h3>15+</h3>
                             <p>Años de experiencia</p>
                         </div>
                         <div class="stat-item">
@@ -531,416 +2021,851 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" style="background: #0a0a0a; border-top: 3px solid #ff8c00; padding: 5rem 2rem;">
+        <!-- 2. NUESTRAS ACTIVIDADES -->
+        <section id="actividades">
             <div class="container">
-                <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center; color: #ff8c00; text-transform: uppercase; font-weight: 900; letter-spacing: 1px;">¿Por qué elegir Portesco Sports?</h2>
-                <p style="text-align: center; color: #ffffff; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem;">Somos la única empresa en Panamá que ofrece gestión integral 100% tercerizada de actividades extracurriculares con resultados comprobados.</p>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 50%, #3d1a0f 100%); border-top: 3px solid #ff8c00; padding: 5rem 2rem;">
-            <div class="container">
-                <div style="background: rgba(255, 140, 0, 0.05); border: 2px solid #ff8c00; padding: 3rem; border-radius: 8px; text-align: center;">
-                    <h2 style="margin-bottom: 1rem; color: #ff8c00;">Transformemos juntos</h2>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin-bottom: 2rem;">Agenda una reunión sin compromiso</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
-                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Roberto Porteous</strong>
-                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6494-9957</p>
-                            <a href="tel:+50764949957" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Llamar</a>
-                        </div>
-                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
-                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Alejandra Escobar</strong>
-                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">+507 6780-8944</p>
-                            <a href="tel:+50767808944" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Llamar</a>
-                        </div>
-                        <div style="background: rgba(255, 140, 0, 0.1); padding: 1.5rem; border: 2px solid #ff8c00; border-radius: 6px;">
-                            <strong style="color: white; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Email</strong>
-                            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Contacto directo</p>
-                            <a href="mailto:Portescosport@gmail.com" style="color: #ff8c00; text-decoration: none; font-weight: 900; text-transform: uppercase;">Escribir</a>
-                        </div>
+                <h2 class="section-title">Nuestras <span>Actividades</span></h2>
+                <div class="actividades-grid">
+                    <div class="actividad-item">
+                        <div class="actividad-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+                        <h3>Deportes</h3>
+                        <p>Fútbol, Flag Football, Basketball, Volleyball</p>
+                    </div>
+                    <div class="actividad-item">
+                        <div class="actividad-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+                        <h3>Artes y Cultura</h3>
+                        <p>Teatro, Baile, Música, Ballet</p>
+                    </div>
+                    <div class="actividad-item">
+                        <div class="actividad-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.8 15-3.5 2"/><path d="m20.7 17-3.5-2"/><path d="M6.5 8.8 3 7"/><path d="m20.7 7-3.5 1.8"/><path d="m9 22 3-8 3 8"/><circle cx="12" cy="12" r="4"/></svg></div>
+                        <h3>Tecnología</h3>
+                        <p>Robótica, E-Sports, Intro to AI</p>
+                    </div>
+                    <div class="actividad-item">
+                        <div class="actividad-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                        <h3>Académico</h3>
+                        <p>SAT Prep, Reforzamiento, Ajedrez</p>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
 
-    <!-- MARÍA INMACULADA PAGE -->
-    <div id="colegio-maria" class="page colegio-page" style="--primary-color: #7b2cbf; --secondary-color: #5a189a; --accent-color: #c77dff;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%237b2cbf'/%3E%3Ctext x='50' y='55' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3EMI%3C/text%3E%3C/svg%3E" alt="María Inmaculada">
-            </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Colegio María Inmaculada</h1>
-                <p>Formación integral y excelencia académica</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Colegio María Inmaculada es una institución educativa comprometida con la formación integral de sus estudiantes, combinando excelencia académica con desarrollo de valores y competencias sociales.</p>
-            </div>
+        <!-- 3. TU ALIADO ESTRATEGICO -->
+        <section id="aliado">
+            <div class="container">
+                <h2 class="section-title">Tu <span>Aliado</span> Estratégico</h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-item">
+                        <div class="beneficio-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                        <h3>Cero Inversión</h3>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <h3>Personal Certificado</h3>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></div>
+                        <h3>Gestión Integral</h3>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></div>
+                        <h3>Variedad de Oferta</h3>
+                    </div>
+                    <div class="beneficio-item">
+                        <div class="beneficio-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg></div>
+                        <h3>Operación Simplificada</h3>
+                    </div>
+                </div>
 
-            <div class="colegio-info">
-                <h3>Resultados con Portesco Sports</h3>
-                <p><strong style="color: #c77dff; font-size: 1.3rem;">+100% de crecimiento</strong></p>
-                <p>En la temporada 2024-2025, María Inmaculada pasó de 80 a 160 estudiantes participando en actividades extracurriculares. Un crecimiento histórico para la institución.</p>
             </div>
+        </section>
 
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Fútbol</div>
-                    <div class="program-tag">Baloncesto</div>
-                    <div class="program-tag">Voleibol</div>
-                    <div class="program-tag">Guitarra</div>
-                    <div class="program-tag">Teatro</div>
-                    <div class="program-tag">Ajedrez</div>
+        <!-- 5. COLEGIOS QUE CONFIAN EN NOSOTROS -->
+        <section id="colegios">
+            <div class="container">
+                <h2 class="section-title">Colegios que Confían en Nosotros</h2>
+                <p class="section-subtitle">Más de 15 instituciones educativas confían en Portesco Sports.</p>
+                <div class="colegios-collage">
+                    <img src="sports photos/IMG_7934.jpg" alt="Ceremonia de fin de año">
+                    <img src="sports photos/FOTO 500.jpg" alt="Equipo campeón con trofeo">
+                    <img src="sports photos/CIDMIvsOIS-3.jpg" alt="Afición apoyando en las gradas">
+                    <img src="sports photos/MRIV8536.jpg" alt="Acción en partido de flag football">
+                    <img src="sports photos/OIS vs CIDMI-29.jpg" alt="Jugadores celebrando en cancha">
+                    <img src="sports photos/OIS vs CIDMI-99.jpg" alt="Equipo celebrando en el estadio">
+                </div>
+                <div class="logos-grid">
+                    <div class="logo-item">
+                        <img src="eagles logo 1.png" alt="Colegio de Panamá - Mighty Eagles">
+                    </div>
+                    <div class="logo-item">
+                        <img src="CRP Logo Go Lions.png" alt="Colegio Real de Panamá - Go Lions">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Logo IC Falcons.png" alt="IC Falcons">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Logo La Salle Spartans.png" alt="La Salle Spartans">
+                    </div>
+                    <div class="logo-item">
+                        <img src="LOGO CPM - Colores (1).png" alt="CPM">
+                    </div>
+                    <div class="logo-item">
+                        <img src="AF_AIP_FightingOwls-10.jpg" alt="AIP Fighting Owls">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Logo Hummingbirds CLE.png" alt="CLE Hummingbirds">
+                    </div>
+                    <div class="logo-item">
+                        <img src="LOGO_OIS_COYOTE_70662_-removebg-preview.png" alt="OIS Coyotes">
+                    </div>
+                    <div class="logo-item">
+                        <img src="Knights tos.png" alt="Knights">
+                    </div>
+                    <div class="logo-item">
+                        <img src="PPS .jpeg" alt="PPS">
+                    </div>
+                    <div class="logo-item">
+                        <img src="CIDMI SPORT Logo.png" alt="CIDMI Sport">
+                    </div>
+                    <div class="logo-item">
+                        <img src="legends logo 1.png" alt="Legends - Academia Hebrea de Panamá">
+                    </div>
+                    <div class="logo-item">
+                        <img src="sap tigers logo.png" alt="Tigers - Saint Andrews">
+                    </div>
+                    <div class="logo-item">
+                        <img src="brader raiders.png" alt="Brader Raiders">
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- PUREZA DE MARÍA PAGE -->
-    <div id="colegio-pureza" class="page colegio-page" style="--primary-color: #003366; --secondary-color: #004d99; --accent-color: #ff6b35;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23003366'/%3E%3Ctext x='50' y='55' font-size='28' font-weight='bold' fill='%23ff6b35' text-anchor='middle'%3EPM%3C/text%3E%3C/svg%3E" alt="Pureza de María">
+        <!-- 5b. NOTICIAS -->
+        <section id="noticias">
+            <div class="container">
+                <h2 class="section-title">Últimas <span>Noticias</span></h2>
+                <div class="news-grid" id="news-container"></div>
             </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Colegio Pureza de María</h1>
-                <p>Excelencia en educación y deportes</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Academia & Preparatoria Pureza de María es una institución de larga trayectoria comprometida con la formación integral de estudiantes de excelencia.</p>
-            </div>
+        </section>
 
-            <div class="colegio-info">
-                <h3>Nuestro Trabajo Conjunto</h3>
-                <p>Portesco Sports proporciona una amplia gama de actividades extracurriculares que enriquecen la experiencia educativa y generan ingresos para la institución.</p>
-            </div>
-
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Fútbol</div>
-                    <div class="program-tag">Guitarra</div>
-                    <div class="program-tag">Pintura</div>
-                    <div class="program-tag">Ajedrez</div>
-                    <div class="program-tag">Robótica</div>
-                    <div class="program-tag">Tutorías</div>
+        <!-- 6. RESULTADOS REALES -->
+        <section id="resultados">
+            <div class="container">
+                <h2 class="section-title">Resultados Reales</h2>
+                <p class="section-subtitle">Que hablan por sí solos</p>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-number">100%</div>
+                        <img src="sports photos/CIDMI vs ISYS53.jpg" alt="Jugadores CIDMI celebrando gol" class="result-photo">
+                        <img src="CIDMI SPORT Logo.png" alt="CIDMI Sport" class="result-logo">
+                        <h3>Colegio María Inmaculada</h3>
+                        <div class="result-detail">de 80 a 160 estudiantes</div>
+                        <p>(2024-2025)</p>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number">125%</div>
+                        <img src="sports photos/FOTO CLE 1.JPG" alt="Equipo volleyball CLE" class="result-photo">
+                        <img src="Logo Hummingbirds CLE.png" alt="CLE Hummingbirds" class="result-logo">
+                        <h3>Colegio Las Esclavas</h3>
+                        <div class="result-detail">de 40 a 90 estudiantes</div>
+                        <p>(2024-2025)</p>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number" style="font-size: 2rem; margin-bottom: 1.5rem;">Campeonatos</div>
+                        <div class="result-trophy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 4.93-1.41 1.41"/></svg></div>
+                        <h3>Múltiples títulos ganados</h3>
+                        <div class="result-detail">Desde 2015</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- LAS ESCLAVAS PAGE -->
-    <div id="colegio-esclavas" class="page colegio-page" style="--primary-color: #1a1a4d; --secondary-color: #2d2d99; --accent-color: #ffcc00;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232d2d99'/%3E%3Ctext x='50' y='55' font-size='28' font-weight='bold' fill='%23ffcc00' text-anchor='middle'%3ELE%3C/text%3E%3C/svg%3E" alt="Las Esclavas">
+        <!-- 7. FLAG CHALLENGE CUP TEASER -->
+        <section id="fcc-teaser">
+            <div class="fcc-teaser-content">
+                <img src="Fcc1grisc.png" alt="Flag Challenge Cup">
+                <h2>Flag Challenge Cup</h2>
+                <a href="#" onclick="showPage('flag-challenge'); return false;" class="btn-fcc">Conoce el torneo</a>
             </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Colegio Las Esclavas</h1>
-                <p>Educación de calidad con tradición</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Las Esclavas es una institución con una larga tradición de excelencia educativa y formación integral de sus estudiantes.</p>
-            </div>
+        </section>
 
-            <div class="colegio-info">
-                <h3>Resultados con Portesco Sports</h3>
-                <p><strong style="color: #ffcc00; font-size: 1.3rem;">+125% de crecimiento</strong></p>
-                <p>En 3 años de asociación, Las Esclavas incrementó su participación de 40 a 90 estudiantes en programas extracurriculares.</p>
-            </div>
+        <!-- 7b. GALERÍA -->
+        <section id="galeria">
+            <div class="container">
+                <h2 class="section-title" style="color:white">Nuestra <span>Galería</span></h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.7)">Revive los mejores momentos de nuestros eventos</p>
 
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Flag Football</div>
-                    <div class="program-tag">Voleibol</div>
-                    <div class="program-tag">Piano</div>
-                    <div class="program-tag">Pintura</div>
-                    <div class="program-tag">Robótica</div>
-                    <div class="program-tag">Porrismo</div>
+                <!-- Galería Portesco -->
+                <div class="gallery-group">
+                    <h3 class="gallery-group-title">Portesco Sports</h3>
+                    <div class="gallery-preview">
+                        <img src="sports photos/IMG_7934.jpg" alt="Ceremonia de fin de año">
+                        <img src="sports photos/CIDMI vs ISYS54.jpg" alt="Partido CIDMI vs ISYS">
+                        <img src="sports photos/IMG_7895.jpg" alt="Equipo en acción">
+                    </div>
+                    <div style="text-align:center">
+                        <a href="https://storage.mikeriveraphotos.com/portescosports/" target="_blank" class="btn btn-primary">Ver Galería Completa</a>
+                    </div>
+                </div>
+
+                <!-- Galería FCC -->
+                <div class="gallery-group">
+                    <h3 class="gallery-group-title">Flag Challenge Cup</h3>
+                    <div class="gallery-preview">
+                        <img src="sports photos/sintítulo-287.jpg" alt="Acción Flag Challenge Cup">
+                        <img src="sports photos/sintítulo-361.jpg" alt="Jugadores en partido">
+                        <img src="sports photos/sintítulo-502.jpg" alt="Equipo celebrando">
+                    </div>
+                    <div style="text-align:center">
+                        <a href="https://storage.mikeriveraphotos.com/flagchallengeclubii2025/" target="_blank" class="btn btn-primary">Ver Galería Completa</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- OXFORD INTERNATIONAL PAGE -->
-    <div id="colegio-oxford" class="page colegio-page" style="--primary-color: #0d47a1; --secondary-color: #1565c0; --accent-color: #42a5f5;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231565c0'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%2342a5f5' text-anchor='middle'%3EOIS%3C/text%3E%3C/svg%3E" alt="Oxford International">
-            </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Oxford International School</h1>
-                <p>Educación internacional de excelencia</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Oxford International School es una institución de educación internacional que prepara a estudiantes para competir a nivel global con estándares académicos de clase mundial.</p>
-            </div>
-
-            <div class="colegio-info">
-                <h3>Nuestro Trabajo Conjunto</h3>
-                <p>Portesco Sports gestiona un completo portafolio de actividades extracurriculares que complementan la excelencia académica con desarrollo deportivo y cultural.</p>
-            </div>
-
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Fútbol Americano</div>
-                    <div class="program-tag">Baloncesto</div>
-                    <div class="program-tag">Guitarra</div>
-                    <div class="program-tag">Teatro</div>
-                    <div class="program-tag">Ajedrez</div>
-                    <div class="program-tag">Manga</div>
+        <!-- 8. CONTACTO -->
+        <section id="contacto">
+            <div class="container">
+                <h2 class="section-title">Transformemos Juntos</h2>
+                <p class="section-subtitle">Agenda una reunión sin compromiso y descubre cómo podemos potenciar las actividades extracurriculares de tu colegio.</p>
+                <div class="contact-simple">
+                    <a href="mailto:info@portescosports.com" class="contact-simple-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>info@portescosports.com</span>
+                    </a>
+                    <a href="tel:+50765556232" class="contact-simple-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+507 6555-6232</span>
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
+
     </div>
 
-    <!-- COLEGIO DE PANAMÁ PAGE -->
-    <div id="colegio-panama" class="page colegio-page" style="--primary-color: #1a5f3d; --secondary-color: #2d8b6f; --accent-color: #52d273;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232d8b6f'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%2352d273' text-anchor='middle'%3ECP%3C/text%3E%3C/svg%3E" alt="Colegio Panamá">
-            </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Colegio de Panamá - Mighty Eagles</h1>
-                <p>Tradición, excelencia y liderazgo deportivo</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Colegio de Panamá es una de las instituciones educativas más prestigiosas del país, con una larga historia de excelencia académica y deportiva reconocida regionalmente.</p>
-            </div>
-
-            <div class="colegio-info">
-                <h3>Colaboración Estratégica</h3>
-                <p>Portesco Sports trabaja en estrecha colaboración con Colegio de Panamá para mantener su posición de liderazgo en competencias deportivas regionales e internacionales.</p>
-            </div>
-
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Fútbol</div>
-                    <div class="program-tag">Voleibol</div>
-                    <div class="program-tag">Baloncesto</div>
-                    <div class="program-tag">Flag Football</div>
-                    <div class="program-tag">Piano</div>
-                    <div class="program-tag">Teatro</div>
-                </div>
-            </div>
-
-            <div class="colegio-info">
-                <h3>Logros Deportivos</h3>
-                <p>Bajo la dirección de Portesco Sports, Colegio de Panamá ha mantenido su estatus de campeón en múltiples disciplinas deportivas, con equipos competitivos a nivel nacional.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- COLEGIO REAL DE PANAMÁ PAGE -->
-    <div id="colegio-real" class="page colegio-page" style="--primary-color: #2c3e50; --secondary-color: #34495e; --accent-color: #3498db;">
-        <div class="colegio-header">
-            <div class="colegio-logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23034495e'/%3E%3Ctext x='50' y='55' font-size='24' font-weight='bold' fill='%233498db' text-anchor='middle'%3ECR%3C/text%3E%3C/svg%3E" alt="Colegio Real">
-            </div>
-            <div class="colegio-header-text">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button">← Volver</a>
-                <h1>Colegio Real de Panamá</h1>
-                <p>Educación de calidad y desarrollo integral</p>
-            </div>
-        </div>
-        <div class="colegio-content">
-            <div class="colegio-info">
-                <h3>Sobre el Colegio</h3>
-                <p>Colegio Real de Panamá es una institución educativa comprometida con la excelencia académica y la formación de ciudadanos íntegros y competentes.</p>
-            </div>
-
-            <div class="colegio-info">
-                <h3>Alianza con Portesco Sports</h3>
-                <p>Nuestra alianza garantiza que los estudiantes de Colegio Real tengan acceso a actividades extracurriculares de calidad, con personal certificado y experiencia comprobada.</p>
-            </div>
-
-            <div class="colegio-programs">
-                <h3>Programas Disponibles</h3>
-                <div class="programs-list">
-                    <div class="program-tag">Fútbol</div>
-                    <div class="program-tag">Baloncesto</div>
-                    <div class="program-tag">Voleibol</div>
-                    <div class="program-tag">Guitarra</div>
-                    <div class="program-tag">Pintura</div>
-                    <div class="program-tag">Robótica</div>
-                </div>
-            </div>
-
-            <div class="colegio-info">
-                <h3>Beneficios para la Institución</h3>
-                <p>La asociación con Portesco Sports permite a Colegio Real:</p>
-                <ul>
-                    <li>Ofrecer una variedad amplia de actividades sin invertir</li>
-                    <li>Generar ingresos adicionales para la institución</li>
-                    <li>Contar con personal especializado y certificado</li>
-                    <li>Mejorar la satisfacción de padres y estudiantes</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- FLAG CHALLENGE CUP PAGE -->
+    <!-- ==================== FLAG CHALLENGE CUP PAGE ==================== -->
     <div id="flag-challenge" class="page flag-challenge-page">
-        <div class="flag-header">
+
+        <!-- Hero con foto de accion -->
+        <div class="flag-hero">
             <div class="container">
-                <a href="#" onclick="showPage('home'); return false;" class="back-button" style="color: #ffcc00;">← Volver</a>
-                <h1>FLAG CHALLENGE CUP</h1>
-                <p>El torneo de flag football más importante de Panamá</p>
+                <a href="#" onclick="showPage('home'); return false;" class="back-button">&larr; Volver</a>
+                <img src="Fcc1grisc.png" alt="Flag Challenge Cup" class="fcc-logo">
+                <h1>Flag Challenge Cup</h1>
             </div>
         </div>
-        <div class="flag-content">
-            <div class="flag-info">
-                <h3>¿Qué es FLAG CHALLENGE CUP?</h3>
-                <p>FLAG CHALLENGE CUP es un torneo de flag football de alto nivel que reúne a los mejores equipos de colegios y escuelas de Panamá. Es una competencia emocionante que promueve el trabajo en equipo, la disciplina y la excelencia deportiva.</p>
+
+        <!-- Contenido simplificado -->
+        <div class="fcc-body">
+
+            <p class="fcc-intro">Competencia de alto nivel que reúne a los mejores equipos de colegios de Panamá. Trabajo en equipo, disciplina y excelencia deportiva en una sola cancha.</p>
+
+            <!-- Noticias -->
+            <div class="fcc-news-section">
+                <h2 class="fcc-news-title">Últimas Noticias</h2>
+                <div class="fcc-news-grid" id="fcc-news-container"></div>
             </div>
 
-            <div class="flag-info">
-                <h3>Objetivo del Torneo</h3>
-                <p>Crear un espacio donde los estudiantes puedan demostrar sus habilidades deportivas, representar a sus instituciones con orgullo y competir a nivel de excelencia. FLAG CHALLENGE CUP busca posicionar el flag football como un deporte de élite en Panamá.</p>
+            <!-- Categorias -->
+            <div class="fcc-categories">
+                <div class="fcc-cat" onclick="openCategory('U10')">
+                    <strong>U10</strong>
+                </div>
+                <div class="fcc-cat" onclick="openCategory('U13')">
+                    <strong>U13</strong>
+                </div>
+                <div class="fcc-cat" onclick="openCategory('U16')">
+                    <strong>U16</strong>
+                </div>
+                <div class="fcc-cat" onclick="openCategory('U18')">
+                    <strong>U18</strong>
+                </div>
             </div>
 
-            <div class="flag-info" style="background: rgba(255, 204, 0, 0.1); padding: 2rem; border-left: 4px solid #ffcc00; border-radius: 4px; margin: 2rem 0;">
-                <h3>Categorías de Competencia</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
-                        <strong style="color: #ffcc00;">U13 Masculino</strong>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 12-13 años</p>
+            <!-- Equipos Participantes -->
+            <div class="fcc-teams-section">
+                <h2>Equipos Participantes</h2>
+                <div class="fcc-teams-grid">
+                    <div class="fcc-team-item">
+                        <img src="eagles logo 1.png" alt="Mighty Eagles">
                     </div>
-                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
-                        <strong style="color: #ffcc00;">U13 Femenino</strong>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 12-13 años</p>
+                    <div class="fcc-team-item">
+                        <img src="CRP Logo Go Lions.png" alt="Go Lions">
                     </div>
-                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
-                        <strong style="color: #ffcc00;">U16 Mixto</strong>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 14-16 años</p>
+                    <div class="fcc-team-item">
+                        <img src="Logo IC Falcons.png" alt="IC Falcons">
                     </div>
-                    <div style="background: rgba(255, 204, 0, 0.2); padding: 1rem; border-radius: 4px; text-align: center;">
-                        <strong style="color: #ffcc00;">U19 Mixto</strong>
-                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Estudiantes de 17-19 años</p>
+                    <div class="fcc-team-item">
+                        <img src="Logo La Salle Spartans.png" alt="La Salle Spartans">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="AF_AIP_FightingOwls-10.jpg" alt="Fighting Owls">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="Logo Hummingbirds CLE.png" alt="Hummingbirds">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="Knights tos.png" alt="Knights">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="PPS .jpeg" alt="PPS">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="CIDMI SPORT Logo.png" alt="CIDMI Sport">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="legends logo 1.png" alt="Legends">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="sap tigers logo.png" alt="Tigers">
+                    </div>
+                    <div class="fcc-team-item">
+                        <img src="brader raiders.png" alt="Brader Raiders">
                     </div>
                 </div>
             </div>
 
-            <div class="flag-info">
-                <h3>Colegios Participantes</h3>
-                <p>FLAG CHALLENGE CUP cuenta con la participación de los principales colegios de Panamá, incluyendo:</p>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Colegio de Panamá - Mighty Eagles</li>
-                    <li>Colegio Real de Panamá</li>
-                    <li>Oxford International School</li>
-                    <li>Colegio Las Esclavas</li>
-                    <li>Academia & Preparatoria Pureza de María</li>
-                    <li>Colegio María Inmaculada</li>
-                    <li>Y muchos más colegios de élite</li>
-                </ul>
+            <!-- Galeria de fotos -->
+            <div class="fcc-gallery">
+                <img src="sports photos/sintítulo-143.jpg" alt="Jugadora lanzando pase en flag football">
+                <img src="sports photos/sintítulo-361.jpg" alt="Equipo con medallas y entrenador">
+                <img src="sports photos/sintítulo-387.jpg" alt="Equipo campeón con trofeo">
+                <img src="sports photos/sintítulo-23-Mejorado-NR.jpg" alt="Jugadora corriendo con el balón">
+                <img src="sports photos/sintítulo-502.jpg" alt="Equipo campeón celebrando">
+                <img src="sports photos/sintítulo-287.jpg" alt="Acción en partido de flag football">
             </div>
 
-            <div class="flag-info">
-                <h3>Beneficios de Participar</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li><strong>Visibilidad:</strong> Tus estudiantes competirán en un escenario de alto nivel con cobertura de medios</li>
-                    <li><strong>Desarrollo Deportivo:</strong> Enfrentarse a los mejores equipos del país fortalece habilidades</li>
-                    <li><strong>Orgullo Institucional:</strong> Representa a tu colegio en una competencia de prestigio nacional</li>
-                    <li><strong>Oportunidades:</strong> Visibilidad para talentos destacados ante colegios y equipos profesionales</li>
-                    <li><strong>Comunidad:</strong> Participa en una red de instituciones educativas de excelencia</li>
-                </ul>
+            <!-- CTA -->
+            <div class="fcc-cta">
+                <h3>¿Quieres participar?</h3>
+                <p>Contáctanos y te guiamos en el proceso de registro para tu colegio.</p>
+                <a href="#" onclick="showPage('home'); setTimeout(function(){ document.getElementById('contacto').scrollIntoView({behavior:'smooth'}); }, 100); return false;" class="btn btn-primary">Contacta para Participar</a>
+                <br>
+                <a href="https://www.instagram.com/flagchallengecup/" target="_blank" rel="noopener" class="ig-link ig-link-fcc"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 370.9 339 319.6 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1S3.8 127.8 2.1 163.7c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> @flagchallengecup</a>
             </div>
 
-            <div class="flag-info" style="background: rgba(255, 204, 0, 0.1); padding: 2rem; border-left: 4px solid #ffcc00; border-radius: 4px; margin-top: 2rem;">
-                <h3>¿Cómo Participar?</h3>
-                <p style="margin-bottom: 1rem;">Si tu colegio desea participar en FLAG CHALLENGE CUP, contacta con Portesco Sports. Nuestro equipo te guiará en el proceso de registro y preparación de tu equipo.</p>
-                <p style="margin-bottom: 1rem;">Portesco Sports es el principal organizador de FLAG CHALLENGE CUP y cuenta con la experiencia de haber ejecutado este torneo durante varios años con éxito.</p>
-                <div style="text-align: center; margin-top: 1.5rem;">
-                    <a href="#" onclick="showPage('home'); document.getElementById('contact').scrollIntoView(); return false;" class="btn btn-primary" style="background: #ffcc00; color: #003d7a;">Contacta para Participar</a>
-                </div>
+        </div>
+    </div>
+
+    <!-- ==================== FCC CATEGORY PAGE ==================== -->
+    <div id="fcc-category" class="page fcc-category-page">
+        <div class="cat-hero">
+            <div class="container">
+                <a href="#" onclick="showPage('flag-challenge'); return false;" class="back-button">&larr; Volver a Flag Challenge Cup</a>
+                <h1 id="cat-title"></h1>
+                <p>Flag Challenge Cup 2026</p>
             </div>
+        </div>
+        <div class="cat-tabs">
+            <button class="cat-tab active" onclick="showTab('equipos')">Equipos</button>
+            <button class="cat-tab" onclick="showTab('posiciones')">Posiciones</button>
+            <button class="cat-tab" onclick="showTab('calendario')">Calendario</button>
+            <button class="cat-tab" onclick="showTab('rosters')">Rosters</button>
+            <button class="cat-tab" onclick="showTab('estadisticas')">Estadísticas</button>
+        </div>
+        <div class="cat-content">
+            <div id="panel-equipos" class="cat-panel active"></div>
+            <div id="panel-posiciones" class="cat-panel"></div>
+            <div id="panel-calendario" class="cat-panel"></div>
+            <div id="panel-rosters" class="cat-panel"></div>
+            <div id="panel-estadisticas" class="cat-panel"></div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Portesco Sports. Gestión integral de actividades extracurriculares. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Portesco Sports. Gestión integral de actividades extracurriculares.</p>
+            <p style="margin-top: 0.5rem;"><a href="mailto:Info@portescosports.com">Info@portescosports.com</a></p>
         </div>
     </footer>
 
     <script>
-        // Toggle dropdown menu
-        function toggleDropdown(event) {
-            event.preventDefault();
-            const toggle = event.target;
-            const content = toggle.nextElementSibling;
-            
-            // Close other dropdowns
-            document.querySelectorAll('.dropdown-content.active').forEach(item => {
-                if (item !== content) {
-                    item.classList.remove('active');
-                    item.previousElementSibling.classList.remove('active');
-                }
-            });
-            
-            // Toggle current dropdown
-            toggle.classList.toggle('active');
-            content.classList.toggle('active');
+        // ============================================================
+        //  DATOS DE LA LIGA - FLAG CHALLENGE CUP
+        //  Para editar: cambia los nombres, numeros y datos abajo.
+        //  Cada categoria (U10, U13, U16, U18) tiene:
+        //    - teams: lista de equipos (nombre, colegio, logo)
+        //    - groups: como se dividen los equipos en grupos
+        //    - standings: tabla de posiciones por grupo
+        //    - calendar: lista de partidos con fechas y marcadores
+        //    - rosters: jugadores de cada equipo
+        //    - bracket: llaves de eliminacion (semifinales y final)
+        // ============================================================
+        var leagueData = {
+
+            "U10": {
+                teams: [],
+                groups: {},
+                standings: {},
+                calendar: [],
+                rosters: {},
+                bracket: null
+            },
+
+            "U13": {
+                teams: [],
+                groups: {},
+                standings: {},
+                calendar: [],
+                rosters: {},
+                bracket: null
+            },
+
+            "U16": {
+                teams: [],
+                groups: {},
+                standings: {},
+                calendar: [],
+                rosters: {},
+                bracket: null
+            },
+
+            "U18": {
+                teams: [],
+                groups: {},
+                standings: {},
+                calendar: [],
+                rosters: {},
+                bracket: null
+            }
+        };
+
+        // ============================================================
+        //  Variable para la categoria activa
+        // ============================================================
+        var currentCategory = null;
+
+        // ============================================================
+        //  FUNCIONES DE NAVEGACION
+        // ============================================================
+
+        // Toggle mobile hamburger menu
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
         }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown-content.active').forEach(item => {
-                    item.classList.remove('active');
-                    item.previousElementSibling.classList.remove('active');
-                });
+        // Navigate to a section on the landing page
+        function navigateTo(sectionId) {
+            var homePage = document.getElementById('home');
+            if (!homePage.classList.contains('active')) {
+                showPage('home');
+                setTimeout(function() {
+                    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
             }
-        });
+            document.getElementById('navMenu').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
+        }
 
-        // Show specific page
+        // Show a specific page (home, flag-challenge, fcc-category)
         function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
+            document.querySelectorAll('.page').forEach(function(page) {
                 page.classList.remove('active');
             });
-            
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
-            
-            // Close dropdown
-            document.querySelectorAll('.dropdown-content.active').forEach(item => {
-                item.classList.remove('active');
-                item.previousElementSibling.classList.remove('active');
-            });
-            
-            // Scroll to top
             window.scrollTo(0, 0);
+            document.getElementById('navMenu').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
+            if (pageId === 'home') {
+                renderPortescoNews();
+            }
+            if (pageId === 'flag-challenge') {
+                renderFCCNews();
+            }
+        }
+
+        // ============================================================
+        //  ABRIR CATEGORIA
+        // ============================================================
+        function openCategory(cat) {
+            currentCategory = cat;
+            document.getElementById('cat-title').textContent = 'Categoría ' + cat;
+            showPage('fcc-category');
+            // Reset to first tab
+            showTab('equipos');
+            // Render all panels
+            renderTeams(cat);
+            renderStandings(cat);
+            renderCalendar(cat);
+            renderRosters(cat);
+            renderStats(cat);
+        }
+
+        // ============================================================
+        //  CAMBIAR TAB
+        // ============================================================
+        function showTab(tabName) {
+            // Update tab buttons
+            var tabs = document.querySelectorAll('.cat-tab');
+            var tabIndex = { equipos: 0, posiciones: 1, calendario: 2, rosters: 3, estadisticas: 4 };
+            tabs.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            if (tabs[tabIndex[tabName]]) {
+                tabs[tabIndex[tabName]].classList.add('active');
+            }
+            // Update panels
+            document.querySelectorAll('.cat-panel').forEach(function(panel) {
+                panel.classList.remove('active');
+            });
+            document.getElementById('panel-' + tabName).classList.add('active');
+        }
+
+        // ============================================================
+        //  RENDER: EQUIPOS
+        // ============================================================
+        function renderTeams(cat) {
+            var data = leagueData[cat];
+            if (!data.teams.length) {
+                document.getElementById('panel-equipos').innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
+                return;
+            }
+            var html = '<div class="teams-grid">';
+            data.teams.forEach(function(t) {
+                html += '<div class="team-card">';
+                html += '<img src="' + t.logo + '" alt="' + t.name + '">';
+                html += '<h3>' + t.name + '</h3>';
+                html += '<p>' + t.school + '</p>';
+                html += '</div>';
+            });
+            html += '</div>';
+            document.getElementById('panel-equipos').innerHTML = html;
+        }
+
+        // ============================================================
+        //  RENDER: TABLA DE POSICIONES
+        // ============================================================
+        function renderStandings(cat) {
+            var data = leagueData[cat];
+            if (Object.keys(data.standings).length === 0) {
+                document.getElementById('panel-posiciones').innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
+                return;
+            }
+            var html = '';
+            var groups = data.standings;
+            for (var groupName in groups) {
+                html += '<h3 class="group-title">' + groupName + '</h3>';
+                html += '<table class="standings-table">';
+                html += '<thead><tr>';
+                html += '<th>Equipo</th><th>PJ</th><th>G</th><th>P</th><th>PF</th><th>PC</th><th>PTS</th>';
+                html += '</tr></thead><tbody>';
+                groups[groupName].forEach(function(row) {
+                    html += '<tr>';
+                    html += '<td>' + row.team + '</td>';
+                    html += '<td>' + row.gp + '</td>';
+                    html += '<td>' + row.w + '</td>';
+                    html += '<td>' + row.l + '</td>';
+                    html += '<td>' + row.pf + '</td>';
+                    html += '<td>' + row.pa + '</td>';
+                    html += '<td><strong>' + row.pts + '</strong></td>';
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+            }
+
+            // Bracket
+            var bracket = data.bracket;
+            if (bracket) {
+                html += '<h3 class="bracket-section-title">Fase de Eliminación</h3>';
+                html += '<div class="bracket-container">';
+
+                if (bracket.semi1 && bracket.semi2) {
+                    html += '<div class="bracket-round">';
+                    html += '<div class="bracket-label">Semifinales</div>';
+                    html += renderBracketMatch(bracket.semi1);
+                    html += renderBracketMatch(bracket.semi2);
+                    html += '</div>';
+                    html += '<div class="bracket-connector">&#10140;</div>';
+                }
+
+                if (bracket.final) {
+                    html += '<div class="bracket-round">';
+                    html += '<div class="bracket-label">Final</div>';
+                    html += renderBracketMatch(bracket.final);
+                    html += '</div>';
+                }
+
+                html += '</div>';
+            }
+
+            document.getElementById('panel-posiciones').innerHTML = html;
+        }
+
+        function renderBracketMatch(match) {
+            var html = '<div class="bracket-match">';
+            var w1 = (match.score1 && match.score2 && parseInt(match.score1) > parseInt(match.score2));
+            var w2 = (match.score1 && match.score2 && parseInt(match.score2) > parseInt(match.score1));
+            html += '<div class="bracket-team-row' + (w1 ? ' winner' : '') + '">';
+            html += '<span class="name">' + match.team1 + '</span>';
+            html += '<span class="score">' + (match.score1 || '-') + '</span>';
+            html += '</div>';
+            html += '<div class="bracket-team-row' + (w2 ? ' winner' : '') + '">';
+            html += '<span class="name">' + match.team2 + '</span>';
+            html += '<span class="score">' + (match.score2 || '-') + '</span>';
+            html += '</div>';
+            html += '</div>';
+            return html;
+        }
+
+        // ============================================================
+        //  RENDER: CALENDARIO
+        // ============================================================
+        function renderCalendar(cat) {
+            var data = leagueData[cat];
+            if (!data.calendar.length) {
+                document.getElementById('panel-calendario').innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
+                return;
+            }
+            var html = '';
+            var currentPhase = '';
+            data.calendar.forEach(function(match) {
+                if (match.phase !== currentPhase) {
+                    if (currentPhase !== '') html += '</div>';
+                    currentPhase = match.phase;
+                    html += '<h3 class="calendar-phase">' + currentPhase + '</h3>';
+                    html += '<div class="match-list">';
+                }
+                html += '<div class="match-card">';
+                html += '<div class="match-team home">' + match.home + '</div>';
+                html += '<div class="match-center">';
+                if (match.score) {
+                    html += '<div class="match-score">' + match.score + '</div>';
+                } else {
+                    html += '<div class="match-pending">Pendiente</div>';
+                }
+                html += '<div class="match-date">' + match.date + '</div>';
+                html += '</div>';
+                html += '<div class="match-team away">' + match.away + '</div>';
+                html += '</div>';
+            });
+            if (currentPhase !== '') html += '</div>';
+            document.getElementById('panel-calendario').innerHTML = html;
+        }
+
+        // ============================================================
+        //  RENDER: ROSTERS
+        // ============================================================
+        function renderRosters(cat) {
+            var data = leagueData[cat];
+            var teamNames = Object.keys(data.rosters);
+            if (!teamNames.length) {
+                document.getElementById('panel-rosters').innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
+                return;
+            }
+            var html = '<div class="roster-select-wrap">';
+            html += '<select class="roster-select" onchange="renderRosterTable(\'' + cat + '\', this.value)">';
+            teamNames.forEach(function(name) {
+                html += '<option value="' + name + '">' + name + '</option>';
+            });
+            html += '</select></div>';
+            html += '<div id="roster-table-container"></div>';
+            document.getElementById('panel-rosters').innerHTML = html;
+            // Render first team by default
+            renderRosterTable(cat, teamNames[0]);
+        }
+
+        function renderRosterTable(cat, teamName) {
+            var data = leagueData[cat];
+            var players = data.rosters[teamName];
+            var html = '<h3 class="roster-team-name">' + teamName + '</h3>';
+            html += '<table class="roster-table">';
+            html += '<thead><tr><th>#</th><th>Nombre</th><th>Posición</th></tr></thead>';
+            html += '<tbody>';
+            players.forEach(function(p) {
+                html += '<tr>';
+                html += '<td><strong>' + p.num + '</strong></td>';
+                html += '<td>' + p.name + '</td>';
+                html += '<td>' + p.pos + '</td>';
+                html += '</tr>';
+            });
+            html += '</tbody></table>';
+            document.getElementById('roster-table-container').innerHTML = html;
+        }
+
+        // ============================================================
+        //  PORTESCO NOTICIAS (Landing Page)
+        // ============================================================
+        var portescoNews = [
+            {
+                title: "Ceremonias de cierre extracurriculares 2025",
+                image: "sports photos/CEREMONIA CIDMI FOTO.jpg",
+                excerpt: "Se llevaron a cabo con éxito las ceremonias de cierre en el Colegio María Inmaculada, Pureza de María y Las Esclavas. Un año lleno de aprendizaje, dedicación y crecimiento para todos nuestros estudiantes."
+            },
+            {
+                title: "Culmina con éxito la Flag Challenge Cup",
+                image: "sports photos/CAMPEON CRP 2.jpg",
+                excerpt: "Gran cierre de temporada en el torneo de flag football más importante de Panamá. Brader Raiders se coronan campeones en la categoría U13 y el Colegio Real de Panamá conquista el título en la U10."
+            },
+            {
+                title: "Recap 2025: un año lleno de acción",
+                image: "sports photos/FOTO CLE FINAL.jpg",
+                excerpt: "El 2025 fue un año repleto de actividades extracurriculares, con participaciones destacadas en torneos de flag football, voleibol y fútbol. Nuestros colegios demostraron talento, disciplina y pasión en cada cancha."
+            }
+        ];
+
+        function renderPortescoNews() {
+            var container = document.getElementById('news-container');
+            if (!container) return;
+            var html = '';
+            portescoNews.forEach(function(news) {
+                html += '<div class="news-card">';
+                html += '<img src="' + news.image + '" alt="' + news.title + '">';
+                html += '<div class="news-card-body">';
+                html += '<h3>' + news.title + '</h3>';
+                html += '<p>' + news.excerpt + '</p>';
+                html += '</div></div>';
+            });
+            container.innerHTML = html;
+        }
+
+        // Render on page load
+        renderPortescoNews();
+
+        // ============================================================
+        //  FCC NOTICIAS
+        // ============================================================
+        var fccNews = [
+            {
+                title: "Brader Raiders se coronan campeones U13",
+                image: "sports photos/BRADER CAMPEON U13.jpg",
+                excerpt: "En una final llena de intensidad, Brader Raiders se llevó la copa de la categoría U13. AIP Owls dejó todo en la cancha para quedarse con el segundo lugar, mientras que ECP Eagles completó el podio con una sólida actuación en el tercer puesto."
+            },
+            {
+                title: "Colegio Real Lions campeonas U10 femenina",
+                image: "sports photos/crp campeon u10.jpg",
+                excerpt: "Las Lions del Colegio Real de Panamá dominaron la categoría U10 femenina con un juego impecable. Don Bosco Gators peleó hasta el final quedando en segundo lugar, y AIP Owls se alzó con el tercer puesto tras una gran temporada."
+            },
+            {
+                title: "MVPs de la Flag Challenge Cup",
+                image: null,
+                image2: ["sports photos/Perla correa.jpg", "sports photos/Olivia muñoz.jpg"],
+                excerpt: "Perla Correa de Brader Raiders fue nombrada MVP de la categoría U13 gracias a su liderazgo y jugadas decisivas en cada partido. En la U10 femenina, Olivia Muñoz del Colegio Real de Panamá se destacó como la jugadora más valiosa con actuaciones brillantes durante toda la temporada."
+            }
+        ];
+
+        function renderFCCNews() {
+            var container = document.getElementById('fcc-news-container');
+            if (!container) return;
+            var html = '';
+            fccNews.forEach(function(news) {
+                html += '<div class="fcc-news-card">';
+                if (news.image2) {
+                    html += '<div class="fcc-news-dual-img">';
+                    html += '<img src="' + news.image2[0] + '" alt="MVP">';
+                    html += '<img src="' + news.image2[1] + '" alt="MVP">';
+                    html += '</div>';
+                } else {
+                    html += '<img src="' + news.image + '" alt="' + news.title + '">';
+                }
+                html += '<div class="fcc-news-card-content">';
+                html += '<h4>' + news.title + '</h4>';
+                html += '<p>' + news.excerpt + '</p>';
+                html += '</div></div>';
+            });
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        //  ESTADÍSTICAS - Google Sheets Integration
+        // ============================================================
+        var statsConfig = {
+            sheetId: "",
+            categories: {
+                "U10": { passing: "Passing U10", rushing: "Rushing U10", receiving: "Receiving U10", defensive: "Defensive U10" },
+                "U13": { passing: "Passing U13", rushing: "Rushing U13", receiving: "Receiving U13", defensive: "Defensive U13" },
+                "U16": { passing: "Passing U16", rushing: "Rushing U16", receiving: "Receiving U16", defensive: "Defensive U16" },
+                "U18": { passing: "Passing U18", rushing: "Rushing U18", receiving: "Receiving U18", defensive: "Defensive U18" }
+            }
+        };
+
+        var statsColumns = {
+            passing:   ["Player", "Team", "Comp", "Att", "Yds", "TD", "INT"],
+            rushing:   ["Player", "Team", "Att", "Yds", "Avg", "TD"],
+            receiving: ["Player", "Team", "Rec", "Yds", "Avg", "TD"],
+            defensive: ["Player", "Team", "Flags", "INT", "Sacks", "TD"]
+        };
+
+        var currentStatType = 'passing';
+
+        function renderStats(cat) {
+            var panel = document.getElementById('panel-estadisticas');
+            if (!panel) return;
+            panel.innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
+        }
+
+        function switchStatType(cat, type) {
+            currentStatType = type;
+            var btns = document.querySelectorAll('.stats-subtab');
+            btns.forEach(function(b) { b.classList.remove('active'); });
+            var types = ['passing', 'rushing', 'receiving', 'defensive'];
+            var idx = types.indexOf(type);
+            if (btns[idx]) btns[idx].classList.add('active');
+            loadStatsContent(cat, type);
+        }
+
+        function loadStatsContent(cat, type) {
+            var container = document.getElementById('stats-table-container');
+            if (!container) return;
+
+            if (!statsConfig.sheetId) {
+                container.innerHTML = '<div class="stats-config-msg">' +
+                    '<h4>Configura tu Google Sheet</h4>' +
+                    '<p>Para ver estadísticas, agrega tu Sheet ID en la variable <code>statsConfig.sheetId</code> en el código.</p>' +
+                    '<p style="margin-top:0.5rem;font-size:0.85rem;">El Google Sheet debe ser público y tener hojas con los nombres correspondientes.</p>' +
+                    '</div>';
+                return;
+            }
+
+            container.innerHTML = '<div class="stats-loading">Cargando estadísticas...</div>';
+            fetchStats(cat, type);
+        }
+
+        function fetchStats(cat, type) {
+            var catConfig = statsConfig.categories[cat];
+            if (!catConfig || !catConfig[type]) {
+                document.getElementById('stats-table-container').innerHTML = '<div class="stats-config-msg"><p>No hay configuración para esta categoría.</p></div>';
+                return;
+            }
+
+            var sheetName = encodeURIComponent(catConfig[type]);
+            var url = 'https://docs.google.com/spreadsheets/d/' + statsConfig.sheetId + '/gviz/tq?tqx=out:json&sheet=' + sheetName;
+
+            fetch(url)
+                .then(function(response) { return response.text(); })
+                .then(function(text) {
+                    var jsonStr = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?/);
+                    if (!jsonStr || !jsonStr[1]) throw new Error('Invalid response');
+                    var json = JSON.parse(jsonStr[1]);
+                    var rows = json.table.rows;
+                    var cols = statsColumns[type];
+                    var html = '<table class="stats-table">';
+                    html += '<thead><tr>';
+                    cols.forEach(function(col) {
+                        html += '<th>' + col + '</th>';
+                    });
+                    html += '</tr></thead><tbody>';
+                    rows.forEach(function(row) {
+                        html += '<tr>';
+                        for (var i = 0; i < cols.length; i++) {
+                            var cell = row.c[i];
+                            var val = cell ? (cell.f || cell.v || '') : '';
+                            html += '<td>' + val + '</td>';
+                        }
+                        html += '</tr>';
+                    });
+                    html += '</tbody></table>';
+                    document.getElementById('stats-table-container').innerHTML = html;
+                })
+                .catch(function(err) {
+                    document.getElementById('stats-table-container').innerHTML = '<div class="stats-config-msg">' +
+                        '<h4>Error al cargar estadísticas</h4>' +
+                        '<p>No se pudo obtener los datos del Google Sheet. Verifica que el Sheet sea público y que el ID sea correcto.</p>' +
+                        '</div>';
+                });
         }
     </script>
 </body>
