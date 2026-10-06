@@ -654,7 +654,7 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -673,7 +673,7 @@
 
         .news-card img {
             width: 100%;
-            height: 200px;
+            height: 280px;
             object-fit: cover;
             object-position: center 10%;
         }
@@ -1021,7 +1021,7 @@
 
         .fcc-categories {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 3rem;
         }
@@ -1081,6 +1081,11 @@
             box-shadow: 0 8px 30px rgba(255, 204, 0, 0.15);
         }
 
+        .fcc-gallery-link {
+            text-align: center;
+            margin: -1.5rem 0 3rem;
+        }
+
         .fcc-cta {
             text-align: center;
             background: #111827;
@@ -1102,6 +1107,234 @@
             color: rgba(255, 255, 255, 0.85);
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
+        }
+
+        /* ========== FCC MARCADOR SUPERIOR ========== */
+        .fcc-ticker {
+            margin-top: 80px;
+            background: #070b14;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .fcc-ticker + .flag-hero,
+        .fcc-ticker + .cat-hero {
+            margin-top: 0;
+        }
+
+        .tk-bar {
+            display: flex;
+            align-items: stretch;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tk-filters {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.5rem 0.75rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            flex-shrink: 0;
+        }
+
+        .tk-filter {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            text-align: left;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        .tk-filter:hover {
+            color: var(--white);
+        }
+
+        .tk-filter.active {
+            color: var(--fcc-dark);
+            background: var(--fcc-gold);
+        }
+
+        .tk-arrow {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.8rem;
+            line-height: 1;
+            padding: 0 0.6rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .tk-arrow:hover {
+            color: var(--fcc-gold);
+        }
+
+        .tk-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+            flex: 1;
+        }
+
+        .tk-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tk-card {
+            flex: 0 0 190px;
+            padding: 0.6rem 0.85rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            scroll-snap-align: start;
+            transition: background 0.2s ease;
+        }
+
+        .tk-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tk-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .tk-cat {
+            color: var(--fcc-gold);
+            white-space: nowrap;
+        }
+
+        .tk-status {
+            color: rgba(255, 255, 255, 0.55);
+            white-space: nowrap;
+        }
+
+        .tk-upcoming .tk-status {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tk-team {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.12rem 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .tk-upcoming .tk-team,
+        .tk-team.tk-winner {
+            color: var(--white);
+        }
+
+        .tk-badge.team-badge {
+            width: 22px;
+            height: 22px;
+            box-shadow: none;
+        }
+
+        .tk-name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tk-score {
+            font-weight: 800;
+        }
+
+        .tk-winner .tk-score {
+            color: var(--fcc-gold);
+        }
+
+        .tk-week {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .tk-week strong {
+            color: var(--fcc-gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tk-week span {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+
+        .tk-empty {
+            display: flex;
+            align-items: center;
+            padding: 0 1.25rem;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .tk-more {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 1.25rem;
+            color: var(--fcc-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .tk-more:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tk-note {
+            margin-top: 0.2rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--fcc-gold);
+        }
+
+        @media (max-width: 768px) {
+            .tk-filters {
+                display: none;
+            }
+
+            .tk-arrow {
+                display: none;
+            }
+
+            .tk-card {
+                flex-basis: 165px;
+            }
         }
 
         /* ========== FCC CATEGORY / LEAGUE PAGE ========== */
@@ -1204,11 +1437,23 @@
             transform: translateY(-4px);
         }
 
-        .team-card img {
-            width: 80px;
-            height: 80px;
+        .team-card-badge {
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 1.25rem;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: 0 0 0 3px var(--fcc-gold), 0 6px 18px rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .team-card-badge img {
+            width: 76%;
+            height: 76%;
             object-fit: contain;
-            margin-bottom: 1rem;
         }
 
         .team-card h3 {
@@ -1245,7 +1490,8 @@
         }
 
         .standings-table th {
-            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            background: var(--fcc-blue);
+            border-bottom: 3px solid var(--fcc-gold);
             color: white;
             padding: 0.75rem 1rem;
             text-align: center;
@@ -1352,6 +1598,17 @@
             margin-top: 0.15rem;
         }
 
+        .match-note {
+            display: inline-block;
+            margin-top: 0.35rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(255, 204, 0, 0.15);
+            color: var(--fcc-gold);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
         .match-pending {
             font-size: 0.9rem;
             color: var(--fcc-gold);
@@ -1400,7 +1657,8 @@
         }
 
         .roster-table th {
-            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            background: var(--fcc-blue);
+            border-bottom: 3px solid var(--fcc-gold);
             color: white;
             padding: 0.75rem 1rem;
             text-align: left;
@@ -1602,7 +1860,7 @@
             }
 
             .fcc-categories {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
 
             .fcc-gallery {
@@ -1749,7 +2007,7 @@
 
         .fcc-news-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -1769,7 +2027,7 @@
 
         .fcc-news-card img {
             width: 100%;
-            height: 200px;
+            height: 280px;
             object-fit: cover;
             object-position: center 20%;
         }
@@ -1861,7 +2119,8 @@
         }
 
         .stats-table th {
-            background: linear-gradient(135deg, rgba(185, 28, 28, 0.6), rgba(30, 58, 138, 0.6));
+            background: var(--fcc-blue);
+            border-bottom: 3px solid var(--fcc-gold);
             color: white;
             padding: 0.75rem 1rem;
             text-align: center;
@@ -1927,6 +2186,168 @@
             font-size: 0.95rem;
         }
 
+        .team-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* Logos sobre insignia blanca: se ven nítidos y los de fondo oscuro no se pierden */
+        .team-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .team-badge img {
+            width: 78%;
+            height: 78%;
+            object-fit: contain;
+        }
+
+        .team-label span {
+            white-space: nowrap;
+        }
+
+        .match-team.home .team-label {
+            flex-direction: row-reverse;
+        }
+
+        .standings-table th:nth-child(2),
+        .standings-table td:nth-child(2) {
+            text-align: left;
+        }
+
+        .standings-table td:first-child {
+            text-align: center;
+            color: var(--fcc-gold);
+        }
+
+        .standings-table th:first-child {
+            text-align: center;
+        }
+
+        .standings-note {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .stats-updated {
+            text-align: center;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .stats-box {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .stats-search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .stats-search input {
+            width: 100%;
+            max-width: 340px;
+            padding: 0.6rem 0.9rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--fcc-dark);
+            color: var(--white);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .stats-search input:focus {
+            outline: none;
+            border-color: var(--fcc-gold);
+        }
+
+        .stats-scroll {
+            overflow-x: auto;
+        }
+
+        .stats-scroll .standings-table {
+            margin-bottom: 0;
+        }
+
+        .stats-box .stats-table {
+            margin-bottom: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .stats-box .stats-table th {
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .stats-box .stats-table th:nth-child(2),
+        .stats-box .stats-table td:nth-child(2),
+        .stats-box .stats-table th:nth-child(3),
+        .stats-box .stats-table td:nth-child(3) {
+            text-align: left;
+        }
+
+        .stats-box .stats-table th:first-child,
+        .stats-box .stats-table td:first-child {
+            text-align: center;
+        }
+
+        .stats-box .stats-table th.is-active {
+            background: #172c6b;
+            color: var(--fcc-gold);
+        }
+
+        .stats-box .stats-table td.is-active {
+            color: var(--fcc-gold);
+            font-weight: 700;
+        }
+
+        .stats-player {
+            white-space: nowrap;
+        }
+
+        .stats-num {
+            color: var(--fcc-gold);
+            font-weight: 700;
+        }
+
+        .sort-arrow {
+            opacity: 0.7;
+            font-size: 0.75rem;
+        }
+
+        .stats-empty {
+            text-align: center !important;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 2rem 1rem !important;
+        }
+
         /* ========== RESPONSIVE: News, Teams, Stats ========== */
         @media (max-width: 768px) {
             .fcc-news-grid {
@@ -1962,6 +2383,37 @@
             .stats-table th,
             .stats-table td {
                 padding: 0.5rem 0.5rem;
+            }
+
+            /* En celular solo se ve la columna del stat seleccionado */
+            .stats-box .stats-table .stat-col {
+                display: none;
+            }
+
+            .stats-search {
+                padding: 1rem 0.75rem;
+            }
+
+            .stats-player {
+                white-space: normal;
+            }
+
+            .team-label {
+                gap: 0.4rem;
+            }
+
+            .team-badge {
+                width: 30px;
+                height: 30px;
+            }
+
+            .match-team.home .team-label {
+                flex-direction: row;
+            }
+
+            .standings-table th,
+            .standings-table td {
+                padding: 0.6rem 0.4rem;
             }
         }
     </style>
@@ -2246,6 +2698,9 @@
     <!-- ==================== FLAG CHALLENGE CUP PAGE ==================== -->
     <div id="flag-challenge" class="page flag-challenge-page">
 
+        <!-- Marcador de partidos (estilo NFL) -->
+        <div class="fcc-ticker" id="ticker-flag-challenge"></div>
+
         <!-- Hero con foto de accion -->
         <div class="flag-hero">
             <div class="container">
@@ -2268,17 +2723,17 @@
 
             <!-- Categorias -->
             <div class="fcc-categories">
-                <div class="fcc-cat" onclick="openCategory('U10')">
-                    <strong>U10</strong>
+                <div class="fcc-cat" onclick="openCategory('U13F')">
+                    <strong>U13 F</strong>
+                    <span>Sub 13 Femenina</span>
                 </div>
-                <div class="fcc-cat" onclick="openCategory('U13')">
-                    <strong>U13</strong>
+                <div class="fcc-cat" onclick="openCategory('U18F')">
+                    <strong>U18 F</strong>
+                    <span>Sub 18 Femenina</span>
                 </div>
-                <div class="fcc-cat" onclick="openCategory('U16')">
-                    <strong>U16</strong>
-                </div>
-                <div class="fcc-cat" onclick="openCategory('U18')">
-                    <strong>U18</strong>
+                <div class="fcc-cat" onclick="openCategory('U18M')">
+                    <strong>U18 M</strong>
+                    <span>Sub 18 Masculina</span>
                 </div>
             </div>
 
@@ -2334,6 +2789,9 @@
                 <img src="sports photos/sintítulo-502.jpg" alt="Equipo campeón celebrando">
                 <img src="sports photos/sintítulo-287.jpg" alt="Acción en partido de flag football">
             </div>
+            <div class="fcc-gallery-link">
+                <a href="https://storage.mikeriveracreative.com/flagchallengeclubii2026/" target="_blank" rel="noopener" class="btn btn-primary">Ver fotos de la temporada 2026</a>
+            </div>
 
             <!-- CTA -->
             <div class="fcc-cta">
@@ -2349,6 +2807,7 @@
 
     <!-- ==================== FCC CATEGORY PAGE ==================== -->
     <div id="fcc-category" class="page fcc-category-page">
+        <div class="fcc-ticker" id="ticker-fcc-category"></div>
         <div class="cat-hero">
             <div class="container">
                 <a href="#" onclick="showPage('flag-challenge'); return false;" class="back-button">&larr; Volver a Flag Challenge Cup</a>
@@ -2383,51 +2842,2180 @@
     <script>
         // ============================================================
         //  DATOS DE LA LIGA - FLAG CHALLENGE CUP
-        //  Para editar: cambia los nombres, numeros y datos abajo.
-        //  Cada categoria (U10, U13, U16, U18) tiene:
-        //    - teams: lista de equipos (nombre, colegio, logo)
-        //    - groups: como se dividen los equipos en grupos
-        //    - standings: tabla de posiciones por grupo
-        //    - calendar: lista de partidos con fechas y marcadores
+        //  Generado desde "FCC Stats Temporada.xlsx" (Semanas 1 a 3).
+        //  Cada categoria (U13F, U18F, U18M) tiene:
+        //    - teams: equipos inscritos (nombre, mascota, logo)
+        //    - standings: tabla de posiciones (V = 3, E = 1, D = 0)
+        //    - calendar: partidos jugados con marcador
         //    - rosters: jugadores de cada equipo
-        //    - bracket: llaves de eliminacion (semifinales y final)
+        //    - stats: acumulado por jugador (solo quienes tienen algun stat)
         // ============================================================
+        var statsUpdated = "Semana 3";
         var leagueData = {
-
-            "U10": {
-                teams: [],
-                groups: {},
-                standings: {},
-                calendar: [],
-                rosters: {},
-                bracket: null
+            "U13F": {
+                "teams": [
+                    {
+                        "name": "La Salle",
+                        "school": "Spartans",
+                        "logo": "logos fcc/la-salle.png"
+                    },
+                    {
+                        "name": "SAP",
+                        "school": "Tigers",
+                        "logo": "logos fcc/sap.png"
+                    },
+                    {
+                        "name": "CRP Lions",
+                        "school": "Colegio Real",
+                        "logo": "logos fcc/crp.png"
+                    },
+                    {
+                        "name": "ECP",
+                        "school": "Eagles",
+                        "logo": "logos fcc/ecp.png"
+                    },
+                    {
+                        "name": "AIP",
+                        "school": "Fighting Owls",
+                        "logo": "logos fcc/aip.png"
+                    }
+                ],
+                "standings": [
+                    {
+                        "team": "La Salle",
+                        "gp": 3,
+                        "w": 3,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 81,
+                        "pa": 13,
+                        "diff": 68,
+                        "pts": 9
+                    },
+                    {
+                        "team": "SAP",
+                        "gp": 2,
+                        "w": 1,
+                        "d": 0,
+                        "l": 1,
+                        "pf": 20,
+                        "pa": 40,
+                        "diff": -20,
+                        "pts": 3
+                    },
+                    {
+                        "team": "CRP Lions",
+                        "gp": 0,
+                        "w": 0,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 0,
+                        "pa": 0,
+                        "diff": 0,
+                        "pts": 0
+                    },
+                    {
+                        "team": "ECP",
+                        "gp": 1,
+                        "w": 0,
+                        "d": 0,
+                        "l": 1,
+                        "pf": 0,
+                        "pa": 13,
+                        "diff": -13,
+                        "pts": 0
+                    },
+                    {
+                        "team": "AIP",
+                        "gp": 2,
+                        "w": 0,
+                        "d": 0,
+                        "l": 2,
+                        "pf": 12,
+                        "pa": 47,
+                        "diff": -35,
+                        "pts": 0
+                    }
+                ],
+                "calendar": [
+                    {
+                        "phase": "Semana 1",
+                        "home": "SAP",
+                        "away": "La Salle",
+                        "date": "Sábado 19 sep · 5:30 p.m. · CDE SC",
+                        "score": "7 - 34"
+                    },
+                    {
+                        "phase": "Semana 2",
+                        "home": "SAP",
+                        "away": "AIP",
+                        "date": "Sábado 26 sep · 5:30 p.m. · CDE SC",
+                        "score": "13 - 6"
+                    },
+                    {
+                        "phase": "Semana 2",
+                        "home": "La Salle",
+                        "away": "ECP",
+                        "date": "Sábado 26 sep · 6:00 p.m. · CDE SC",
+                        "score": "13 - 0"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "AIP",
+                        "away": "La Salle",
+                        "date": "Sábado 3 oct · 6:00 p.m. · CDE SC",
+                        "score": "6 - 34"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "ECP",
+                        "away": "CRP Lions",
+                        "date": "Jueves 8 oct · 4:30 p.m. · ECP",
+                        "note": "Reprogramado (antes sábado 3 oct)"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "SAP",
+                        "away": "ECP",
+                        "date": "Sábado 10 oct · 6:00 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "AIP",
+                        "away": "CRP Lions",
+                        "date": "Sábado 10 oct · 6:00 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 5",
+                        "home": "ECP",
+                        "away": "AIP",
+                        "date": "Sábado 17 oct · 5:45 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 5",
+                        "home": "CRP Lions",
+                        "away": "SAP",
+                        "date": "Sábado 17 oct · 5:45 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 6",
+                        "home": "CRP Lions",
+                        "away": "La Salle",
+                        "date": "Sábado 24 oct · 6:00 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "#1",
+                        "away": "#4",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "#2",
+                        "away": "#3",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Tercer lugar",
+                        "home": "Perdedor SF1",
+                        "away": "Perdedor SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Final",
+                        "home": "Ganador SF1",
+                        "away": "Ganador SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    }
+                ],
+                "rosters": {
+                    "La Salle": [
+                        {
+                            "num": 28,
+                            "name": "Ana Victoria Arosemena"
+                        },
+                        {
+                            "num": 31,
+                            "name": "Lucia De Freitas"
+                        },
+                        {
+                            "num": 25,
+                            "name": "Natalia Donadio"
+                        },
+                        {
+                            "num": 9,
+                            "name": "Aissa González"
+                        },
+                        {
+                            "num": 14,
+                            "name": "Maite Dos Santos"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Hannah Jódar"
+                        },
+                        {
+                            "num": 12,
+                            "name": "Mía Carolina Castillo"
+                        },
+                        {
+                            "num": 29,
+                            "name": "Isabella Troncoso"
+                        },
+                        {
+                            "num": 67,
+                            "name": "Liz Marie Ortiz"
+                        },
+                        {
+                            "num": 27,
+                            "name": "Valentina Lopera"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Silvana Gómez"
+                        }
+                    ],
+                    "SAP": [
+                        {
+                            "num": 11,
+                            "name": "Aria Celestini"
+                        },
+                        {
+                            "num": 29,
+                            "name": "Camila Carrera"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Christine Alvarez"
+                        },
+                        {
+                            "num": 14,
+                            "name": "Emma Recuero"
+                        },
+                        {
+                            "num": 27,
+                            "name": "Julianne Morrell"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Kristen Justiniani"
+                        },
+                        {
+                            "num": 12,
+                            "name": "Laura La Moth"
+                        },
+                        {
+                            "num": 8,
+                            "name": "Tiana Stair"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Camila Montero"
+                        },
+                        {
+                            "num": 6,
+                            "name": "Aliss Ramírez"
+                        }
+                    ],
+                    "ECP": [
+                        {
+                            "num": 17,
+                            "name": "Mafe Chang"
+                        },
+                        {
+                            "num": 47,
+                            "name": "Ana Correa"
+                        },
+                        {
+                            "num": 71,
+                            "name": "Valentina López"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Emilia Jaramillo"
+                        },
+                        {
+                            "num": 21,
+                            "name": "Victoria Oteyza"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Natalie Chu"
+                        },
+                        {
+                            "num": 25,
+                            "name": "Sofía Zambrano"
+                        },
+                        {
+                            "num": 23,
+                            "name": "Felícitas Russo"
+                        },
+                        {
+                            "num": 99,
+                            "name": "Joaquina Ferrari"
+                        },
+                        {
+                            "num": 14,
+                            "name": "Daniela Merino"
+                        }
+                    ],
+                    "AIP": [
+                        {
+                            "num": 7,
+                            "name": "Coriat"
+                        },
+                        {
+                            "num": 4,
+                            "name": "Cira"
+                        },
+                        {
+                            "num": 24,
+                            "name": "Vera"
+                        },
+                        {
+                            "num": 30,
+                            "name": "González"
+                        },
+                        {
+                            "num": 111,
+                            "name": "Jaen"
+                        },
+                        {
+                            "num": 48,
+                            "name": "Salerno"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Salazar"
+                        },
+                        {
+                            "num": 9,
+                            "name": "Cuevas"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Harrington"
+                        },
+                        {
+                            "num": 20,
+                            "name": "Diaz"
+                        },
+                        {
+                            "num": 77,
+                            "name": "De la Fuente"
+                        },
+                        {
+                            "num": 82,
+                            "name": "Sosnoff"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Marach"
+                        },
+                        {
+                            "num": "",
+                            "name": "Grimaldo"
+                        }
+                    ]
+                },
+                "stats": [
+                    {
+                        "num": 14,
+                        "name": "Maite Dos Santos",
+                        "team": "La Salle",
+                        "passTd": 4,
+                        "rushTd": 2,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 11
+                    },
+                    {
+                        "num": 11,
+                        "name": "Aria Celestini",
+                        "team": "SAP",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 1,
+                        "tackles": 6
+                    },
+                    {
+                        "num": 27,
+                        "name": "Valentina Lopera",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 2,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 9,
+                        "name": "Aissa González",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 1,
+                        "recTd": 3,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 15,
+                        "name": "Hannah Jódar",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 6
+                    },
+                    {
+                        "num": 27,
+                        "name": "Julianne Morrell",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 5
+                    },
+                    {
+                        "num": 29,
+                        "name": "Isabella Troncoso",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 2,
+                        "intTd": 1,
+                        "tackles": 4
+                    },
+                    {
+                        "num": 8,
+                        "name": "Tiana Stair",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 11
+                    },
+                    {
+                        "num": 12,
+                        "name": "Laura La Moth",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 31,
+                        "name": "Lucia De Freitas",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 10,
+                        "name": "Kristen Justiniani",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 7,
+                        "name": "Coriat",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 6
+                    },
+                    {
+                        "num": 24,
+                        "name": "Vera",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 77,
+                        "name": "De la Fuente",
+                        "team": "AIP",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 82,
+                        "name": "Sosnoff",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 7,
+                        "name": "Marach",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 7
+                    },
+                    {
+                        "num": 28,
+                        "name": "Ana Victoria Arosemena",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 7
+                    },
+                    {
+                        "num": 25,
+                        "name": "Natalia Donadio",
+                        "team": "La Salle",
+                        "passTd": 3,
+                        "rushTd": 1,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 12,
+                        "name": "Mía Carolina Castillo",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 7
+                    },
+                    {
+                        "num": 47,
+                        "name": "Ana Correa",
+                        "team": "ECP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 2,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 71,
+                        "name": "Valentina López",
+                        "team": "ECP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 7,
+                        "name": "Emilia Jaramillo",
+                        "team": "ECP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 25,
+                        "name": "Sofía Zambrano",
+                        "team": "ECP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": "",
+                        "name": "Grimaldo",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    }
+                ]
             },
-
-            "U13": {
-                teams: [],
-                groups: {},
-                standings: {},
-                calendar: [],
-                rosters: {},
-                bracket: null
+            "U18F": {
+                "teams": [
+                    {
+                        "name": "SAP",
+                        "school": "Tigers",
+                        "logo": "logos fcc/sap.png"
+                    },
+                    {
+                        "name": "AIP",
+                        "school": "Fighting Owls",
+                        "logo": "logos fcc/aip.png"
+                    },
+                    {
+                        "name": "ECP",
+                        "school": "Eagles",
+                        "logo": "logos fcc/ecp.png"
+                    },
+                    {
+                        "name": "La Salle",
+                        "school": "Spartans",
+                        "logo": "logos fcc/la-salle.png"
+                    }
+                ],
+                "standings": [
+                    {
+                        "team": "SAP",
+                        "gp": 2,
+                        "w": 2,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 39,
+                        "pa": 18,
+                        "diff": 21,
+                        "pts": 6
+                    },
+                    {
+                        "team": "AIP",
+                        "gp": 2,
+                        "w": 1,
+                        "d": 0,
+                        "l": 1,
+                        "pf": 45,
+                        "pa": 26,
+                        "diff": 19,
+                        "pts": 3
+                    },
+                    {
+                        "team": "ECP",
+                        "gp": 0,
+                        "w": 0,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 0,
+                        "pa": 0,
+                        "diff": 0,
+                        "pts": 0
+                    },
+                    {
+                        "team": "La Salle",
+                        "gp": 2,
+                        "w": 0,
+                        "d": 0,
+                        "l": 2,
+                        "pf": 19,
+                        "pa": 59,
+                        "diff": -40,
+                        "pts": 0
+                    }
+                ],
+                "calendar": [
+                    {
+                        "phase": "Semana 1",
+                        "home": "SAP",
+                        "away": "La Salle",
+                        "date": "Sábado 19 sep · 6:00 p.m. · CDE SC",
+                        "score": "20 - 12"
+                    },
+                    {
+                        "phase": "Semana 2",
+                        "home": "AIP",
+                        "away": "La Salle",
+                        "date": "Sábado 26 sep · 6:30 p.m. · CDE SC",
+                        "score": "39 - 7"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "SAP",
+                        "away": "AIP",
+                        "date": "Sábado 3 oct · 6:00 p.m. · CDE SC",
+                        "score": "19 - 6"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "La Salle",
+                        "away": "ECP",
+                        "date": "Sábado 17 oct · 5:45 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "ECP",
+                        "away": "SAP",
+                        "date": "Sábado 17 oct · 7:20 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 5",
+                        "home": "AIP",
+                        "away": "ECP",
+                        "date": "Sábado 24 oct · 6:00 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "#1",
+                        "away": "#4",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "#2",
+                        "away": "#3",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Tercer lugar",
+                        "home": "Perdedor SF1",
+                        "away": "Perdedor SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Final",
+                        "home": "Ganador SF1",
+                        "away": "Ganador SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    }
+                ],
+                "rosters": {
+                    "SAP": [
+                        {
+                            "num": 1,
+                            "name": "Alexandra Hernández"
+                        },
+                        {
+                            "num": 5,
+                            "name": "Amy Ayala"
+                        },
+                        {
+                            "num": 20,
+                            "name": "Ana Rueda"
+                        },
+                        {
+                            "num": 88,
+                            "name": "Anabella Garban"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Aria Celestini"
+                        },
+                        {
+                            "num": 61,
+                            "name": "Brianna González"
+                        },
+                        {
+                            "num": 6,
+                            "name": "Eily Tejada"
+                        },
+                        {
+                            "num": 67,
+                            "name": "Emma Meza"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Gabriela Barria"
+                        },
+                        {
+                            "num": 21,
+                            "name": "Juliana García"
+                        },
+                        {
+                            "num": 26,
+                            "name": "Sarah Cruz"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Sarah Hughes"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Sharbel Torres"
+                        },
+                        {
+                            "num": 24,
+                            "name": "Valeria Ghisoli"
+                        },
+                        {
+                            "num": 3,
+                            "name": "Ivana Hassan"
+                        }
+                    ],
+                    "AIP": [
+                        {
+                            "num": 6,
+                            "name": "Maduro"
+                        },
+                        {
+                            "num": 3,
+                            "name": "Guinard"
+                        },
+                        {
+                            "num": 28,
+                            "name": "Galindo"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Suira"
+                        },
+                        {
+                            "num": 8,
+                            "name": "Cabezas"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Heilbron"
+                        },
+                        {
+                            "num": 2,
+                            "name": "Gamecho"
+                        },
+                        {
+                            "num": 12,
+                            "name": "Shahani"
+                        },
+                        {
+                            "num": 20,
+                            "name": "Miguel"
+                        }
+                    ],
+                    "La Salle": [
+                        {
+                            "num": 31,
+                            "name": "Anjali Jhangimal"
+                        },
+                        {
+                            "num": 68,
+                            "name": "Gabriela De Gracia"
+                        },
+                        {
+                            "num": 5,
+                            "name": "Issa Ortiz"
+                        },
+                        {
+                            "num": 9,
+                            "name": "Rayquen Reyna"
+                        },
+                        {
+                            "num": 12,
+                            "name": "Violetta Medina"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Jimena Mata"
+                        },
+                        {
+                            "num": 26,
+                            "name": "Ismahelys Miller"
+                        },
+                        {
+                            "num": 72,
+                            "name": "Arianne Dawson"
+                        },
+                        {
+                            "num": 8,
+                            "name": "Jia Mon"
+                        },
+                        {
+                            "num": 17,
+                            "name": "Paola Ortiz"
+                        },
+                        {
+                            "num": 16,
+                            "name": "Paulie Batista"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Jugadora #10 (sin nombre)"
+                        }
+                    ]
+                },
+                "stats": [
+                    {
+                        "num": 21,
+                        "name": "Juliana García",
+                        "team": "SAP",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 1,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 9,
+                        "name": "Rayquen Reyna",
+                        "team": "La Salle",
+                        "passTd": 3,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 67,
+                        "name": "Emma Meza",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 2,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 3,
+                        "name": "Ivana Hassan",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 2,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 4
+                    },
+                    {
+                        "num": 5,
+                        "name": "Issa Ortiz",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 7
+                    },
+                    {
+                        "num": 12,
+                        "name": "Violetta Medina",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 6,
+                        "name": "Eily Tejada",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 4
+                    },
+                    {
+                        "num": 31,
+                        "name": "Anjali Jhangimal",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 15,
+                        "name": "Jimena Mata",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 61,
+                        "name": "Brianna González",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 17,
+                        "name": "Paola Ortiz",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 6,
+                        "name": "Maduro",
+                        "team": "AIP",
+                        "passTd": 1,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 9
+                    },
+                    {
+                        "num": 3,
+                        "name": "Guinard",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 3,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 15,
+                        "name": "Suira",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 3,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 7,
+                        "name": "Heilbron",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 8
+                    },
+                    {
+                        "num": 2,
+                        "name": "Gamecho",
+                        "team": "AIP",
+                        "passTd": 6,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 2,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 26,
+                        "name": "Ismahelys Miller",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 16,
+                        "name": "Paulie Batista",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 5,
+                        "name": "Amy Ayala",
+                        "team": "SAP",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 88,
+                        "name": "Anabella Garban",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 11,
+                        "name": "Aria Celestini",
+                        "team": "SAP",
+                        "passTd": 1,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 28,
+                        "name": "Galindo",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 8,
+                        "name": "Cabezas",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 20,
+                        "name": "Miguel",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    }
+                ]
             },
-
-            "U16": {
-                teams: [],
-                groups: {},
-                standings: {},
-                calendar: [],
-                rosters: {},
-                bracket: null
-            },
-
-            "U18": {
-                teams: [],
-                groups: {},
-                standings: {},
-                calendar: [],
-                rosters: {},
-                bracket: null
+            "U18M": {
+                "teams": [
+                    {
+                        "name": "SAP",
+                        "school": "Tigers",
+                        "logo": "logos fcc/sap.png"
+                    },
+                    {
+                        "name": "AIP",
+                        "school": "Fighting Owls",
+                        "logo": "logos fcc/aip.png"
+                    },
+                    {
+                        "name": "La Salle",
+                        "school": "Spartans",
+                        "logo": "logos fcc/la-salle.png"
+                    },
+                    {
+                        "name": "ECP Green",
+                        "school": "Eagles",
+                        "logo": "logos fcc/ecp.png"
+                    },
+                    {
+                        "name": "Brader",
+                        "school": "Raiders",
+                        "logo": "logos fcc/brader.png"
+                    },
+                    {
+                        "name": "ECP White",
+                        "school": "Eagles",
+                        "logo": "logos fcc/ecp.png"
+                    },
+                    {
+                        "name": "ECP Black",
+                        "school": "Eagles",
+                        "logo": "logos fcc/ecp.png"
+                    }
+                ],
+                "standings": [
+                    {
+                        "team": "SAP",
+                        "gp": 3,
+                        "w": 1,
+                        "d": 1,
+                        "l": 1,
+                        "pf": 57,
+                        "pa": 49,
+                        "diff": 8,
+                        "pts": 4
+                    },
+                    {
+                        "team": "AIP",
+                        "gp": 1,
+                        "w": 1,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 33,
+                        "pa": 0,
+                        "diff": 33,
+                        "pts": 3
+                    },
+                    {
+                        "team": "La Salle",
+                        "gp": 2,
+                        "w": 1,
+                        "d": 0,
+                        "l": 1,
+                        "pf": 39,
+                        "pa": 32,
+                        "diff": 7,
+                        "pts": 3
+                    },
+                    {
+                        "team": "ECP Green",
+                        "gp": 1,
+                        "w": 1,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 18,
+                        "pa": 13,
+                        "diff": 5,
+                        "pts": 3
+                    },
+                    {
+                        "team": "Brader",
+                        "gp": 1,
+                        "w": 1,
+                        "d": 0,
+                        "l": 0,
+                        "pf": 13,
+                        "pa": 12,
+                        "diff": 1,
+                        "pts": 3
+                    },
+                    {
+                        "team": "ECP White",
+                        "gp": 2,
+                        "w": 0,
+                        "d": 1,
+                        "l": 1,
+                        "pf": 18,
+                        "pa": 51,
+                        "diff": -33,
+                        "pts": 1
+                    },
+                    {
+                        "team": "ECP Black",
+                        "gp": 2,
+                        "w": 0,
+                        "d": 0,
+                        "l": 2,
+                        "pf": 18,
+                        "pa": 39,
+                        "diff": -21,
+                        "pts": 0
+                    }
+                ],
+                "calendar": [
+                    {
+                        "phase": "Semana 1",
+                        "home": "SAP",
+                        "away": "La Salle",
+                        "date": "Sábado 19 sep · CDE SC",
+                        "score": "26 - 13"
+                    },
+                    {
+                        "phase": "Semana 2",
+                        "home": "ECP Black",
+                        "away": "La Salle",
+                        "date": "Sábado 26 sep · 6:00 p.m. · CDE SC",
+                        "score": "6 - 26"
+                    },
+                    {
+                        "phase": "Semana 2",
+                        "home": "ECP White",
+                        "away": "SAP",
+                        "date": "Sábado 26 sep · 6:50 p.m. · CDE SC",
+                        "score": "18 - 18"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "ECP White",
+                        "away": "AIP",
+                        "date": "Sábado 3 oct · 6:50 p.m. · CDE SC",
+                        "score": "0 - 33"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "Brader",
+                        "away": "ECP Black",
+                        "date": "Sábado 3 oct · 6:50 p.m. · CDE SC",
+                        "score": "13 - 12"
+                    },
+                    {
+                        "phase": "Semana 3",
+                        "home": "ECP Green",
+                        "away": "SAP",
+                        "date": "Sábado 3 oct · 6:50 p.m. · CDE SC",
+                        "score": "18 - 13"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "ECP Black",
+                        "away": "AIP",
+                        "date": "Sábado 10 oct · 6:00 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "ECP Green",
+                        "away": "Brader",
+                        "date": "Sábado 10 oct · 6:50 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 4",
+                        "home": "La Salle",
+                        "away": "ECP White",
+                        "date": "Sábado 10 oct · 6:50 p.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 5",
+                        "home": "AIP",
+                        "away": "ECP Green",
+                        "date": "Jueves 15 oct · 4:00 p.m. · ECP"
+                    },
+                    {
+                        "phase": "Semana 5",
+                        "home": "Brader",
+                        "away": "ECP White",
+                        "date": "Jueves 15 oct · 5:00 p.m. · ECP"
+                    },
+                    {
+                        "phase": "Semana 6",
+                        "home": "AIP",
+                        "away": "Brader",
+                        "date": "Sábado 17 oct · 6:30 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 6",
+                        "home": "La Salle",
+                        "away": "ECP Green",
+                        "date": "Sábado 17 oct · 6:30 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semana 6",
+                        "home": "SAP",
+                        "away": "ECP Black",
+                        "date": "Sábado 17 oct · 6:30 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Cuartos de final",
+                        "home": "#2",
+                        "away": "#7",
+                        "date": "Sábado 24 oct · 6:00 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Cuartos de final",
+                        "home": "#3",
+                        "away": "#6",
+                        "date": "Sábado 24 oct · 6:50 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Cuartos de final",
+                        "home": "#4",
+                        "away": "#5",
+                        "date": "Sábado 24 oct · 6:50 a.m. · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "#1",
+                        "away": "Menor sembrado",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Semifinales",
+                        "home": "Ganador cuartos",
+                        "away": "Ganador cuartos",
+                        "date": "Sábado 14 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Tercer lugar",
+                        "home": "Perdedor SF1",
+                        "away": "Perdedor SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    },
+                    {
+                        "phase": "Final",
+                        "home": "Ganador SF1",
+                        "away": "Ganador SF2",
+                        "date": "Sábado 21 nov · Hora por definir · CDE SC"
+                    }
+                ],
+                "rosters": {
+                    "SAP": [
+                        {
+                            "num": 14,
+                            "name": "Abdiel Ibañez"
+                        },
+                        {
+                            "num": 31,
+                            "name": "Alan Sinnette"
+                        },
+                        {
+                            "num": 25,
+                            "name": "Aly Cox"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Carlos Villarreal"
+                        },
+                        {
+                            "num": 5,
+                            "name": "Diego Cedeño"
+                        },
+                        {
+                            "num": 21,
+                            "name": "Diego Lamoth"
+                        },
+                        {
+                            "num": 99,
+                            "name": "Diego Tolato"
+                        },
+                        {
+                            "num": 15,
+                            "name": "Edgar Vargas"
+                        },
+                        {
+                            "num": 83,
+                            "name": "Franklin Muñoz"
+                        },
+                        {
+                            "num": 67,
+                            "name": "Gabriel Carrizo"
+                        },
+                        {
+                            "num": 34,
+                            "name": "Gilberto Bernard"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Guillermo Herrera"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Joseph Qiu"
+                        },
+                        {
+                            "num": 23,
+                            "name": "Luis García"
+                        }
+                    ],
+                    "AIP": [
+                        {
+                            "num": 2,
+                            "name": "Boli"
+                        },
+                        {
+                            "num": 6,
+                            "name": "Carlos"
+                        },
+                        {
+                            "num": 3,
+                            "name": "Lucas"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Diego"
+                        },
+                        {
+                            "num": 1,
+                            "name": "Castro"
+                        }
+                    ],
+                    "La Salle": [
+                        {
+                            "num": 12,
+                            "name": "Antonio Escobar"
+                        },
+                        {
+                            "num": 19,
+                            "name": "Santiago Guzmán"
+                        },
+                        {
+                            "num": 0,
+                            "name": "Ricardo De León"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Abraham Baptiste"
+                        },
+                        {
+                            "num": 16,
+                            "name": "Aldahir Moreno"
+                        },
+                        {
+                            "num": 20,
+                            "name": "Fernando Mojica"
+                        },
+                        {
+                            "num": 8,
+                            "name": "Esteban Paz"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Alexei Murillo"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Diego Ventura"
+                        }
+                    ],
+                    "ECP Green": [
+                        {
+                            "num": 2,
+                            "name": "Daniel Lewis"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Adrian Barria"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Camilo Barona"
+                        },
+                        {
+                            "num": 21,
+                            "name": "Carlos Araúz"
+                        }
+                    ],
+                    "Brader": [
+                        {
+                            "num": 9,
+                            "name": "Jose Joly"
+                        },
+                        {
+                            "num": 17,
+                            "name": "Fabian Carbonell"
+                        },
+                        {
+                            "num": 3,
+                            "name": "Juancho Vincensini"
+                        },
+                        {
+                            "num": 0,
+                            "name": "Lucas Ciniglio"
+                        },
+                        {
+                            "num": 12,
+                            "name": "Santiago Sanchez"
+                        },
+                        {
+                            "num": 33,
+                            "name": "Piero Rognoni"
+                        }
+                    ],
+                    "ECP White": [
+                        {
+                            "num": 8,
+                            "name": "Nelson Pérez"
+                        },
+                        {
+                            "num": 3,
+                            "name": "Dimitri Flores"
+                        },
+                        {
+                            "num": 6,
+                            "name": "Diego Martinelli"
+                        },
+                        {
+                            "num": 1,
+                            "name": "Daniel Arias"
+                        },
+                        {
+                            "num": 20,
+                            "name": "Luis Graell"
+                        },
+                        {
+                            "num": 88,
+                            "name": "Pedro Rachadell"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Simón González"
+                        },
+                        {
+                            "num": 23,
+                            "name": "Tony Guido"
+                        },
+                        {
+                            "num": 10,
+                            "name": "Sebas Paredes"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Max Rachadell"
+                        },
+                        {
+                            "num": 87,
+                            "name": "Renato Muñoz"
+                        }
+                    ],
+                    "ECP Black": [
+                        {
+                            "num": 17,
+                            "name": "Franco Trujillo"
+                        },
+                        {
+                            "num": 1,
+                            "name": "Alexandros Mora"
+                        },
+                        {
+                            "num": 2,
+                            "name": "Ian Martinelli"
+                        },
+                        {
+                            "num": 66,
+                            "name": "Martin Digeronimo"
+                        },
+                        {
+                            "num": 22,
+                            "name": "Mauricio Barrios"
+                        },
+                        {
+                            "num": 7,
+                            "name": "Jad Chaluja"
+                        },
+                        {
+                            "num": 11,
+                            "name": "Diego Mora"
+                        },
+                        {
+                            "num": "3.14",
+                            "name": "Ethan Díaz"
+                        },
+                        {
+                            "num": 14,
+                            "name": "Juan Silvestre"
+                        },
+                        {
+                            "num": 73,
+                            "name": "Rodolfo Morales"
+                        }
+                    ]
+                },
+                "stats": [
+                    {
+                        "num": 11,
+                        "name": "Carlos Villarreal",
+                        "team": "SAP",
+                        "passTd": 8,
+                        "rushTd": 1,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 8,
+                        "name": "Esteban Paz",
+                        "team": "La Salle",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 5,
+                        "name": "Diego Cedeño",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 4,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 7,
+                        "name": "Guillermo Herrera",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 2,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 12,
+                        "name": "Antonio Escobar",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 16,
+                        "name": "Aldahir Moreno",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 1,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 5
+                    },
+                    {
+                        "num": 67,
+                        "name": "Gabriel Carrizo",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 19,
+                        "name": "Santiago Guzmán",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 7
+                    },
+                    {
+                        "num": 31,
+                        "name": "Alan Sinnette",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 5
+                    },
+                    {
+                        "num": 20,
+                        "name": "Fernando Mojica",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 22,
+                        "name": "Alexei Murillo",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 1,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 2,
+                        "name": "Ian Martinelli",
+                        "team": "ECP Black",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 2,
+                        "intTd": 0,
+                        "tackles": 5
+                    },
+                    {
+                        "num": 7,
+                        "name": "Jad Chaluja",
+                        "team": "ECP Black",
+                        "passTd": 3,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": "3.14",
+                        "name": "Ethan Díaz",
+                        "team": "ECP Black",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 14,
+                        "name": "Juan Silvestre",
+                        "team": "ECP Black",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 3,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 0,
+                        "name": "Ricardo De León",
+                        "team": "La Salle",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 7,
+                        "name": "Abraham Baptiste",
+                        "team": "La Salle",
+                        "passTd": 1,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 1,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 8,
+                        "name": "Nelson Pérez",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 6,
+                        "name": "Diego Martinelli",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 1,
+                        "name": "Daniel Arias",
+                        "team": "ECP White",
+                        "passTd": 3,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 11,
+                        "name": "Simón González",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 23,
+                        "name": "Tony Guido",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 2,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 21,
+                        "name": "Diego Lamoth",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 15,
+                        "name": "Edgar Vargas",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 3,
+                        "name": "Dimitri Flores",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 10,
+                        "name": "Sebas Paredes",
+                        "team": "ECP White",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 2,
+                        "name": "Boli",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 6,
+                        "name": "Carlos",
+                        "team": "AIP",
+                        "passTd": 3,
+                        "rushTd": 1,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 3,
+                        "name": "Lucas",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 1,
+                        "intTd": 1,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 7,
+                        "name": "Diego",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 2
+                    },
+                    {
+                        "num": 1,
+                        "name": "Castro",
+                        "team": "AIP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 9,
+                        "name": "Jose Joly",
+                        "team": "Brader",
+                        "passTd": 2,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 17,
+                        "name": "Fabian Carbonell",
+                        "team": "Brader",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 3,
+                        "name": "Juancho Vincensini",
+                        "team": "Brader",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 0,
+                        "name": "Lucas Ciniglio",
+                        "team": "Brader",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 12,
+                        "name": "Santiago Sanchez",
+                        "team": "Brader",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 33,
+                        "name": "Piero Rognoni",
+                        "team": "Brader",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 11,
+                        "name": "Diego Mora",
+                        "team": "ECP Black",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 3
+                    },
+                    {
+                        "num": 2,
+                        "name": "Daniel Lewis",
+                        "team": "ECP Green",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 10,
+                        "name": "Adrian Barria",
+                        "team": "ECP Green",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 11,
+                        "name": "Camilo Barona",
+                        "team": "ECP Green",
+                        "passTd": 3,
+                        "rushTd": 0,
+                        "recTd": 0,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 1
+                    },
+                    {
+                        "num": 21,
+                        "name": "Carlos Araúz",
+                        "team": "ECP Green",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 1,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    },
+                    {
+                        "num": 23,
+                        "name": "Luis García",
+                        "team": "SAP",
+                        "passTd": 0,
+                        "rushTd": 0,
+                        "recTd": 2,
+                        "int": 0,
+                        "intTd": 0,
+                        "tackles": 0
+                    }
+                ]
             }
         };
 
@@ -2435,6 +5023,7 @@
         //  Variable para la categoria activa
         // ============================================================
         var currentCategory = null;
+        var categoryNames = { U13F: 'Sub 13 Femenina', U18F: 'Sub 18 Femenina', U18M: 'Sub 18 Masculina' };
 
         // ============================================================
         //  FUNCIONES DE NAVEGACION
@@ -2475,6 +5064,7 @@
             }
             if (pageId === 'flag-challenge') {
                 renderFCCNews();
+                renderTicker('flag-challenge', 'all');
             }
         }
 
@@ -2483,7 +5073,7 @@
         // ============================================================
         function openCategory(cat) {
             currentCategory = cat;
-            document.getElementById('cat-title').textContent = 'Categoría ' + cat;
+            document.getElementById('cat-title').textContent = categoryNames[cat] || ('Categoría ' + cat);
             showPage('fcc-category');
             // Reset to first tab
             showTab('equipos');
@@ -2493,6 +5083,7 @@
             renderCalendar(cat);
             renderRosters(cat);
             renderStats(cat);
+            renderTicker('fcc-category', cat);
         }
 
         // ============================================================
@@ -2527,7 +5118,7 @@
             var html = '<div class="teams-grid">';
             data.teams.forEach(function(t) {
                 html += '<div class="team-card">';
-                html += '<img src="' + t.logo + '" alt="' + t.name + '">';
+                html += '<div class="team-card-badge"><img src="' + t.logo + '" alt="' + t.name + '"></div>';
                 html += '<h3>' + t.name + '</h3>';
                 html += '<p>' + t.school + '</p>';
                 html += '</div>';
@@ -2541,31 +5132,30 @@
         // ============================================================
         function renderStandings(cat) {
             var data = leagueData[cat];
-            if (Object.keys(data.standings).length === 0) {
+            if (!data.standings || !data.standings.length) {
                 document.getElementById('panel-posiciones').innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
                 return;
             }
-            var html = '';
-            var groups = data.standings;
-            for (var groupName in groups) {
-                html += '<h3 class="group-title">' + groupName + '</h3>';
-                html += '<table class="standings-table">';
-                html += '<thead><tr>';
-                html += '<th>Equipo</th><th>PJ</th><th>G</th><th>P</th><th>PF</th><th>PC</th><th>PTS</th>';
-                html += '</tr></thead><tbody>';
-                groups[groupName].forEach(function(row) {
-                    html += '<tr>';
-                    html += '<td>' + row.team + '</td>';
-                    html += '<td>' + row.gp + '</td>';
-                    html += '<td>' + row.w + '</td>';
-                    html += '<td>' + row.l + '</td>';
-                    html += '<td>' + row.pf + '</td>';
-                    html += '<td>' + row.pa + '</td>';
-                    html += '<td><strong>' + row.pts + '</strong></td>';
-                    html += '</tr>';
-                });
-                html += '</tbody></table>';
-            }
+            var html = '<div class="stats-scroll"><table class="standings-table">';
+            html += '<thead><tr>';
+            html += '<th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>PF</th><th>PC</th><th>DIF</th><th>PTS</th>';
+            html += '</tr></thead><tbody>';
+            data.standings.forEach(function(row, i) {
+                html += '<tr>';
+                html += '<td>' + (i + 1) + '</td>';
+                html += '<td>' + teamLabel(cat, row.team) + '</td>';
+                html += '<td>' + row.gp + '</td>';
+                html += '<td>' + row.w + '</td>';
+                html += '<td>' + row.d + '</td>';
+                html += '<td>' + row.l + '</td>';
+                html += '<td>' + row.pf + '</td>';
+                html += '<td>' + row.pa + '</td>';
+                html += '<td>' + (row.diff > 0 ? '+' : '') + row.diff + '</td>';
+                html += '<td><strong>' + row.pts + '</strong></td>';
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+            html += '<p class="standings-note">Victoria = 3 pts &middot; Empate = 1 &middot; Derrota = 0 &middot; Desempate: diferencia, luego puntos a favor.</p>';
 
             // Bracket
             var bracket = data.bracket;
@@ -2593,6 +5183,13 @@
             }
 
             document.getElementById('panel-posiciones').innerHTML = html;
+        }
+
+        // Logo + nombre de un equipo
+        function teamLabel(cat, name) {
+            var team = (leagueData[cat].teams || []).filter(function(t) { return t.name === name; })[0];
+            var img = team && team.logo ? '<span class="team-badge"><img src="' + team.logo + '" alt=""></span>' : '';
+            return '<span class="team-label">' + img + '<span>' + name + '</span></span>';
         }
 
         function renderBracketMatch(match) {
@@ -2630,16 +5227,17 @@
                     html += '<div class="match-list">';
                 }
                 html += '<div class="match-card">';
-                html += '<div class="match-team home">' + match.home + '</div>';
+                html += '<div class="match-team home">' + teamLabel(currentCategory, match.home) + '</div>';
                 html += '<div class="match-center">';
                 if (match.score) {
                     html += '<div class="match-score">' + match.score + '</div>';
                 } else {
-                    html += '<div class="match-pending">Pendiente</div>';
+                    html += '<div class="match-pending">VS</div>';
                 }
-                html += '<div class="match-date">' + match.date + '</div>';
+                if (match.date) html += '<div class="match-date">' + match.date + '</div>';
+                if (match.note) html += '<div class="match-note">' + match.note + '</div>';
                 html += '</div>';
-                html += '<div class="match-team away">' + match.away + '</div>';
+                html += '<div class="match-team away">' + teamLabel(currentCategory, match.away) + '</div>';
                 html += '</div>';
             });
             if (currentPhase !== '') html += '</div>';
@@ -2673,13 +5271,12 @@
             var players = data.rosters[teamName];
             var html = '<h3 class="roster-team-name">' + teamName + '</h3>';
             html += '<table class="roster-table">';
-            html += '<thead><tr><th>#</th><th>Nombre</th><th>Posición</th></tr></thead>';
+            html += '<thead><tr><th>#</th><th>Nombre</th></tr></thead>';
             html += '<tbody>';
             players.forEach(function(p) {
                 html += '<tr>';
                 html += '<td><strong>' + p.num + '</strong></td>';
                 html += '<td>' + p.name + '</td>';
-                html += '<td>' + p.pos + '</td>';
                 html += '</tr>';
             });
             html += '</tbody></table>';
@@ -2689,23 +5286,25 @@
         // ============================================================
         //  PORTESCO NOTICIAS (Landing Page)
         // ============================================================
-        var portescoNews = [
+        var fccNews = [
             {
-                title: "Ceremonias de cierre extracurriculares 2025",
-                image: "sports photos/CEREMONIA CIDMI FOTO.jpg",
-                excerpt: "Se llevaron a cabo con éxito las ceremonias de cierre en el Colegio María Inmaculada, Pureza de María y Las Esclavas. Un año lleno de aprendizaje, dedicación y crecimiento para todos nuestros estudiantes."
+                date: "Semana 1",
+                title: "Inicia la Flag Challenge Cup",
+                image: "sports photos/fcc-2026-semana1-la-salle-u13f.jpg",
+                position: "center 30%",
+                excerpt: "La primera jornada enfrentó a SAP y La Salle en las tres categorías. En U13 Femenina, La Salle se impuso 34-7 con 4 pases de touchdown de Maite Dos Santos. En U18 Femenina, SAP ganó 20-12, y en U18 Masculina SAP remontó un 0-13 para quedarse con el juego 26-13."
             },
             {
-                title: "Culmina con éxito la Flag Challenge Cup",
-                image: "sports photos/CAMPEON CRP 2.jpg",
-                excerpt: "Gran cierre de temporada en el torneo de flag football más importante de Panamá. Brader Raiders se coronan campeones en la categoría U13 y el Colegio Real de Panamá conquista el título en la U10."
-            },
-            {
-                title: "Recap 2025: un año lleno de acción",
-                image: "sports photos/FOTO CLE FINAL.jpg",
-                excerpt: "El 2025 fue un año repleto de actividades extracurriculares, con participaciones destacadas en torneos de flag football, voleibol y fútbol. Nuestros colegios demostraron talento, disciplina y pasión en cada cancha."
+                date: "Semana 2",
+                title: "Jornada 2: AIP y ECP entran en acción",
+                image: "sports photos/fcc-2026-semana2-accion.jpg",
+                position: "center 45%",
+                excerpt: "AIP debutó con fuerza en U18 Femenina con un 39-7 sobre La Salle, con 6 pases de touchdown de Gamecho. En U13 Femenina, SAP venció 13-6 a AIP y La Salle blanqueó 13-0 a ECP para seguir invicta. En U18 Masculina, La Salle superó 26-6 a ECP Black, y ECP White y SAP empataron 18-18."
             }
         ];
+
+        // La página principal muestra las mismas noticias de la Flag Challenge Cup
+        var portescoNews = fccNews;
 
         function renderPortescoNews() {
             var container = document.getElementById('news-container');
@@ -2713,7 +5312,7 @@
             var html = '';
             portescoNews.forEach(function(news) {
                 html += '<div class="news-card">';
-                html += '<img src="' + news.image + '" alt="' + news.title + '">';
+                html += '<img src="' + news.image + '" alt="' + news.title + '"' + (news.position ? ' style="object-position: ' + news.position + '"' : '') + '>';
                 html += '<div class="news-card-body">';
                 html += '<h3>' + news.title + '</h3>';
                 html += '<p>' + news.excerpt + '</p>';
@@ -2728,24 +5327,6 @@
         // ============================================================
         //  FCC NOTICIAS
         // ============================================================
-        var fccNews = [
-            {
-                title: "Brader Raiders se coronan campeones U13",
-                image: "sports photos/BRADER CAMPEON U13.jpg",
-                excerpt: "En una final llena de intensidad, Brader Raiders se llevó la copa de la categoría U13. AIP Owls dejó todo en la cancha para quedarse con el segundo lugar, mientras que ECP Eagles completó el podio con una sólida actuación en el tercer puesto."
-            },
-            {
-                title: "Colegio Real Lions campeonas U10 femenina",
-                image: "sports photos/crp campeon u10.jpg",
-                excerpt: "Las Lions del Colegio Real de Panamá dominaron la categoría U10 femenina con un juego impecable. Don Bosco Gators peleó hasta el final quedando en segundo lugar, y AIP Owls se alzó con el tercer puesto tras una gran temporada."
-            },
-            {
-                title: "MVPs de la Flag Challenge Cup",
-                image: null,
-                image2: ["sports photos/Perla correa.jpg", "sports photos/Olivia muñoz.jpg"],
-                excerpt: "Perla Correa de Brader Raiders fue nombrada MVP de la categoría U13 gracias a su liderazgo y jugadas decisivas en cada partido. En la U10 femenina, Olivia Muñoz del Colegio Real de Panamá se destacó como la jugadora más valiosa con actuaciones brillantes durante toda la temporada."
-            }
-        ];
 
         function renderFCCNews() {
             var container = document.getElementById('fcc-news-container');
@@ -2759,9 +5340,10 @@
                     html += '<img src="' + news.image2[1] + '" alt="MVP">';
                     html += '</div>';
                 } else {
-                    html += '<img src="' + news.image + '" alt="' + news.title + '">';
+                    html += '<img src="' + news.image + '" alt="' + news.title + '"' + (news.position ? ' style="object-position: ' + news.position + '"' : '') + '>';
                 }
                 html += '<div class="fcc-news-card-content">';
+                if (news.date) html += '<span class="fcc-news-date">' + news.date + '</span>';
                 html += '<h4>' + news.title + '</h4>';
                 html += '<p>' + news.excerpt + '</p>';
                 html += '</div></div>';
@@ -2770,102 +5352,229 @@
         }
 
         // ============================================================
-        //  ESTADÍSTICAS - Google Sheets Integration
+        //  MARCADOR SUPERIOR (todos los partidos, estilo NFL)
         // ============================================================
-        var statsConfig = {
-            sheetId: "",
-            categories: {
-                "U10": { passing: "Passing U10", rushing: "Rushing U10", receiving: "Receiving U10", defensive: "Defensive U10" },
-                "U13": { passing: "Passing U13", rushing: "Rushing U13", receiving: "Receiving U13", defensive: "Defensive U13" },
-                "U16": { passing: "Passing U16", rushing: "Rushing U16", receiving: "Receiving U16", defensive: "Defensive U16" },
-                "U18": { passing: "Passing U18", rushing: "Rushing U18", receiving: "Receiving U18", defensive: "Defensive U18" }
+        var tickerMonths = { ene: 0, feb: 1, mar: 2, abr: 3, may: 4, jun: 5, jul: 6, ago: 7, sep: 8, oct: 9, nov: 10, dic: 11 };
+        var tickerCatShort = { U13F: 'U13 F', U18F: 'U18 F', U18M: 'U18 M' };
+
+        // "Sábado 3 oct · 6:00 p.m. · CDE SC" -> fecha para ordenar
+        function parseMatchDate(str) {
+            var m = (str || '').match(/(\d{1,2}) (\w{3})(?: · (\d{1,2}):(\d{2}) ([ap])\.m\.)?/);
+            if (!m) return null;
+            var h = m[3] ? parseInt(m[3], 10) % 12 + (m[5] === 'p' ? 12 : 0) : 0;
+            return new Date(2026, tickerMonths[m[2]], parseInt(m[1], 10), h, m[4] ? parseInt(m[4], 10) : 0);
+        }
+
+        function isRealTeam(cat, name) {
+            return leagueData[cat].teams.some(function(t) { return t.name === name; });
+        }
+
+        function tickerTeamRow(cat, name, score, isWinner) {
+            var team = leagueData[cat].teams.filter(function(t) { return t.name === name; })[0];
+            var html = '<div class="tk-team' + (isWinner ? ' tk-winner' : '') + '">';
+            html += '<span class="team-badge tk-badge"><img src="' + team.logo + '" alt=""></span>';
+            html += '<span class="tk-name">' + name + '</span>';
+            if (score !== null) html += '<span class="tk-score">' + score + '</span>';
+            html += '</div>';
+            return html;
+        }
+
+        // Fecha de "hoy". Para probar otra fecha: agrega ?hoy=2026-10-06 a la URL
+        function tickerToday() {
+            var q = location.search.match(/[?&]hoy=(\d{4})-(\d{2})-(\d{2})/);
+            return q ? new Date(+q[1], +q[2] - 1, +q[3], 12) : new Date();
+        }
+
+        // Lunes 00:00 de la semana de una fecha
+        function weekStartOf(d) {
+            var s = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            s.setDate(s.getDate() - ((s.getDay() + 6) % 7));
+            return s;
+        }
+
+        var tickerMonthShort = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+
+        // Muestra solo los partidos de la semana actual (lunes a domingo).
+        // Si esta semana no hay juegos, muestra la próxima jornada. Cambia sola según la fecha.
+        function renderTicker(pageId, filter) {
+            var el = document.getElementById('ticker-' + pageId);
+            if (!el) return;
+            var games = [];
+            Object.keys(leagueData).forEach(function(cat) {
+                if (filter !== 'all' && filter !== cat) return;
+                leagueData[cat].calendar.forEach(function(m) {
+                    if (!isRealTeam(cat, m.home) || !isRealTeam(cat, m.away)) return;
+                    games.push({ cat: cat, m: m, when: parseMatchDate(m.date) });
+                });
+            });
+            games.sort(function(a, b) { return a.when - b.when; });
+
+            var now = tickerToday();
+            var start = weekStartOf(now);
+            var label = 'Esta semana';
+            var inWeek = function(g) { return g.when >= start && g.when < new Date(start.getTime() + 7 * 864e5); };
+            var shown = games.filter(inWeek);
+            if (!shown.length) {
+                var next = games.filter(function(g) { return g.when >= start; })[0];
+                var last = games[games.length - 1];
+                if (next || last) {
+                    start = weekStartOf((next || last).when);
+                    label = next ? 'Próxima jornada' : 'Última jornada';
+                    shown = games.filter(inWeek);
+                }
             }
-        };
+            var end = new Date(start.getTime() + 6 * 864e5);
+            var range = start.getDate() + ' ' + tickerMonthShort[start.getMonth()] + ' – ' + end.getDate() + ' ' + tickerMonthShort[end.getMonth()];
 
-        var statsColumns = {
-            passing:   ["Player", "Team", "Comp", "Att", "Yds", "TD", "INT"],
-            rushing:   ["Player", "Team", "Att", "Yds", "Avg", "TD"],
-            receiving: ["Player", "Team", "Rec", "Yds", "Avg", "TD"],
-            defensive: ["Player", "Team", "Flags", "INT", "Sacks", "TD"]
-        };
+            var allLink = filter === 'all'
+                ? "showPage('flag-challenge'); document.querySelector('.fcc-categories').scrollIntoView({behavior:'smooth', block:'center'});"
+                : "openCategory('" + filter + "'); showTab('calendario');";
 
-        var currentStatType = 'passing';
+            var html = '<div class="tk-bar">';
+            html += '<div class="tk-filters">';
+            ['all', 'U13F', 'U18F', 'U18M'].forEach(function(f) {
+                html += '<button class="tk-filter' + (f === filter ? ' active' : '') + '" onclick="renderTicker(\'' + pageId + '\', \'' + f + '\')">' + (f === 'all' ? 'Todos' : tickerCatShort[f]) + '</button>';
+            });
+            html += '</div>';
+            html += '<button class="tk-arrow" aria-label="Anteriores" onclick="scrollTicker(\'' + pageId + '\', -1)">&#8249;</button>';
+            html += '<div class="tk-track">';
+            html += '<div class="tk-week"><strong>' + label + '</strong><span>' + range + '</span></div>';
+            if (!shown.length) {
+                html += '<div class="tk-empty">No hay partidos programados</div>';
+            }
+            shown.forEach(function(g) {
+                var m = g.m, played = !!m.score;
+                var sh = null, sa = null;
+                if (played) {
+                    var p = m.score.split(' - ');
+                    sh = parseInt(p[0], 10); sa = parseInt(p[1], 10);
+                }
+                var parts = m.date.split(' · ');
+                var day = parts[0].replace(/^(\S{3})\S*/, '$1');
+                var status = played ? 'Final'
+                    : (g.when < now ? 'Resultado pendiente' : day + (parts[1] && parts.length > 2 ? ' · ' + parts[1] : ''));
+                html += '<div class="tk-card' + (played ? '' : ' tk-upcoming') + '" onclick="openCategory(\'' + g.cat + '\'); showTab(\'calendario\');">';
+                html += '<div class="tk-head"><span class="tk-cat">' + tickerCatShort[g.cat] + '</span>';
+                html += '<span class="tk-status">' + status + '</span></div>';
+                html += tickerTeamRow(g.cat, m.home, sh, played && sh > sa);
+                html += tickerTeamRow(g.cat, m.away, sa, played && sa > sh);
+                if (m.note) html += '<div class="tk-note">Reprogramado</div>';
+                html += '</div>';
+            });
+            html += '<div class="tk-more" onclick="' + allLink + '">Resultados y calendario &rarr;</div>';
+            html += '</div>';
+            html += '<button class="tk-arrow" aria-label="Siguientes" onclick="scrollTicker(\'' + pageId + '\', 1)">&#8250;</button>';
+            html += '</div>';
+            el.innerHTML = html;
+            el.querySelector('.tk-track').scrollLeft = 0;
+        }
+
+        function scrollTicker(pageId, dir) {
+            var track = document.querySelector('#ticker-' + pageId + ' .tk-track');
+            if (track) track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+        }
+
+        // ============================================================
+        //  ESTADÍSTICAS
+        // ============================================================
+        var statTypes = [
+            { key: 'passTd',  label: 'Pass TD' },
+            { key: 'rushTd',  label: 'Rush TD' },
+            { key: 'recTd',   label: 'TD Recepción' },
+            { key: 'int',     label: 'INT' },
+            { key: 'intTd',   label: 'INT TD' },
+            { key: 'tackles', label: 'Tackles' }
+        ];
+        var statsState = { type: 'passTd', sortKey: 'passTd', sortDir: -1, query: '' };
 
         function renderStats(cat) {
             var panel = document.getElementById('panel-estadisticas');
             if (!panel) return;
-            panel.innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
-        }
-
-        function switchStatType(cat, type) {
-            currentStatType = type;
-            var btns = document.querySelectorAll('.stats-subtab');
-            btns.forEach(function(b) { b.classList.remove('active'); });
-            var types = ['passing', 'rushing', 'receiving', 'defensive'];
-            var idx = types.indexOf(type);
-            if (btns[idx]) btns[idx].classList.add('active');
-            loadStatsContent(cat, type);
-        }
-
-        function loadStatsContent(cat, type) {
-            var container = document.getElementById('stats-table-container');
-            if (!container) return;
-
-            if (!statsConfig.sheetId) {
-                container.innerHTML = '<div class="stats-config-msg">' +
-                    '<h4>Configura tu Google Sheet</h4>' +
-                    '<p>Para ver estadísticas, agrega tu Sheet ID en la variable <code>statsConfig.sheetId</code> en el código.</p>' +
-                    '<p style="margin-top:0.5rem;font-size:0.85rem;">El Google Sheet debe ser público y tener hojas con los nombres correspondientes.</p>' +
-                    '</div>';
+            if (!leagueData[cat].stats || !leagueData[cat].stats.length) {
+                panel.innerHTML = '<div class="stats-config-msg"><p>Información disponible próximamente.</p></div>';
                 return;
             }
-
-            container.innerHTML = '<div class="stats-loading">Cargando estadísticas...</div>';
-            fetchStats(cat, type);
+            statsState = { type: 'passTd', sortKey: 'passTd', sortDir: -1, query: '' };
+            var html = '<div class="stats-subtabs">';
+            statTypes.forEach(function(t) {
+                html += '<button class="stats-subtab" data-type="' + t.key + '" onclick="switchStatType(\'' + t.key + '\')">' + t.label + '</button>';
+            });
+            html += '</div>';
+            html += '<p class="stats-updated">Última actualización: ' + statsUpdated + '</p>';
+            html += '<div class="stats-box">';
+            html += '<label class="stats-search"><span>Buscar:</span><input type="search" oninput="statsState.query = this.value; renderStatsTable()" placeholder="Jugador o equipo"></label>';
+            html += '<div id="stats-table-container"></div>';
+            html += '</div>';
+            panel.innerHTML = html;
+            switchStatType('passTd');
         }
 
-        function fetchStats(cat, type) {
-            var catConfig = statsConfig.categories[cat];
-            if (!catConfig || !catConfig[type]) {
-                document.getElementById('stats-table-container').innerHTML = '<div class="stats-config-msg"><p>No hay configuración para esta categoría.</p></div>';
-                return;
+        function switchStatType(type) {
+            statsState.type = type;
+            statsState.sortKey = type;
+            statsState.sortDir = -1;
+            document.querySelectorAll('.stats-subtab').forEach(function(b) {
+                b.classList.toggle('active', b.getAttribute('data-type') === type);
+            });
+            renderStatsTable();
+        }
+
+        function sortStats(key) {
+            if (statsState.sortKey === key) {
+                statsState.sortDir = -statsState.sortDir;
+            } else {
+                statsState.sortKey = key;
+                statsState.sortDir = (key === 'name' || key === 'team') ? 1 : -1;
             }
+            renderStatsTable();
+        }
 
-            var sheetName = encodeURIComponent(catConfig[type]);
-            var url = 'https://docs.google.com/spreadsheets/d/' + statsConfig.sheetId + '/gviz/tq?tqx=out:json&sheet=' + sheetName;
-
-            fetch(url)
-                .then(function(response) { return response.text(); })
-                .then(function(text) {
-                    var jsonStr = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?/);
-                    if (!jsonStr || !jsonStr[1]) throw new Error('Invalid response');
-                    var json = JSON.parse(jsonStr[1]);
-                    var rows = json.table.rows;
-                    var cols = statsColumns[type];
-                    var html = '<table class="stats-table">';
-                    html += '<thead><tr>';
-                    cols.forEach(function(col) {
-                        html += '<th>' + col + '</th>';
-                    });
-                    html += '</tr></thead><tbody>';
-                    rows.forEach(function(row) {
-                        html += '<tr>';
-                        for (var i = 0; i < cols.length; i++) {
-                            var cell = row.c[i];
-                            var val = cell ? (cell.f || cell.v || '') : '';
-                            html += '<td>' + val + '</td>';
-                        }
-                        html += '</tr>';
-                    });
-                    html += '</tbody></table>';
-                    document.getElementById('stats-table-container').innerHTML = html;
-                })
-                .catch(function(err) {
-                    document.getElementById('stats-table-container').innerHTML = '<div class="stats-config-msg">' +
-                        '<h4>Error al cargar estadísticas</h4>' +
-                        '<p>No se pudo obtener los datos del Google Sheet. Verifica que el Sheet sea público y que el ID sea correcto.</p>' +
-                        '</div>';
+        function renderStatsTable() {
+            var cat = currentCategory;
+            var type = statsState.type;
+            // Solo jugadores con el stat de la pestaña; ranking por ese stat (empates comparten puesto)
+            var rows = leagueData[cat].stats.filter(function(p) { return p[type] > 0; })
+                .sort(function(a, b) { return b[type] - a[type]; });
+            rows.forEach(function(p, i) {
+                p.rank = (i > 0 && rows[i - 1][type] === p[type]) ? rows[i - 1].rank : i + 1;
+            });
+            var q = statsState.query.trim().toLowerCase();
+            if (q) {
+                rows = rows.filter(function(p) {
+                    return (p.name + ' ' + p.team + ' ' + p.num).toLowerCase().indexOf(q) !== -1;
                 });
+            }
+            var key = statsState.sortKey, dir = statsState.sortDir;
+            rows = rows.slice().sort(function(a, b) {
+                var x = key === 'rank' ? a.rank : a[key], y = key === 'rank' ? b.rank : b[key];
+                if (typeof x === 'string') return dir * x.localeCompare(y);
+                return dir * (x - y) || a.rank - b.rank;
+            });
+
+            var p0 = { passTd: 1, rushTd: 1, recTd: 1, int: 1, intTd: 1, tackles: 1 };
+            var cols = [{ key: 'rank', label: 'Rank' }, { key: 'name', label: 'Jugador' }, { key: 'team', label: 'Equipo' }].concat(statTypes);
+            var html = '<div class="stats-scroll"><table class="stats-table">';
+            html += '<thead><tr>';
+            cols.forEach(function(c) {
+                var arrow = c.key === key ? (dir === -1 ? ' &darr;' : ' &uarr;') : ' &#8597;';
+                html += '<th class="' + (c.key === type ? 'is-active' : (c.key in p0 ? 'stat-col' : '')) + '" onclick="sortStats(\'' + c.key + '\')">' + c.label + '<span class="sort-arrow">' + arrow + '</span></th>';
+            });
+            html += '</tr></thead><tbody>';
+            if (!rows.length) {
+                html += '<tr><td colspan="' + cols.length + '" class="stats-empty">Sin resultados</td></tr>';
+            }
+            rows.forEach(function(p) {
+                html += '<tr>';
+                html += '<td>' + p.rank + '</td>';
+                html += '<td class="stats-player">' + (p.num !== '' ? '<span class="stats-num">' + p.num + '</span> ' : '') + p.name + '</td>';
+                html += '<td>' + teamLabel(cat, p.team) + '</td>';
+                statTypes.forEach(function(t) {
+                    html += '<td class="' + (t.key === type ? 'is-active' : 'stat-col') + '">' + p[t.key] + '</td>';
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+            document.getElementById('stats-table-container').innerHTML = html;
         }
     </script>
 </body>
